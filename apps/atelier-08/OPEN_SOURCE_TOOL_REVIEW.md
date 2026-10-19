@@ -1,4 +1,6 @@
 # Rehab Haider — open-source architecture + web-motion research
+**NOTE — HISTORICAL TOOL SELECTION STUDY:** The initial Three.js implementation documented below has been **retired and removed** because it did not meet the user's architectural realism standard. The active implementation is native-scroll + canonical SVG/CAD geometry and R12 DXF export with no WebGL. Tool counts are candidates researched, not products installed or individually benchmarked.
+
 **Research working inventory:** 135 named candidates across 6 categories, compiled 2026-10-19.
 **Important distinction:** This is a *catalogue and relevance triage*, NOT 135 individually installed, benchmarked, license-audited or security-reviewed projects. Some products have open-source cores and separately licensed add-ons; verify the **exact version/feature license** before use. Only the implemented tools listed below are present in this site.
 
