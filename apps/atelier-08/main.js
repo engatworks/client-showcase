@@ -16,6 +16,15 @@ const projects=[
 ];
 const byId=s=>projects.find(p=>p.slug===s);
 const state={filter:'الكل',selected:'courtyard'};
+function thumbnailPlan(i){
+ const split=44+i*4, edge=91-i*2;
+ return '<svg viewBox="0 0 150 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+
+ '<g fill="none" stroke="#d9ddcb" stroke-width="2.2"><path d="M13 13H137V101H13Z"/>'+
+ '<path d="M'+split+' 13V101M'+edge+' 13V67M13 56H137M'+split+' 80H137"/></g>'+
+ '<g fill="none" stroke="#c9a870" stroke-width="1.1"><path d="M19 20H'+(split-5)+'V51H19Z"/><path d="M'+(split+6)+' 20H'+(edge-5)+'V50H'+(split+6)+'Z"/><path d="M'+(edge+7)+' 20H128V48H'+(edge+7)+'Z"/></g>'+
+ '<path d="M6 106H142M145 8V107" stroke="#d9ddcb" stroke-opacity=".35" stroke-dasharray="3 4"/>'+
+ '<text x="17" y="109" fill="#e0d1b1" font-family="Arial" font-size="6.5">PLAN — 0'+(i+1)+'</text></svg>';
+}
 function renderProjects(){
   const filtered=projects.filter(p=>state.filter==='الكل'||p.type===state.filter);
   $('#projectGrid').innerHTML=filtered.map((p,i)=>'<article class="project">'+
@@ -26,7 +35,6 @@ function renderProjects(){
     '<div class="project-text"><div><p>'+p.place+' / '+p.type+'</p><h3>'+p.name+'</h3></div><span class="project-year">'+p.year+'</span></div>'+
     '<div class="project-note">'+p.lead+'</div>'+
    '</article>').join('');
-  $$('[data-open]').forEach(b=>b.addEventListener('click',()=>openProject(b.dataset.open)));
 }
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
   state.filter=b.dataset.filter;
@@ -50,35 +58,6 @@ if(heroIndicator && !reduced){
 }
 renderProjects();
 }));
-const modal=$('#projectDialog');
-let previousFocus=null;
-function openProject(slug){
-  const p=byId(slug);if(!p)return;state.selected=slug;
-  const idx=projects.indexOf(p);
-  const next=projects[(idx+1)%projects.length];
-  previousFocus=document.activeElement;
-  $('#projectDetail').innerHTML=
-    '<div class="detail-hero"><img src="'+img(p.image,1800)+'" alt="تصوّر معماري لمشروع '+p.name+'">'+
-      '<div class="detail-title"><span>دراسة تصوّرية / '+p.type+' / 0'+(idx+1)+'</span><h2>'+p.name+'</h2></div></div>'+
-    '<div class="detail-article"><aside class="detail-facts">'+
-      '<div class="fact"><strong>التصنيف</strong><span>'+p.type+'</span></div>'+
-      '<div class="fact"><strong>الموقع التخيّلي</strong><span>'+p.place+'</span></div>'+
-      '<div class="fact"><strong>المساحة الافتراضية</strong><span>'+p.area+'</span></div>'+
-      '<div class="fact"><strong>سنة التصوّر</strong><span>'+p.year+'</span></div>'+
-      '<div class="fact"><strong>الحالة</strong><span>مفهوم تجريبي غير منفّذ</span></div></aside>'+
-      '<div class="detail-narrative"><h3>'+p.lead+'</h3><p>'+p.desc+'</p><p>'+p.story+'</p>'+
-      '<div class="detail-skills">'+p.details.map(s=>'<span>'+s+'</span>').join('')+'</div></div></div>'+
-    '<div class="detail-gallery"><figure><img src="'+img(p.secondary,1400)+'" alt="صورة مرجعية إضافية تعبّر عن تفاصيل التصوّر" loading="lazy"><figcaption>دراسة في الضوء والمواد / صورة مرجعية توضيحية</figcaption></figure>'+
-     '<figure><img src="'+img(p.image,1200)+'" alt="المشهد المعماري الرئيسي" loading="lazy"><figcaption>لقطة مرجعية للتكوين والمقياس</figcaption></figure></div>'+
-    '<div class="detail-end"><div class="concept-disclaimer">هذا المشروع تصوّر خيالي ضمن معرض تجريبي. الصور مرجعية وليست أعمالًا منفذة لرحاب حيدر.</div>'+
-    '<button class="next-project" id="nextProject" type="button">المشروع التالي: '+next.name+' ↗</button></div>';
-  if(!modal.open)modal.showModal();
-  document.body.classList.add('dialog-open');
-  $('#nextProject').addEventListener('click',()=>{openProject(next.slug);modal.scrollTop=0;});
-}
-$('#projectClose').addEventListener('click',()=>modal.close());
-modal.addEventListener('click',e=>{if(e.target===modal)modal.close();});
-modal.addEventListener('close',()=>{document.body.classList.remove('dialog-open');if(previousFocus?.isConnected)previousFocus.focus();});
 $$('[data-scene-button]').forEach(b=>b.addEventListener('click',()=>{
   const ix=b.dataset.sceneButton;
   $$('.hero-photo').forEach(p=>p.classList.toggle('active',p.dataset.scene===ix));
