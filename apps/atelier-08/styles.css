@@ -24,3 +24,7 @@
 @view-transition{navigation:auto}
 @media(max-width:640px){.project-plan-thumb{top:13px;left:13px;width:99px;padding:7px}.project-note{display:block}.go-case{display:block;margin-top:7px}}
 @media(prefers-reduced-motion:reduce){.project-plan-thumb{transform:none!important}}
+
+.drawing-deep-link{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:23px;border:1px solid #d9e8d052;padding:16px 20px;color:#e7e5d2;background:#a7b9a610;font:500 11px/1.8 var(--ar);transition:background .25s}
+.drawing-deep-link:hover{background:#b7ccab24}.drawing-deep-link span{font:400 23px var(--en)}
+@media(max-width:640px){.drawing-deep-link{font-size:9px;padding:14px}}
