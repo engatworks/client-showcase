@@ -154,9 +154,10 @@ function setComparison(v){
 }
 range.addEventListener('input',e=>setComparison(e.target.value));
 setComparison(range.value);
+let activeDrawing='plan';
 const layerExplanations={plan:'مخطط مفاهيمي يوضّح تقسيم الفراغات وعلاقاتها.',furniture:'توزيع الأثاث يكشف مساحة الحركة ونقاط الجلوس.',dimensions:'أبعاد توضيحية لفهم النسب، ليست قياسات إنشائية معتمدة.',circulation:'الخط المتقطّع يبيّن مسار الحركة في المخطط.',sun:'مسار شمس رمزي لدراسة أثر الضوء، وليس تحليلًا شمسيًا دقيقًا.'};
 $$('[data-technical]').forEach(b=>b.addEventListener('click',()=>{
- const k=b.dataset.technical;$('#planLayer').innerHTML=drawingSvg(k);$('#layerExplanation').textContent=layerExplanations[k];
+ const k=b.dataset.technical;activeDrawing=k;$('#planLayer').innerHTML=drawingSvg(k);$('#layerExplanation').textContent=layerExplanations[k];
  $$('[data-technical]').forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on));});
 }));
 
@@ -175,6 +176,15 @@ $$('[data-group]').forEach(b=>b.addEventListener('click',()=>{
  const update=()=>{group=b.dataset.group;$('[data-group]').forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on));});renderAtlas();};
  if(document.startViewTransition&&!reduced)document.startViewTransition(update);else update();
 }));
+$('#downloadSvg').addEventListener('click',()=>{
+ const markup=drawingSvg(activeDrawing);
+ const blob=new Blob([markup],{type:'image/svg+xml;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const anchor=document.createElement('a');
+ anchor.href=url;anchor.download='rehab-haider-'+p.slug+'-'+activeDrawing+'-concept.svg';
+ document.body.appendChild(anchor);anchor.click();anchor.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
 const lightbox=$('#lightbox');let lightboxId='plan';
 function visibleFrames(){return frames.filter(f=>group==='all'||f.kind===group);}
 function showFrame(id){
