@@ -1,48 +1,37 @@
-# Client Showcase — two independent demo experiences
+# Client Showcase
 
-A zero-dependency static monorepo for showing prospective freelance web clients what is possible.
+## Active showcase: رحاب حيدر — Rehab Haider
 
-| Demo | Folder | Experience |
-|---|---|---|
-| ATELIER / 08 | `apps/atelier-08` | Cinematic portfolio for a fictional architecture + interiors studio |
-| Goodside Learning | `apps/goodside-learning` | Warm, thoughtful 1:1 private tutor website |
+**Arabic-first, right-to-left architecture and interior-design studio concept.** It is authored as a compelling client-facing practice site, not a generic web agency template.
 
-## Recommended deployment: Cloudflare Pages
+**Live deployment:** https://atelier-08-demo.pages.dev/ (the existing Pages project will redeploy automatically from this repository).
 
-Create **two Pages projects** using the same GitHub repository.
+**Source:** \`apps/atelier-08/\`
+**Identity guide:** [Brand system, custom logo, typography, motion and claims policy](apps/atelier-08/BRAND.md)
+**Research:** [Reference discovery and design research](RESEARCH.md)
 
-**Project 1: ATELIER / 08**
-- Root directory: `apps/atelier-08`
-- Framework preset: None
-- Build command: `exit 0`
-- Build output directory: `.`
-- Build watch paths: include `apps/atelier-08/*`
+### Experiences
+- Signature bilingual identity: custom geometric doorway mark, full Arabic wordmark **رحاب حيدر**, English lockup **REHAB HAIDER**, vector favicon, architectural editorial typography.
+- Cinematic, deliberately paced opening, opt-in architectural atmosphere selector, masked text transitions, subtle one-shot Arabic handwriting reveal.
+- Six category-filterable fictional architectural case studies with full-screen project stories, metadata, additional reference imagery and material/design notes.
+- Interactive material palette with multiple coordinated schemes, plus a custom original SVG plan whose daylight/circulation/plan layers can be explored.
+- Responsive RTL navigation, native scrolling, keyboard accessible dialogs, reduced-motion support and locally generated project-enquiry brief.
+- Static deploy: no npm build, paid hosting, database, sending API, or GitHub Actions.
 
-**Project 2: Goodside Learning**
-- Root directory: `apps/goodside-learning`
-- Framework preset: None
-- Build command: `exit 0`
-- Build output directory: `.`
-- Build watch paths: include `apps/goodside-learning/*`
+### Cloudflare Pages configuration (already in use)
+- Git repository: \`engatworks/client-showcase\`
+- Production branch: \`main\`
+- Root directory: \`apps/atelier-08\`
+- Framework: None
+- Build command: \`exit 0\`
+- Build output: \`.\` (one period, no spaces)
 
-**Important:** Enter the output directory as a single period (`.`), with no trailing space. Otherwise Cloudflare will search for a nonexistent directory like `apps/atelier-08/. `. Leave the advanced root directory set to the actual app folder.
+Deployments are triggered when commits land on \`main\`. No Cloudflare Workers configuration is needed. **Do not change the Pages root directory**: the site's legacy folder name is intentionally retained to preserve the existing deployment.
 
-These are plain static HTML/CSS/JS sites. Their Workers-only Wrangler configuration files have been removed to avoid Cloudflare Pages interpreting them as invalid Pages configurations.
+### Integrity and production handoff
+Rehab Haider is treated as a fictional practice for this demo, without asserting verifiable ownership of a real person's career, license or built portfolio. Case studies are fictional and are transparently labeled as design studies. Images are remote architectural reference photography, not original renders attributed to Rehab Haider. All contact inquiries are built locally as a copyable message; no data is transmitted.
 
-No npm, paid hosting, Cloudflare Workers, or GitHub Actions required.
+To launch a real business website: obtain owner sign-off and rights to the name, actual approved portfolio work, accurate role credits and credentials, licensed image assets, real business contact information, a messaging/booking endpoint, and privacy disclosures. Test the live page on desktop/mobile browsers and run a performance/accessibility audit before commercial sign-off.
 
-Local preview: `cd apps/atelier-08 && python -m http.server 8000` (repeat for other site with another port).
-
-## Demo integrity
-
-Both concepts use **fictional brands and projects**; no case studies, testimonials, professional qualifications, or outcomes should be represented as belonging to real clients. Contact / enquiry UI is intentionally a **demo preview with copyable content**, not a fake submission to a backend. Replace photography, portfolio details, contact information, and credentials before commercial use.
-
-Architecture and education photography loads remotely from Unsplash CDN; confirm asset availability and replace with real, licensed client photography before production. Google Fonts load remotely. Credit any images as desired; Unsplash license: https://unsplash.com/license.
-
-## Accessibility and interaction
-
-Vanilla HTML/CSS/JS; keyboard-operable navigation, skip links, reduced-motion support, responsive layouts, modal ESC handling, semantic sections, and no scroll hijacking. Project filtering / view change / project dialog, atmosphere selector, tutor subject explorer, FAQ and live enquiry builder are functional.
-
-## Research
-
-See `RESEARCH.md` for discovery sources, curated patterns, UX trade-offs and reference links.
+### Other concept (paused)
+\`apps/goodside-learning/\` is a separate tutoring concept retained in the same monorepo but **not part of the current scope**. Do not modify or deploy it unless specifically requested.
