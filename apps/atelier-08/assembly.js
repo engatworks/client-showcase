@@ -264,7 +264,7 @@ function resize(){
 }
 let progress=0,desiredProgress=0,frame=0,animating=false,visible=false;
 function revealStage(i,t){
- const a=smooth((t-stageStarts[i])/stageDurations[i]);
+ const a=i===0?1:smooth((t-stageStarts[i])/stageDurations[i]);
  stages[i].visible=a>.01;
  stages[i].position.set(0,offsets[i]*(1-a),0);
  stages[i].scale.setScalar(i===1?.9+.1*a:1);
