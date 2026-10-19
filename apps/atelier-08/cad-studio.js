@@ -30,10 +30,19 @@ const line=(a,b,c,d,cl)=>'<line x1="'+x(a)+'" y1="'+y(b)+'" x2="'+x(c)+'" y2="'+
 const rect=(a,b,w,h,cl,fill)=>'<rect x="'+x(a)+'" y="'+y(b)+'" width="'+w*S+'" height="'+h*S+'" class="'+cl+'"'+(fill?' fill="'+fill+'"':'')+'/>';
 const text=(t,a,b,cl)=>'<text x="'+x(a)+'" y="'+y(b)+'" class="'+cl+'">'+esc(t)+'</text>';
 const circ=(a,b,r,cl)=>'<circle cx="'+x(a)+'" cy="'+y(b)+'" r="'+r*S+'" class="'+cl+'"/>';
-function layerSite(){let s='<rect x="75" y="102" width="700" height="615" class="cad-property"/>';
-for(let i=0;i<42;i++){const a=80+(i*37%690),b=107+(i*67%604);
-s+='<circle cx="'+a+'" cy="'+b+'" r="'+(4+i%6)+'" class="cad-site-tree"/>';}
-return s;}
+function layerSite(){
+ let out='<rect x="73" y="99" width="715" height="623" class="cad-property"/>';
+ const trees=[[91,125],[750,135],[100,686],[763,680]];
+ for(const [cx,cy] of trees){
+   out+='<circle cx="'+cx+'" cy="'+cy+'" r="13" class="cad-site-tree"/>'+
+   '<circle cx="'+cx+'" cy="'+cy+'" r="7" class="cad-site-tree"/>';
+ }
+ // Access paving outside the southwest/central entry remains separate from house.
+ out+='<path d="M'+x(9)+' '+y(14)+'V'+y(12.6)+'" stroke="#a99372" stroke-width="3" stroke-dasharray="5 5"/>';
+ out+='<text x="91" y="110" class="cad-doc-sub">SITE LIMIT</text>'+
+ '<text x="766" y="711" text-anchor="end" class="cad-doc-sub">PLOT / DESIGN STUDY</text>';
+ return out;
+}
 function layerWalls(){let s=walls.map(([a,b,c,d,t])=>Math.abs(d-b)<.001?
 rect(Math.min(a,c),b-t/2,Math.abs(c-a),t,'cad-wall'):rect(a-t/2,Math.min(b,d),t,Math.abs(d-b),'cad-wall')).join('');
 return s;}
@@ -63,6 +72,34 @@ for(const [a,t] of [[0,'1'],[4.2,'2'],[8.6,'3'],[12.55,'4']])s+=line(-.35,a,18.3
 for(const [a,b,c,d,label] of [[5.75,7.1,4.55,7.8,'GL-01'],[11.75,5.05,12.9,5.8,'PL-01'],[2,8.6,3.55,9.3,'D-01'],[15.2,5.25,16.7,4.8,'W-03']]){
 s+=circ(a,b,.07,'cad-dim-dot')+line(a,b,c,d,'cad-leader')+text(label,c,d-.16,'cad-callout');}
 return s;}
+function overlay(kind){
+ if(kind==='zoning'){
+ const A=[ [0,0,5.75,4.2,'#d1ba91'],[5.75,0,6.5,4.2,'#b0c7bc'],[12.25,0,5.75,4.2,'#d5cbb6'],
+ [0,4.2,5.75,8.35,'#e1d4b6'],[12.25,4.2,5.75,8.35,'#b2c7bd'],[5.75,4.2,6.5,8.35,'#d8e4dc']];
+ return '<g opacity=".55">'+A.map(([a,b,w,h,color])=>rect(a,b,w,h,'cad-zone',color)).join('')+'</g>';
+ }
+ if(kind==='circulation'){
+ const route=[[9,14,9,12.0],[9,12,9,10.6],[9,10.6,5.15,10.6],[9,10.6,13,10.6],[5.15,10.6,3,6.7],[13,10.6,15,6.7]];
+ return '<g fill="none" stroke="#b2824b" stroke-width="6" stroke-dasharray="11 9" stroke-linecap="round" opacity=".86">'+
+ route.map(([a,b,c,d])=>line(a,b,c,d,'cad-circulation')).join('')+'</g>'+
+ '<circle cx="'+x(9)+'" cy="'+y(10.6)+'" r="8" fill="#ba915e"/>';
+ }
+ return '';
+}
+function technicalFrame(kind){
+ if(kind==='elevation')return elevation();
+ if(kind==='section')return section();
+ if(kind==='details')return details();
+ if(kind==='zoning'||kind==='circulation'){
+ const svg=sheet(3);
+ const base='<g data-drawing-layer="overlay">'+overlay(kind)+'</g>';
+ return svg.replace('<g data-drawing-layer="walls">',base+'<g data-drawing-layer="walls">');
+ }
+ if(kind==='furniture')return sheet(4);
+ if(kind==='sun'||kind==='lighting')return sheet(5);
+ if(kind==='dimensions'||kind==='plan')return sheet(6);
+ return sheet(6);
+}
 function sheet(stage=6,mode='normal'){
 const levels=[
 '<g data-drawing-layer="site">'+layerSite()+'</g>',
@@ -156,5 +193,5 @@ function details(){
  '<text x="64" y="785" class="cad-doc-sub">DETAIL PRINCIPLES ONLY — NO MATERIAL SPECIFICATION, WATERPROOFING OR STRUCTURAL APPROVAL IMPLIED</text></svg>';
 }
 
-window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame,elevation,section,dxf,details,config:H};
+window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame:technicalFrame,elevation,section,dxf,details,config:H};
 })();
