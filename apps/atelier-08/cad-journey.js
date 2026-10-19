@@ -55,6 +55,17 @@ function update(){
  const at=Math.max(0,Math.min(1,-bounds.top/total()));
  const idx=Math.min(6,Math.floor(at*7));
  if(idx!==last){last=idx;stepContent(idx);}
+ // Reveal each drawing layer progressively with the scroll rather than
+ // replacing completed stages like a slide deck.
+ if(idx<6){
+   const layerName=['site','walls','openings','furniture','lighting','dimensions'][idx];
+   const layer=frame.querySelector('[data-drawing-layer="'+layerName+'"]');
+   if(layer){
+     const local=Math.min(1,Math.max(0,at*7-idx));
+     layer.style.clipPath='inset(0 '+(100-local*100)+'% 0 0)';
+     layer.style.opacity=String(Math.min(1,local*1.45));
+   }
+ }
  progressBar.style.transform='scaleX('+Math.max(.001,at)+')';
 }
 let ticking=false;
