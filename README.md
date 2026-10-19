@@ -1,43 +1,56 @@
-# Client Showcase
+# رحاب حيدر — Rehab Haider | Architecture Portfolio Showcase
 
-## Active showcase: رحاب حيدر — Rehab Haider
+Arabic-first architecture portfolio concept for Rehab Haider with original visual branding, technical SVG architectural illustrations, editable CAD DXF package, and native-scroll storytelling.
 
-**Arabic-first, right-to-left architecture and interior-design studio concept.** It is authored as a compelling client-facing practice site, not a generic web agency template.
+**Cloudflare Pages URL:** https://atelier-08-demo.pages.dev/
+**Featured case study:** https://atelier-08-demo.pages.dev/project.html?case=courtyard#assembly
 
-**Live deployment:** https://atelier-08-demo.pages.dev/ (the existing Pages project will redeploy automatically from this repository).
+**Disclosure:** Six projects are fictional demonstration studies, not claims of genuine commissions or constructed buildings. GitHub contains these files, but the live Cloudflare Pages URL could not be reached by this assistant for final real-browser confirmation.
 
-**Source:** `apps/atelier-08/`
-**Identity guide:** [Brand system, custom logo, typography, motion and claims policy](apps/atelier-08/BRAND.md)
-**Research:** [Reference discovery and design research](RESEARCH.md)
-**Open-source tooling review:** [135 researched candidates and decision matrix](apps/atelier-08/OPEN_SOURCE_TOOL_REVIEW.md)
-**Case study and motion teardown:** [Arabic architectural examples, Codrops references, Reddit UX review and build anatomy](apps/atelier-08/CASE_STUDY_RESEARCH.md)
-**Example detailed study:** [بيت الفناء](https://atelier-08-demo.pages.dev/project.html?case=courtyard)
+## Working source
 
-### Experiences
-- Signature bilingual identity: custom geometric doorway mark, full Arabic wordmark **رحاب حيدر**, English lockup **REHAB HAIDER**, vector favicon, architectural editorial typography.
-- Cinematic, deliberately paced opening, opt-in architectural atmosphere selector, masked text transitions, subtle one-shot Arabic handwriting reveal.
-- Six category-filterable fictional architectural studies, **each with its own deep project page and a 16-frame visual atlas** (10 custom technical diagram states + 6 reference photographs), including original floor plans, furnishings, zoning, circulation, sun concept, dimensions, elevation, section, isometric massing, materials and annotated narrative.
-- **NEW: Seven-stage scroll-assembled 3D Courtyard House**, with site, plan/slabs, frame, stone/glass facades, roof, finishes and landscaping. It is built from ~265 Three.js scene objects, controlled by native scrolling, and offers step jumps and PNG capture. Master dimensions live in `house-config.js` and also drive the courtyard plan/elevation/section illustrations.
-- **Courtyard model-to-image continuity:** six views and the project hero are captured from the exact same rendered model in the visitor's browser (CGI concept renders, not photographs). Other five projects still use reference photography and are NOT represented as derived from this model.
-- **From Plan to Space** split-view scrubber for project diagrams, plus filterable fullscreen project archives and SVG export of concept drawings.
-- Interactive material palette with multiple coordinated schemes, plus a custom original SVG plan whose daylight/circulation/plan layers can be explored.
-- Responsive RTL navigation, native scrolling, keyboard accessible fullscreen image viewer, reduced-motion support and locally generated project-enquiry brief.
-- Static deploy: no npm build, paid hosting, database, sending API, or GitHub Actions. The interactive house imports a pinned external Three.js ES module from jsDelivr, so that feature requires internet/WebGL; older browsers retain the other case-study content.
+The active site lives at apps/atelier-08 in this monorepo:
 
-### Cloudflare Pages configuration (already in use)
-- Git repository: `engatworks/client-showcase`
-- Production branch: `main`
-- Root directory: `apps/atelier-08`
+- index.html, styles.css, main.js: RTL homepage, branding, projects, inquiry builder.
+- project.html, project.css, project.js: six individual project pages, 16-frame archives, CAD lightbox zoom and comparisons.
+- house-config.js: canonical 18 m × 14 m conceptual Courtyard House plan coordinates.
+- cad-studio.js: shared original vector SVG drawing system, detail studies, DXF export.
+- cad-journey.js and cad-journey.css: seven native-scroll drawing reveal stages with motion-reduction accessibility.
+- rehab-haider-courtyard-concept.dxf: direct downloadable editable AutoCAD-compatible R12 CAD entities, showing the study plan, elevation, section and four schematic details.
+- favicon.svg: custom architectural threshold symbol.
+- BRAND.md, CASE_STUDY_RESEARCH.md, OPEN_SOURCE_TOOL_REVIEW.md: design rationale, case-study precedents and 135 tool candidates catalogued (not all tested).
+
+### Featured study: بيت الفناء / Courtyard House
+
+The visitor experiences seven scroll stages: site, wall plan, doors and glazing, furnishing and courtyard, conceptual lighting, annotated dimension plan, elevation and section.
+
+Four SVG design documents organize the technical material: A-101 ground-floor plan, A-201 internal elevation, A-301 section and A-401 material/junction detail sketches. These are original *conceptual* schematic drawings, NOT professional certified construction documents. The visitor can download the DXF file, export an on-demand 3840x2160 drawing image, and magnify diagrams in the atlas to 400%.
+
+The old cartoon WebGL assembly is removed. The signature interaction is now the layered vector drawing gradually developing as visitors scroll, using native browser scrolling and minimal scripting. No heavy 3D engine is required.
+
+The six images under each case study remain explicitly labeled as **independent reference photographs**. They are not photos of the fictional completed house and must never be described that way. Five secondary project concepts remain less detailed than the single flagship.
+
+### Brand and copy
+
+Custom doorframe-inspired architectural mark, favicon and bilingual lockup. Noto Naskh Arabic display headlines, Alexandria Arabic interface, Manrope Latin technical labels. Saudi-facing marketing copy was rewritten for clearer, less translated language.
+
+### Cloudflare Pages: existing deployment configuration
+
+- Repository: engatworks/client-showcase
+- Production branch: main
+- Root: apps/atelier-08
 - Framework: None
-- Build command: `exit 0`
-- Build output: `.` (one period, no spaces)
+- Build command: exit 0
+- Build output directory: . (one period)
 
-Deployments are triggered when commits land on `main`. No Cloudflare Workers configuration is needed. **Do not change the Pages root directory**: the site's legacy folder name is intentionally retained to preserve the existing deployment.
+A connected Pages project normally deploys from main automatically. Verify latest deployment and error logs in Cloudflare Dashboard → Workers & Pages → project → Deployments.
 
-### Integrity and production handoff
-Rehab Haider is treated as a fictional practice for this demo, without asserting verifiable ownership of a real person's career, license or built portfolio. Case studies are fictional and are transparently labeled as design studies. Five non-featured cases still use remote photographic references, not original renders or built-work images. **The featured Courtyard House's hero and six atmospheric views are generated from its own Three.js source model**, and are clearly CGI rather than actual construction photographs. All SVG diagrams are concept studies, not AutoCAD/DWG production drawings. All contact inquiries are built locally as a copyable message; no data is transmitted.
+### Before real commercial publication
 
-To launch a real business website: obtain owner sign-off and rights to the name, actual approved portfolio work, accurate role credits and credentials, licensed image assets, real business contact information, a messaging/booking endpoint, and privacy disclosures. Test the live page on desktop/mobile browsers and run a performance/accessibility audit before commercial sign-off.
+- Receive Rehab's actual authorized projects, CAD files, renderings and verified role credits, or retain prominent demo labeling.
+- Secure verified completed-building photography or matching photoreal visualizations rendered from the exact plan, not unrelated stock reference imagery.
+- Obtain review of dimensions, door openings, structural concepts, MEP drawings and details from a licensed professional before representing any drawing as execution-ready.
+- Obtain actual business contact details, consent/privacy language, claims approval and image rights.
+- Verify production deployment and complete cross-device visual QA and Lighthouse/accessibility audits. **These have not been confirmed in this environment.**
 
-### Other concept (paused)
-`apps/goodside-learning/` is a separate tutoring concept retained in the same monorepo but **not part of the current scope**. Do not modify or deploy it unless specifically requested.
+The present inquiry form builds a copyable note locally, with no backend or fake email submission. No testimonials, certifications, awards or built project ownership are invented. The tutoring concept in apps/goodside-learning remains a separate paused demo.
