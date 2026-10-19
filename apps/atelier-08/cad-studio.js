@@ -127,5 +127,34 @@ for(const [id,ar,en,a,b] of rooms)push('TEXT','A-LABEL',[[10,a],[20,b],[30,0],[4
 let header='0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';
 return header+records.join('')+'0\nENDSEC\n0\nEOF\n';
 }
-window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame,elevation,section,dxf,config:H};
+function details(){
+ const panel=(x,y,title,subtitle,inner)=>'<g transform="translate('+x+' '+y+')"><rect width="540" height="292" fill="#eceae1" stroke="#b9c3b6" stroke-width="1.5"/><text x="24" y="37" font-size="21" font-weight="700" fill="#2e4736" font-family="Alexandria,Arial">'+esc(title)+'</text><text x="24" y="60" font-size="11" fill="#7e8c7a" font-family="Manrope,Arial">'+subtitle+'</text>'+inner+'</g>';
+ const p1=panel(65,116,'تفصيلة التقاء السقف والواجهة','D-01 / ROOF EDGE — SCHEMATIC',
+ '<g transform="translate(40 94)"><rect x="33" y="75" width="120" height="95" fill="#c4cabd" stroke="#465a4d" stroke-width="2"/><rect x="22" y="57" width="275" height="18" fill="#748572" stroke="#435d48" stroke-width="2"/>'+
+ '<rect x="22" y="42" width="275" height="13" fill="#d2b581" stroke="#8a754e"/><path d="M152 77v91M172 77v91" stroke="#658e7d" stroke-width="4"/>'+
+ '<path d="M300 42H425M299 65H425M172 130H425" stroke="#a38c63" stroke-width="1.3"/>'+
+ '<text x="306" y="34" font-size="12" fill="#32493a">01 / ROOF FINISH</text><text x="306" y="58" font-size="12" fill="#32493a">02 / EDGE</text><text x="306" y="124" font-size="12" fill="#32493a">03 / WALL</text></g>');
+ const p2=panel(655,116,'التقاء الزجاج والكسوة','D-02 / GLAZING JOINT — SCHEMATIC',
+ '<g transform="translate(54 90)"><rect x="20" y="35" width="112" height="155" fill="#d6ceb9" stroke="#5c6b5b"/><rect x="138" y="35" width="18" height="155" fill="#405248"/>'+
+ '<rect x="164" y="36" width="14" height="154" fill="#89c0b6" stroke="#426f68"/><rect x="181" y="36" width="14" height="154" fill="#a6d2c8" stroke="#426f68"/>'+
+ '<path d="M190 80H420M156 116H420M132 164H420" stroke="#b18c5d" stroke-width="1.3"/>'+
+ '<text x="236" y="74" font-size="12" fill="#32493a">01 / DOUBLE GLAZING</text><text x="236" y="109" font-size="12" fill="#32493a">02 / FRAME</text><text x="236" y="157" font-size="12" fill="#32493a">03 / WALL CLADDING</text></g>');
+ const p3=panel(65,444,'تفصيلة الشرائح الخشبية','D-03 / TIMBER FINS — SCHEMATIC',
+ '<g transform="translate(55 86)"><rect x="28" y="24" width="276" height="170" fill="#ddd8cb" stroke="#a1aa98"/>'+
+ [0,1,2,3,4,5,6,7,8].map(i=>'<rect x="'+(46+i*26)+'" y="27" width="12" height="165" fill="#967457" stroke="#554c3d"/>' ).join('')+
+ '<path d="M313 56H420M313 108H420M313 177H420" stroke="#b18c5d"/>'+
+ '<text x="319" y="50" font-size="11" fill="#32493a">01 / FIN</text><text x="319" y="102" font-size="11" fill="#32493a">02 / SUPPORT</text><text x="319" y="171" font-size="11" fill="#32493a">03 / BACKING</text></g>');
+ const p4=panel(655,444,'تفصيلة حافة المسبح','D-04 / POOL EDGE — SCHEMATIC',
+ '<g transform="translate(40 87)"><rect x="20" y="64" width="310" height="135" fill="#9ec3c0" stroke="#56827a"/>'+
+ '<path d="M18 63H324" stroke="#468a89" stroke-width="3"/><rect x="20" y="33" width="136" height="25" fill="#dad5c9" stroke="#797c6b"/>'+
+ '<rect x="20" y="60" width="15" height="139" fill="#6b796e"/><rect x="35" y="181" width="295" height="18" fill="#56675d"/>'+
+ '<path d="M164 45H420M328 65H420M333 186H420" stroke="#b18c5d"/>'+
+ '<text x="220" y="39" font-size="11" fill="#32493a">01 / STONE COPING</text><text x="334" y="59" font-size="11" fill="#32493a">02 / WATER</text><text x="335" y="179" font-size="11" fill="#32493a">03 / SHELL</text></g>');
+ return '<svg xmlns="http://www.w3.org/2000/svg" class="rh-cad-svg" viewBox="0 0 1260 825" role="img" aria-label="أربع رسومات تفاصيل مفاهيمية لحافة السقف، الزجاج، الشرائح الخشبية، وحافة المسبح">'+
+ '<rect width="1260" height="825" fill="#edece5"/><text x="64" y="57" class="cad-doc-heading">REHAB HAIDER / ARCHITECTURAL DETAIL EXPLORATION</text>'+
+ '<text x="1214" y="57" text-anchor="end" class="cad-sheet-no">A—401</text>'+p1+p2+p3+p4+
+ '<text x="64" y="785" class="cad-doc-sub">DETAIL PRINCIPLES ONLY — NO MATERIAL SPECIFICATION, WATERPROOFING OR STRUCTURAL APPROVAL IMPLIED</text></svg>';
+}
+
+window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame,elevation,section,dxf,details,config:H};
 })();
