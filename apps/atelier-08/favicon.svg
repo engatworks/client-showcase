@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+<title id="title">Rehab Haider — architectural threshold</title>
+<desc id="desc">Geometric square doorframe embracing a balanced arch and axis.</desc>
+<rect width="96" height="96" rx="12" fill="#18201b"/>
+<g fill="none" stroke="#e6d6b6">
+<path d="M13 83V13H83V83" stroke-width="1.8"/>
+<path d="M28 83V43C28 30 36 22 48 22S68 30 68 43V83" stroke-width="3"/>
+<path d="M28 60H68M48 60V83" stroke-width="1.5"/>
+<path d="M13 13L28 28M83 13L68 28" opacity=".42"/>
+</g>
+<circle cx="48" cy="17" r="2.2" fill="#c7ab7b"/>
+</svg>
