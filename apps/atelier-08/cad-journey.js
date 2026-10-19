@@ -79,7 +79,14 @@ section.querySelector('#cadExport4k').addEventListener('click',async e=>{
   const button=e.currentTarget,original=button.textContent;
   button.disabled=true;button.textContent='تجهيز صورة 4K...';
   try{
-    const svg=cad.sheet(6).replace('<svg ','<svg width="1300" height="825" ');
+    // Raster export is on-demand. Embed same-origin CAD styles into the SVG
+    // so every lineweight, annotation and colour survives standalone rendering.
+    const cadStyle=[...document.styleSheets]
+      .filter(sh=>sh.href&&sh.href.includes('/cad-journey.css'))
+      .flatMap(sh=>{try{return [...sh.cssRules].map(rule=>rule.cssText)}catch{return []}})
+      .join('\n');
+    const svg=cad.sheet(6).replace('<svg ','<svg width="1300" height="825" ')
+      .replace('</svg>','<style>'+cadStyle.replace(/<\/style>/gi,'')+'</style></svg>');
     const image=new Image();
     const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
     const url=URL.createObjectURL(blob);
