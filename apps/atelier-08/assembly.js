@@ -351,7 +351,24 @@ try{
    const foot=document.querySelector('.hero-foot span:last-child');
    if(foot)foot.textContent='3D VISUALIZATION / SAME MODEL / NOT BUILT';
  }
+ // Build six alternate architectural views from the SAME actual 3D object.
+ // This intentionally replaces six unrelated Unsplash mood shots on the featured
+ // case page. These are CGI concept renders, not built-house photography.
+ const views=[
+  [23,14,28],[2,15,37],[-24,14,25],[29,22,-27],[-26,17,-25],[10,30,31]
+ ];
+ const previews=[];
+ renderer.setSize(960,640,false);
+ camera.aspect=960/640;camera.fov=38;camera.updateProjectionMatrix();
+ for(const at of views){
+   camera.position.set(...at);camera.lookAt(0,2.5,0);
+   render();
+   previews.push(renderer.domElement.toDataURL('image/jpeg',.83));
+ }
+ if(window.rehabProject?.replaceReferences && previews.every(x=>x.startsWith('data:image/jpeg')))
+   window.rehabProject.replaceReferences(previews);
  renderer.setClearColor('#e3e1d6',0);
+ resize();
 }catch(e){console.warn('Project preview render unavailable; reference image retained.',e);}
 update(fromScroll());
 $('#assemblyLoader')?.remove();
