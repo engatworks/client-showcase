@@ -33,10 +33,16 @@ The threshold is the place where architecture becomes experience: from street to
 ### Signature motion
 - Hero type revealed in two masked chapters; one single short Arabic handwriting reveal in the kicker.
 - Cinematic, cross-fading ambient architectural scenes. User chooses; no unsolicited endless scene changes.
-- Asymmetric project archive with image zoom only when requested; project studies open as accessible full-screen dialogs, Escape closes.
+- Asymmetric project archive with image zoom only when requested; project tiles link to full case-study pages with 16-frame visual atlases, keyboard-accessible lightbox and drawing export.
 - Material palette buttons update real swatches and rationale.
-- Custom SVG plan toggles plan, daylight and circulation layers without requiring WebGL.
+- Custom original SVG plans, furnishings, dimensions, daylight and circulation layers, elevations, sections and isometric volume studies without requiring WebGL. A range scrubber animates between the same 2D plan geometry and its derived massing.
 - The site retains native scrolling, supports reduced motion, and avoids cursor hijacking or splash screens.
+
+### Detailed technical portfolio
+- Six dedicated pages at `project.html?case=<slug>`; 16 frames per project (10 diagram states, 6 photographic references), with individually named, filterable, full-screen frames.
+- Geometry varies per fictional brief, but all plan-to-space transformations derive from that brief's same core coordinate set.
+- A browser-exportable SVG concept drawing is provided for demonstration; **not a DWG, AutoCAD production drawing or code-compliant architectural detail**.
+- Supporting research: [CASE_STUDY_RESEARCH.md](CASE_STUDY_RESEARCH.md).
 
 ### Case-study integrity
 All six case studies are explicitly **fictional concepts**. The photos are *reference photography*, not owned renders, not depictions of actual Rehab Haider commissions. Dimensions and locations are illustrative study metadata. **Do not claim constructed buildings, years of experience, licenses, genuine client reviews, awards, team credentials or project results** unless independently documented. Original plans / circulation overlays are schematic design illustrations, not buildable construction drawings.
