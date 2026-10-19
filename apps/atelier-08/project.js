@@ -238,12 +238,13 @@ $$('[data-technical]').forEach(b=>b.addEventListener('click',()=>{
 }));
 
 let group='all';
+function frameImage(src,width){return typeof src==='string'&&(src.startsWith('data:')||src.startsWith('blob:'))?src:photo(src,width);}
 function renderAtlas(){
  const filtered=frames.filter(f=>group==='all'||f.kind===group);
  $('#atlasCount').textContent=filtered.length+' / 16 FRAME';
  $('#atlasGrid').innerHTML=filtered.map(f=>'<article class="atlas-item" data-kind="'+f.kind+'">'+
  '<button type="button" class="atlas-thumb" data-frame="'+f.id+'" aria-label="فتح '+f.name+'">'+
- (f.kind==='drawing'?drawingSvg(f.code):'<img src="'+photo(f.src,930)+'" alt="صورة مرجعية: '+f.name+'" loading="lazy" decoding="async">')+
+ (f.kind==='drawing'?drawingSvg(f.code):'<img src="'+frameImage(f.src,930)+'" alt="لقطة معمارية توضيحية: '+f.name+'" loading="lazy" decoding="async">')+
  '<span class="thumb-plus" aria-hidden="true">+</span></button>'+
  '<div class="atlas-meta"><div><h3>'+f.name+'</h3><p>'+f.sub+'</p></div><span>'+String(f.index+1).padStart(2,'0')+' / 16</span></div></article>').join('');
  $$('[data-frame]').forEach(btn=>btn.addEventListener('click',()=>openFrame(btn.dataset.frame)));
@@ -265,7 +266,7 @@ const lightbox=$('#lightbox');let lightboxId='plan';
 function visibleFrames(){return frames.filter(f=>group==='all'||f.kind===group);}
 function showFrame(id){
  const f=frames.find(x=>x.id===id)||frames[0];lightboxId=f.id;
- $('#lbMedia').innerHTML=f.kind==='drawing'?drawingSvg(f.code):'<img src="'+photo(f.src,1500)+'" alt="صورة مرجعية: '+f.name+'">';
+ $('#lbMedia').innerHTML=f.kind==='drawing'?drawingSvg(f.code):'<img src="'+frameImage(f.src,1500)+'" alt="صورة مرجعية: '+f.name+'">';
  $('#lbIndex').textContent=String(f.index+1).padStart(2,'0')+' / 16 — '+(f.kind==='drawing'?'DRAWING':'VISUAL REFERENCE');
  $('#lbTitle').textContent=f.name;$('#lbDesc').textContent=f.description;
 }
@@ -278,5 +279,19 @@ lightbox.addEventListener('close',()=>document.body.classList.remove('lb-open'))
 lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close();});
 document.addEventListener('keydown',e=>{if(!lightbox.open)return;if(e.key==='ArrowLeft')moveFrame(-1);if(e.key==='ArrowRight')moveFrame(1);});
 renderAtlas();
+window.rehabProject={
+  replaceReferences(images){
+    if(p.slug!=='courtyard'||!Array.isArray(images)||images.length<6)return;
+    const refs=frames.filter(f=>f.kind==='reference');
+    refs.forEach((f,i)=>{
+      f.src=images[i];
+      f.sub='منظور بصري من النموذج الثلاثي الأبعاد نفسه';
+      f.description='صورة رندر مأخوذة من النموذج الهندسي نفسه من زاوية تصوير مختلفة؛ ليست صورة لمنزل منفذ.';
+    });
+    const notice=document.querySelector('.integrity-note p');
+    if(notice)notice.innerHTML='هذا <strong>مشروع تصوّري غير منفّذ</strong>. المساقط والمقاطع والنموذج الثلاثي الأبعاد واللقطات الست مأخوذة من تصميم هندسي تجريبي واحد. <strong>هذه لقطات رندر، وليست صور منزل مبني أو أعمالًا موثّقة لرحاب حيدر.</strong>';
+    renderAtlas();
+  }
+};
 const progress=$('#readingProgress');let ticking=false;
 addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const total=document.documentElement.scrollHeight-innerHeight;progress.style.width=(total>0?scrollY/total*100:0)+'%';ticking=false;});},{passive:true});
