@@ -13,7 +13,7 @@ const walls=[[0,0,18,0,.25],[0,0,0,12.55,.25],[18,0,18,12.55,.25],
 [5.75,0,5.75,4.2,.18],[12.25,0,12.25,4.2,.18],[8.8,0,8.8,4.2,.16],
 [0,8.6,5.75,8.6,.16],[12.25,8.6,18,8.6,.16]];
 const glass=[[1.2,0,3,'h'],[13.8,0,3,'h'],[0,5.2,2.15,'v'],[18,5.2,2.15,'v'],
-[5.75,4.55,2.45,'v'],[5.75,9.35,2.25,'v'],[12.25,4.55,2.45,'v'],
+[5.75,4.55,2.25,'v'],[5.75,9.35,2.25,'v'],[12.25,4.55,2.45,'v'],
 [12.25,9.35,2.25,'v'],[6.6,4.2,4.8,'h']];
 const door=[[2,8.6,.9,0],[14.2,8.6,.9,0],[5.75,2.1,1,270],[12.25,2.1,1,90],
 [8.8,2.1,.9,270],[5.75,6.9,1.15,270],[12.25,7.1,1.15,90]];
@@ -52,8 +52,8 @@ s+='<path d="M'+p(a+r*Math.cos(t),b+r*Math.sin(t))+' A'+r*S+' '+r*S+' 0 0 1 '+p(
 return s;}
 function layerFurn(){let s=furnishings.map(([a,b,w,h])=>rect(a,b,w,h,'cad-furn')).join('');
 s+=rect(6.25,5,5.5,4.25,'cad-water-edge')+rect(6.42,5.17,5.16,3.9,'cad-water');
-s+=circ(9,7.2,.6,'cad-tree')+circ(9,7.2,1.05,'cad-canopy')+circ(9,7.2,1.30,'cad-canopy');
-for(let i=0;i<16;i++){const t=i*Math.PI/8;s+=line(9+.63*Math.cos(t),7.2+.63*Math.sin(t),9+1.04*Math.cos(t),7.2+1.04*Math.sin(t),'cad-branch');}
+s+=circ(7.3,10.75,.24,'cad-tree')+circ(7.3,10.75,.6,'cad-canopy')+circ(7.3,10.75,.78,'cad-canopy');
+for(let i=0;i<16;i++){const t=i*Math.PI/8;s+=line(7.3+.25*Math.cos(t),10.75+.25*Math.sin(t),7.3+.65*Math.cos(t),10.75+.65*Math.sin(t),'cad-branch');}
 for(let i=0;i<9;i++)s+=line(6.3,9.6+i*.24,11.7,9.6+i*.24,'cad-paving');
 return s;}
 function layerLights(){return lights.map(([a,b],i)=>circ(a,b,.15,'cad-lamp')+line(a-.22,b,a+.22,b,'cad-light-axis')+line(a,b-.22,a,b+.22,'cad-light-axis')).join('');}
@@ -62,7 +62,7 @@ return line(a,b,c,d,'cad-dim')+(horiz?line(a,b-.13,a,b+.13,'cad-dim')+line(c,d-.
 line(a-.13,b,a+.13,b,'cad-dim')+line(c-.13,d,c+.13,d,'cad-dim'))+
 text(label,(a+c)/2,(b+d)/2-.18,'cad-dim-label');}
 function layerAnno(){let s=rooms.map(([id,ar,en,a,b])=>text(id,a,b-.20,'cad-num')+text(en,a,b+.18,'cad-room')).join('');
-s+=text('REFLECTING POOL',9,9.46,'cad-room');
+s+=text('REFLECTING POOL',9,8.88,'cad-room');
 for(const [a,b,t] of [[0,5.75,'5.75'],[5.75,12.25,'6.50'],[12.25,18,'5.75']])s+=dimension(a,-1.05,b,-1.05,t);
 s+=dimension(0,-1.95,18,-1.95,'18.00 m');
 for(const [a,b,t] of [[0,4.2,'4.20'],[4.2,12.55,'8.35'],[12.55,14,'1.45']])s+=dimension(19.15,a,19.15,b,t);
