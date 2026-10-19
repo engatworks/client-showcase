@@ -26,7 +26,7 @@ section.innerHTML='<div class="cad-sticky">'+
    '<span>صورة مرجعية للأجواء المعمارية، وليست صورة لتنفيذ هذا المخطط.</span></div>'+
  '</div>'+
  '<div class="cad-journey-bottom"><div class="cad-phase-tabs" id="cadPhaseTabs" role="group" aria-label="التنقل بين مراحل دراسة المخطط"></div>'+
- '<div class="cad-progress-meta"><span id="cadPhaseNumber">01 / 07</span><span>مرّر الصفحة لتكتمل طبقات الرسم ↓</span><button id="cadDownload" type="button">تنزيل ملف DXF ↗</button></div>'+
+ '<div class="cad-progress-meta"><span id="cadPhaseNumber">01 / 07</span><span>مرّر الصفحة لتكتمل طبقات الرسم ↓</span><button id="cadExport4k" type="button">لوحة 4K ↗</button><button id="cadDownload" type="button">ملف DXF ↗</button></div>'+
  '<div class="cad-progress-line"><span id="cadProgressBar"></span></div></div>'+
  '<p class="cad-disclosure">دراسة رسم هندسي تصوّرية · ملفات تعليمية قابلة للتحرير · ليست مستندات تنفيذ معتمدة</p>'+
  '</div>';
@@ -74,5 +74,36 @@ section.querySelector('#cadDownload').addEventListener('click',()=>{
  document.body.appendChild(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
+
+section.querySelector('#cadExport4k').addEventListener('click',async e=>{
+  const button=e.currentTarget,original=button.textContent;
+  button.disabled=true;button.textContent='تجهيز صورة 4K...';
+  try{
+    const svg=cad.sheet(6).replace('<svg ','<svg width="1300" height="825" ');
+    const image=new Image();
+    const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const loaded=new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=reject;});
+    image.src=url;await loaded;
+    const canvas=document.createElement('canvas');canvas.width=3840;canvas.height=2160;
+    const context=canvas.getContext('2d',{alpha:false});
+    context.fillStyle='#edece5';context.fillRect(0,0,3840,2160);
+    // Keep the original vector aspect ratio, without distorting technical dimensions.
+    const drawW=3404,drawH=2160;
+    context.drawImage(image,(3840-drawW)/2,0,drawW,drawH);
+    URL.revokeObjectURL(url);
+    await new Promise(resolve=>canvas.toBlob(output=>{
+      if(output){
+        const href=URL.createObjectURL(output);
+        const a=document.createElement('a');a.href=href;a.download='rehab-haider-courtyard-plan-3840x2160.png';a.click();
+        setTimeout(()=>URL.revokeObjectURL(href),1200);
+      }
+      resolve();
+    },'image/png'));
+    button.textContent='جاهز ✓';
+  }catch(err){button.textContent='تعذّر تجهيز الصورة';console.error(err);}
+  finally{setTimeout(()=>{button.disabled=false;button.textContent=original;},2400);}
+});
+
 stepContent(0);update();
 })();
