@@ -1,44 +1,116 @@
-const q=(s,root=document)=>root.querySelector(s), qa=(s,root=document)=>Array.from(root.querySelectorAll(s));
-const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+'use strict';
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const img=(id,w=1300)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+w+'&q=82';
+
+// Every record below is a fictional design study for the demo: no real client, location,
+// built status, professional award or project ownership is asserted.
 const projects=[
-  {name:"Solace House",category:"Residential",type:"Private residence",location:"Copenhagen, Denmark",year:"2026",photo:"photo-1600585154340-be6161a56a0c",description:"A study in stillness: expansive daylight, carefully balanced geometry, and natural materials that invite a slower way of living."},
-  {name:"The Quiet Room",category:"Interiors",type:"Interior architecture",location:"London, United Kingdom",year:"2025",photo:"photo-1600210492486-724fe5c67fb0",description:"An intimate interior landscape where rhythm and soft tactility make the everyday feel extraordinary."},
-  {name:"Villa Serein",category:"Residential",type:"Coastal residence",location:"Algarve, Portugal",year:"2025",photo:"photo-1600596542815-ffad4c1539a9",description:"A considered architectural response to the coastline, framing long views and the changing quality of coastal light."},
-  {name:"The Material House",category:"Interiors",type:"Spatial renovation",location:"Stockholm, Sweden",year:"2024",photo:"photo-1600607687939-ce8a6c25118c",description:"Texture takes the leading role as oak, pale plaster and honest craftsmanship meet contemporary functionality."},
-  {name:"Civic Light",category:"Cultural",type:"Community space",location:"Oslo, Norway",year:"2024",photo:"photo-1487958449943-2429e8be8625",description:"A proposed cultural landmark shaped around the principle that public architecture should feel open, generous and quietly welcoming."},
-  {name:"Casa Forma",category:"Residential",type:"Contemporary home",location:"Barcelona, Spain",year:"2023",photo:"photo-1600566752355-35792bedcfea",description:"A composed dialogue between inside and outside, with materials chosen to become more beautiful over time."}
+ {slug:'courtyard',name:'بيت الفناء',type:'سكني',place:'الرياض',year:'2026',area:'680 م²',lead:'بيتٌ يلتفّ حول الضوء.',desc:'تصوّر لفيلا سعودية تعيد الفناء إلى قلب الحياة اليومية، حيث تبدأ الخصوصية من التكوين المعماري لا من إغلاق النوافذ.',story:'تتوزّع الفراغات حول قلب مضاء يخلق علاقة هادئة بين الداخل والخارج. الكتل الصامتة، تدرّج الخصوصية، وممرات الظل تشكّل حياةً تتبدّل مع حركة الشمس خلال اليوم.',image:'photo-1600585154340-be6161a56a0c',secondary:'photo-1600607687920-4e2a09cf159d',details:['فناء مركزي','طبقات خصوصية','واجهات حجرية'],aspect:'1.03'},
+ {slug:'material',name:'ملاذ المواد',type:'داخلي',place:'جدة',year:'2025',area:'265 م²',lead:'حين يصبح الملمس لغة.',desc:'تصوّر لصالة معيشة معاصرة تتعامل مع الخشب والحجر والضوء باعتبارها عناصر معمارية لا إضافات زخرفية.',story:'اعتمدنا لوحة خامات هادئة تسمح لاختلاف الضوء بأن يمنح الفراغ شخصية جديدة عند كل ساعة. الرفوف المدمجة، الإضاءة غير المباشرة، ونعومة انتقال المواد تصنع دفئًا دون صخب.',image:'photo-1600566753190-17f0baa2a6c3',secondary:'photo-1600210492486-724fe5c67fb0',details:['خشب طبيعي','إضاءة مخفية','تفاصيل نجارة'],aspect:'1.11'},
+ {slug:'monolith',name:'جناح السكون',type:'ضيافة',place:'العلا',year:'2026',area:'940 م²',lead:'عمارة تستمع إلى الأرض.',desc:'مفهوم جناح ضيافة منخفض الكتلة يختار الانسجام مع المشهد بدل منافسته، مع إطلالات مؤطّرة بعناية.',story:'تم تخيّل المسارات كرحلة عبر الظل والحجر، بحيث تصبح لحظة الانتقال من الخارج إلى الداخل جزءًا من التجربة. لا يفرض المكان نفسه على الطبيعة؛ بل يكشفها تدريجيًا.',image:'photo-1487958449943-2429e8be8625',secondary:'photo-1600566752355-35792bedcfea',details:['ضيافة بوتيكية','مسارات ظل','ارتباط بالموقع'],aspect:'1.2'},
+ {slug:'urban',name:'دار الأفق',type:'تجاري',place:'الخبر',year:'2025',area:'1,320 م²',lead:'هوية تبدأ قبل الدخول.',desc:'تصوّر لمقر أعمال معاصر يحوّل الاستقبال والحركة والواجهات إلى تجربة واحدة تعكس وضوح العلامة.',story:'فصلنا بين الحركة العامة والمساحات المركّزة، وبنينا منطقة وصول تحمل حضورًا معماريًا واضحًا. زجاج محسوب، أسقف عالية، وتكوين يوازن بين الانفتاح والاحتواء.',image:'photo-1486406146926-c627a92ad1ab',secondary:'photo-1497366754035-f200968a6e72',details:['مقار عمل','واجهات مؤسسية','هوية مكانية'],aspect:'1.04'},
+ {slug:'quiet',name:'مجلس النور',type:'داخلي',place:'الدمام',year:'2024',area:'310 م²',lead:'خصوصية تستقبل الآخرين.',desc:'تصوّر لمجلس ضيافة منزلي يحتفظ بروح الكرم، ويعبّر عنها عبر نسب مريحة ومواد غنية دون مبالغة.',story:'صاغت الإضاءة غير المباشرة إحساسًا مرحّبًا، بينما وفّرت المقاعد وتوزيعات الحركة تجربة اجتماعية سهلة. الفكرة هنا هي أن تكون الفخامة محسوسة قبل أن تكون مرئية.',image:'photo-1600607687939-ce8a6c25118c',secondary:'photo-1616486338812-3dadae4b4ace',details:['مجالس خاصة','ضوء دافئ','مواد هادئة'],aspect:'1.12'},
+ {slug:'open',name:'بيت الظل',type:'سكني',place:'الرياض',year:'2026',area:'750 م²',lead:'الظل جزء من التصميم.',desc:'تصوّر لمنزل عائلي تستثمر واجهاته البروزات والتجويفات لتمنح كل غرفة خصوصيتها من دون فقدان انفتاحها.',story:'تُرسم التجربة عبر العلاقة بين فتحات الضوء وكتل الظل والتراسات. يفتح المخطط تدريجيًا من المدخل إلى المنطقة العائلية، بينما تبقى الواجهات بسيطة وواضحة.',image:'photo-1600566752355-35792bedcfea',secondary:'photo-1600607687920-4e2a09cf159d',details:['منازل معاصرة','تظليل سلبي','تراس داخلي'],aspect:'1.03'}
 ];
-function img(p,w=1100){return 'https://images.unsplash.com/'+p+'?auto=format&fit=crop&w='+w+'&q=85'}
-let filter='all',view='grid';
+const byId=s=>projects.find(p=>p.slug===s);
+const state={filter:'الكل',selected:'courtyard'};
 function renderProjects(){
-  const items=projects.filter(p=>filter==='all'||p.category===filter);
-  q('#projects').className='projects'+(view==='list'?' list':'');
-  q('#projects').innerHTML=items.map(p=>{const i=projects.indexOf(p)+1;return '<article class="project"><button class="project-cover" type="button" data-project="'+(i-1)+'" aria-label="View '+p.name+' project"><img src="'+img(p.photo)+'" alt="Concept imagery for '+p.name+'" loading="lazy"><span class="project-hover"><span>EXPLORE PROJECT</span><span>↗</span></span></button><div class="project-meta"><div><p>'+p.category.toUpperCase()+' / '+p.location.toUpperCase()+'</p><h3>'+p.name+'</h3></div><span class="project-number">'+String(i).padStart(2,'0')+' / 06</span></div></article>'}).join('');
-  qa('[data-project]').forEach(el=>el.addEventListener('click',()=>openProject(+el.dataset.project)));
+  const filtered=projects.filter(p=>state.filter==='الكل'||p.type===state.filter);
+  $('#projectGrid').innerHTML=filtered.map((p,i)=>'<article class="project">'+
+    '<button type="button" class="project-cover" data-open="'+p.slug+'" aria-label="استعرض مشروع '+p.name+'">'+
+      '<img src="'+img(p.image)+'" alt="صورة معمارية توضيحية لتصوّر '+p.name+'" loading="lazy" decoding="async">'+
+      '<span class="cover-index">'+String(projects.indexOf(p)+1).padStart(2,'0')+' / 06</span>'+
+      '<span class="cover-tag">تصوّر تصميمي • '+p.type+'</span><span class="cover-arrow" aria-hidden="true">↗</span></button>'+
+    '<div class="project-text"><div><p>'+p.place+' / '+p.type+'</p><h3>'+p.name+'</h3></div><span class="project-year">'+p.year+'</span></div>'+
+    '<div class="project-note">'+p.lead+'</div>'+
+   '</article>').join('');
+  $$('[data-open]').forEach(b=>b.addEventListener('click',()=>openProject(b.dataset.open)));
 }
-qa('[data-filter]').forEach(el=>el.addEventListener('click',()=>{filter=el.dataset.filter;qa('[data-filter]').forEach(b=>{const a=b===el;b.classList.toggle('is-active',a);b.setAttribute('aria-pressed',String(a))});renderProjects()}));
-qa('#gridView,#listView').forEach(el=>el.addEventListener('click',()=>{view=el.id==='gridView'?'grid':'list';qa('#gridView,#listView').forEach(b=>{let a=b===el;b.classList.toggle('is-active',a);b.setAttribute('aria-pressed',String(a))});renderProjects()}));
-const projectDialog=q('#projectDialog');
-function openProject(i){const p=projects[i];q('#projectDetail').innerHTML='<div class="detail-hero"><img src="'+img(p.photo,1800)+'" alt="Concept image for '+p.name+'"><h2>'+p.name+'</h2></div><div class="detail-body"><div class="detail-facts"><div>PROJECT / '+String(i+1).padStart(2,'0')+'</div><div>TYPE / '+p.type.toUpperCase()+'</div><div>LOCATION / '+p.location.toUpperCase()+'</div><div>YEAR / '+p.year+'</div><div>STATUS / FICTIONAL CONCEPT</div><a class="detail-back" href="#work" id="backToWork">← BACK TO THE COLLECTION</a></div><p>'+p.description+'</p></div>';projectDialog.showModal();document.body.classList.add('dialog-open');q('#backToWork').addEventListener('click',e=>{e.preventDefault();projectDialog.close()})}
-q('#projectClose').addEventListener('click',()=>projectDialog.close());
-projectDialog.addEventListener('close',()=>document.body.classList.remove('dialog-open'));
-projectDialog.addEventListener('click',e=>{if(e.target===projectDialog)projectDialog.close()});
-const heroPhotos=['photo-1600585154340-be6161a56a0c','photo-1600566753190-17f0baa2a6c3','photo-1600585154340-be6161a56a0c'];
-qa('[data-atm]').forEach(b=>b.addEventListener('click',()=>{const ix=+b.dataset.atm;q('#heroImage').style.backgroundImage='url("'+img(heroPhotos[ix],1800)+'")';qa('[data-atm]').forEach(x=>{const a=b===x;x.classList.toggle('is-active',a);x.setAttribute('aria-pressed',String(a))});q('.hero-rail span').textContent='0'+(ix+1)+' / 03'}));
-const menuButton=q('#menuButton'),mobileNav=q('#mobileNav');
-function setMenu(open){menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');mobileNav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);mobileNav.inert=!open}
-menuButton.addEventListener('click',()=>setMenu(!mobileNav.classList.contains('open')));qa('#mobileNav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-const contactDialog=q('#contactDialog');
-q('#contactTrigger').addEventListener('click',()=>{contactDialog.showModal();document.body.classList.add('dialog-open')});
-q('#contactClose').addEventListener('click',()=>contactDialog.close());
-contactDialog.addEventListener('close',()=>document.body.classList.remove('dialog-open'));
-contactDialog.addEventListener('click',e=>{if(e.target===contactDialog)contactDialog.close()});
-q('#contactForm').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.currentTarget);q('#briefText').textContent='Name: '+d.get('name')+'\nProject: '+d.get('type')+'\nVision: '+d.get('vision')+'\n\nThis brief was prepared in the ATELIER / 08 demo. No data was sent.';q('#briefOutput').hidden=false;q('#briefOutput').scrollIntoView({block:'nearest',behavior:reduceMotion?'auto':'smooth'})});
-q('#copyBrief').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(q('#briefText').textContent);e.currentTarget.textContent='COPIED ✓'}catch{e.currentTarget.textContent='SELECT THE TEXT ABOVE TO COPY'}});
-const clock=q('#clock');function setTime(){clock.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date())}setTime();setInterval(setTime,60000);
-const progress=q('#progress');let ticking=false;
-window.addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const total=document.documentElement.scrollHeight-innerHeight;progress.style.width=(total>0?scrollY/total*100:0)+'%';ticking=false})},{passive:true});
-if(!reduceMotion){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}})},{threshold:.08});qa('[data-reveal]').forEach(el=>observer.observe(el));}
-const cursor=q('#cursor');if(matchMedia('(pointer:fine)').matches&&!reduceMotion){document.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'},{passive:true});document.addEventListener('pointerover',e=>{cursor.classList.toggle('visible',!!e.target.closest('.project-cover'))});}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobileNav.classList.contains('open'))setMenu(false)});
-renderProjects();requestAnimationFrame(()=>q('.hero').classList.add('loaded'));
+$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
+  state.filter=b.dataset.filter;
+  $$('[data-filter]').forEach(x=>{const a=x===b;x.classList.toggle('active',a);x.setAttribute('aria-pressed',String(a));});
+  renderProjects();
+}));
+const modal=$('#projectDialog');
+let previousFocus=null;
+function openProject(slug){
+  const p=byId(slug);if(!p)return;state.selected=slug;
+  const idx=projects.indexOf(p);
+  const next=projects[(idx+1)%projects.length];
+  previousFocus=document.activeElement;
+  $('#projectDetail').innerHTML=
+    '<div class="detail-hero"><img src="'+img(p.image,1800)+'" alt="تصوّر معماري لمشروع '+p.name+'">'+
+      '<div class="detail-title"><span>دراسة تصوّرية / '+p.type+' / 0'+(idx+1)+'</span><h2>'+p.name+'</h2></div></div>'+
+    '<div class="detail-article"><aside class="detail-facts">'+
+      '<div class="fact"><strong>التصنيف</strong><span>'+p.type+'</span></div>'+
+      '<div class="fact"><strong>الموقع التخيّلي</strong><span>'+p.place+'</span></div>'+
+      '<div class="fact"><strong>المساحة الافتراضية</strong><span>'+p.area+'</span></div>'+
+      '<div class="fact"><strong>سنة التصوّر</strong><span>'+p.year+'</span></div>'+
+      '<div class="fact"><strong>الحالة</strong><span>مفهوم تجريبي غير منفّذ</span></div></aside>'+
+      '<div class="detail-narrative"><h3>'+p.lead+'</h3><p>'+p.desc+'</p><p>'+p.story+'</p>'+
+      '<div class="detail-skills">'+p.details.map(s=>'<span>'+s+'</span>').join('')+'</div></div></div>'+
+    '<div class="detail-gallery"><figure><img src="'+img(p.secondary,1400)+'" alt="صورة مرجعية إضافية تعبّر عن تفاصيل التصوّر" loading="lazy"><figcaption>دراسة في الضوء والمواد / صورة مرجعية توضيحية</figcaption></figure>'+
+     '<figure><img src="'+img(p.image,1200)+'" alt="المشهد المعماري الرئيسي" loading="lazy"><figcaption>لقطة مرجعية للتكوين والمقياس</figcaption></figure></div>'+
+    '<div class="detail-end"><div class="concept-disclaimer">هذا المشروع تصوّر خيالي ضمن معرض تجريبي. الصور مرجعية وليست أعمالًا منفذة لرحاب حيدر.</div>'+
+    '<button class="next-project" id="nextProject" type="button">المشروع التالي: '+next.name+' ↗</button></div>';
+  if(!modal.open)modal.showModal();
+  document.body.classList.add('dialog-open');
+  $('#nextProject').addEventListener('click',()=>{openProject(next.slug);modal.scrollTop=0;});
+}
+$('#projectClose').addEventListener('click',()=>modal.close());
+modal.addEventListener('click',e=>{if(e.target===modal)modal.close();});
+modal.addEventListener('close',()=>{document.body.classList.remove('dialog-open');if(previousFocus?.isConnected)previousFocus.focus();});
+$$('[data-scene-button]').forEach(b=>b.addEventListener('click',()=>{
+  const ix=b.dataset.sceneButton;
+  $$('.hero-photo').forEach(p=>p.classList.toggle('active',p.dataset.scene===ix));
+  $$('[data-scene-button]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
+}));
+const palettes={
+ stone:{title:'ذاكرة الحجر',text:'عاجي، رملي، وبيج دافئ — درجات تترك الضوء يؤدي دوره.',tones:['#dfd6c7','#b9ae99','#897d6d']},
+ wood:{title:'دفء الملمس',text:'خشب جوزي، فخار ناعم، ولمسة كريمية تضفي قربًا وهدوءًا.',tones:['#e2cdb6','#9e7759','#5d4436']},
+ shadow:{title:'عمق الظلال',text:'زيتوني مترب، فحمي رقيق، وبرونزي مطفأ لتجربة أكثر حميمية.',tones:['#888b79','#47453d','#242923']}
+};
+$$('[data-palette]').forEach(b=>b.addEventListener('click',()=>{
+ const p=palettes[b.dataset.palette];$('#paletteName').textContent=p.title;$('#paletteDescription').textContent=p.text;
+ $$('.palette-bars i').forEach((el,i)=>el.style.background=p.tones[i]);
+ $$('[data-palette]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
+}));
+const layerDescription={plan:'الطبقة 01 / قراءة توزيع الفراغات والأبعاد',light:'الطبقة 02 / دراسة حركة الشمس والظل',flow:'الطبقة 03 / العلاقات والحركة داخل المساحة'};
+$$('[data-layer]').forEach(b=>b.addEventListener('click',()=>{
+ const active=b.dataset.layer;
+ $('#layerLight').setAttribute('opacity',active==='light'?'1':'0');
+ $('#layerFlow').setAttribute('opacity',active==='flow'?'1':'0');
+ $('#boardCaption').textContent=layerDescription[active];
+ $$('[data-layer]').forEach(x=>{const yes=x===b;x.classList.toggle('active',yes);x.setAttribute('aria-pressed',String(yes));});
+}));
+const menuButton=$('#menuToggle'),menu=$('#mobileMenu');
+function setMenu(open){
+ menu.classList.toggle('open',open);menu.inert=!open;document.body.classList.toggle('menu-open',open);
+ menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'إغلاق القائمة':'فتح القائمة');
+}
+menuButton.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+$$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open'))setMenu(false);});
+$('#inquiryForm').addEventListener('submit',e=>{
+ e.preventDefault();const d=new FormData(e.currentTarget);
+ $('#inquiryText').textContent='مرحبًا، أنا '+d.get('name')+'.\n\nأرغب في مناقشة مشروع '+d.get('type')+(d.get('city')?' في '+d.get('city'):'')+'.\n\nملامح الفكرة:\n'+d.get('brief')+'\n\nأرغب في معرفة الخطوات التالية، وشكرًا لكم.';
+ $('#inquiryResult').hidden=false;
+ $('#inquiryResult').scrollIntoView({block:'nearest',behavior:reduced?'auto':'smooth'});
+});
+$('#copyInquiry').addEventListener('click',async e=>{
+ try{await navigator.clipboard.writeText($('#inquiryText').textContent);e.currentTarget.textContent='تم النسخ ✓';}
+ catch{e.currentTarget.textContent='حدد النص بالأعلى لنسخه';}
+});
+if(!reduced && 'IntersectionObserver' in window){
+ const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');observer.unobserve(e.target);}}),{threshold:.09});
+ $$('[data-reveal]').forEach(el=>observer.observe(el));
+}else{$$('[data-reveal]').forEach(el=>el.classList.add('shown'));}
+const readProgress=$('#readProgress');
+let queued=false;
+addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{
+ const total=document.documentElement.scrollHeight-innerHeight;
+ readProgress.style.width=(total>0?scrollY/total*100:0)+'%';queued=false;
+});},{passive:true});
+renderProjects();
