@@ -19,13 +19,8 @@ const slug=new URLSearchParams(location.search).get('case');
 const index=Math.max(0,cases.findIndex(p=>p.slug===slug));
 const p=cases[index],next=cases[(index+1)%cases.length];
 const houseAssembly = $('#assembly');
-if(p.slug==='courtyard'){
-  const loader=document.createElement('script');
-  loader.type='module';loader.src='./assembly.js';
-  loader.onerror=()=>{const el=$('#assemblyLoader');if(el)el.textContent='تعذّر تشغيل العرض ثلاثي الأبعاد. يمكنك متابعة المخططات والصور في بقية الملف.';};
-  document.body.appendChild(loader);
-}else if(houseAssembly){houseAssembly.hidden=true;}
-
+// The WebGL house is retired: the new CAD journey reuses this section for authentic vector drafting.
+if (p.slug !== 'courtyard' && houseAssembly) houseAssembly.hidden = true;
 const technical=[
  {id:'plan',name:'المسقط الأفقي',sub:'منطق توزيع الفراغات',description:'رسم متجهي مفاهيمي لتقسيم المساحة وعلاقة الغرف بالمحور الرئيس.'},
  {id:'furniture',name:'فرش وتوزيع',sub:'مقياس الإنسان داخل الفراغ',description:'أماكن الجلوس والطاولات والفراغات المساعدة على المخطط نفسه.'},
@@ -140,7 +135,7 @@ function courtyardSectionSvg(){
  return svgWrap(content,'مقطع تصوّري عبر الفناء والجناحين والسقف والكتلة العليا');
 }
 function planSvg(kind='plan'){
- if(p.slug==='courtyard')return courtyardPlanSvg(kind);
+ if(p.slug==='courtyard')return window.REHAB_CAD.frame(kind);
  const {a,b,c,d}=g;
  const cadDetails='<g fill="none" stroke="#a7c6b8" stroke-width="1.4">'+
   '<path d="M'+(a-3)+' '+(c+35)+'a34 34 0 0 1 34 34M'+(b-3)+' 164a31 31 0 0 1 31 31M'+(a+56)+' '+(d-3)+'a30 30 0 0 1 30 30" stroke="#d9ba88"/>'+
@@ -172,7 +167,7 @@ function point(x,y,z){const [a,b]=isoPt(x,y,z);return a.toFixed(1)+','+b.toFixed
 function poly(points,fill,stroke='#a8b59a'){return '<polygon points="'+points.map(q=>point(...q)).join(' ')+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.7"/>';}
 function wall(x1,y1,x2,y2,h,color){return poly([[x1,y1,0],[x2,y2,0],[x2,y2,h],[x1,y1,h]],color);}
 function axonSvg(){
- if(p.slug==='courtyard')return courtyardAxonSvg();
+ if(p.slug==='courtyard')return window.REHAB_CAD.elevation();
  const W=g.w,H=g.h,xa=g.a-g.x,xb=g.b-g.x,yc=g.c-g.y,yd=g.d-g.y;
  // Same x/y extents and subdivisions as planSvg, projected into a readable isometric.
  const bg='<rect width="800" height="535" fill="#213429"/><g stroke="#7d967d" opacity=".15" stroke-width="1">'+Array.from({length:19},(_,i)=>'<path d="M0 '+(i*30)+'H800"/>').join('')+'</g>';
@@ -187,7 +182,7 @@ function axonSvg(){
  return '<svg viewBox="0 0 800 535" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="كتلة ثلاثية الأبعاد متجهة منشأة من هندسة مخطط '+p.name+'">'+bg+base+courtyard+walls+roof+topMarks+'</svg>';
 }
 function elevationSvg(){
- if(p.slug==='courtyard')return courtyardElevationSvg();
+ if(p.slug==='courtyard')return window.REHAB_CAD.elevation();
  const v=p.variant;let apertures='';
  for(let i=0;i<5;i++){let x=110+i*112+(v%3)*4;apertures+='<rect x="'+x+'" y="'+(145+(i%2)*12)+'" width="'+(68+(v%2)*5)+'" height="'+(166-(i%2)*28)+'" fill="#799d88" fill-opacity=".3" stroke="#c9d2be" stroke-width="2"/>';}
  const content='<path d="M72 355H735M110 335V120H680V335Z" fill="#647c69" fill-opacity=".22" stroke="#dce6d3" stroke-width="4"/>'+apertures+
@@ -195,7 +190,7 @@ function elevationSvg(){
  return svgWrap(content,'الواجهة الأمامية المفاهيمية '+p.name);
 }
 function sectionSvg(){
- if(p.slug==='courtyard')return courtyardSectionSvg();
+ if(p.slug==='courtyard')return window.REHAB_CAD.section();
  const v=p.variant, split=300+v*11,mid=520-v*6;
  const content='<path d="M95 377H708M120 112H690V377H120Z" fill="#6f8771" fill-opacity=".19" stroke="#cfdaca" stroke-width="4"/>'+
  '<path d="M120 235H690M'+split+' 235V377M'+mid+' 112V235" stroke="#ccd7c8" stroke-width="6"/>'+
