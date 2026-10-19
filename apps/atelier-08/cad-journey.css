@@ -1,0 +1,90 @@
+/* Rehab Haider | archival CAD visual system, responsive & vector-sharp.
+ * Every element scales without network image downloads or WebGL. */
+.rh-cad-svg{width:100%;height:auto;display:block;aspect-ratio:1300/825;font-family:'Manrope',Arial,sans-serif}
+.rh-cad-svg .cad-doc-heading{font-size:17px;letter-spacing:1.5px;fill:#34463a;font-weight:800}
+.rh-cad-svg .cad-doc-sub{font-size:11px;letter-spacing:.8px;fill:#7e887b;font-weight:500}
+.rh-cad-svg .cad-sheet-no{font-size:42px;font-weight:800;fill:#34463a}
+.rh-cad-svg .cad-wall{fill:#3d4e42;stroke:#1c352a;stroke-width:.9}
+.rh-cad-svg .cad-property{fill:none;stroke:#acb8a7;stroke-width:1.2;stroke-dasharray:9 7}
+.rh-cad-svg .cad-site-tree{fill:none;stroke:#b3baa5;stroke-width:1.2;opacity:.52}
+.rh-cad-svg .cad-window{stroke:#5f9e9c;stroke-width:2.5}
+.rh-cad-svg .cad-door{fill:none;stroke:#c2a372;stroke-width:1.6}
+.rh-cad-svg .cad-furn{fill:none;stroke:#8f9f91;stroke-width:1.4;rx:3px}
+.rh-cad-svg .cad-water-edge{fill:#d3ded6;stroke:#527e7c;stroke-width:2}
+.rh-cad-svg .cad-water{fill:#b2d3cf;stroke:#689895;stroke-width:.7}
+.rh-cad-svg .cad-tree{fill:#687b61;stroke:#52694b;stroke-width:1.7}
+.rh-cad-svg .cad-canopy{fill:none;stroke:#738c68;stroke-width:1.1}
+.rh-cad-svg .cad-branch{stroke:#607651;stroke-width:1.2}
+.rh-cad-svg .cad-paving{stroke:#aab9ac;stroke-width:.85}
+.rh-cad-svg .cad-lamp{fill:none;stroke:#ab925e;stroke-width:1.4}
+.rh-cad-svg .cad-light-axis{stroke:#ad986e;stroke-width:1}
+.rh-cad-svg .cad-dim,.rh-cad-svg .cad-leader{stroke:#ad9066;stroke-width:1;fill:none}
+.rh-cad-svg .cad-dim-label{fill:#a38866;font-weight:600;text-anchor:middle;font-size:12px}
+.rh-cad-svg .cad-grid{stroke:#87978a;stroke-width:.8;stroke-dasharray:5 8;opacity:.7}
+.rh-cad-svg .cad-grid-disc{fill:#f4f1e9;stroke:#708576;stroke-width:1.4}
+.rh-cad-svg .cad-grid-num{font-weight:800;fill:#56705d;font-size:11px;text-anchor:middle}
+.rh-cad-svg .cad-num{font-size:15px;font-weight:800;fill:#ad8d5e;text-anchor:middle}
+.rh-cad-svg .cad-room{font-size:9px;font-weight:700;letter-spacing:.8px;fill:#415849;text-anchor:middle}
+.rh-cad-svg .cad-dim-dot{fill:#bd965f}
+.rh-cad-svg .cad-callout{fill:#ab8d62;font-size:11px;font-weight:800;text-anchor:middle}
+.rh-cad-svg .cad-panel-title{fill:#294333;font:600 29px 'Noto Naskh Arabic',serif}
+.rh-cad-svg .cad-key-id{fill:#e6ece3;font-size:10px;text-anchor:middle;font-weight:700}
+.rh-cad-svg .cad-key-ar{fill:#283d30;font:600 19px 'Alexandria',sans-serif}
+.rh-cad-svg .cad-key-en{fill:#849083;font-size:9px;font-family:'Manrope',Arial,sans-serif}
+.rh-cad-svg .cad-wall-soft{fill:#d3dacb;stroke:#344b3d;stroke-width:3.3}
+.rh-cad-svg .cad-glass-fill{fill:#afcdc3;stroke:#618f85;stroke-width:2}
+.rh-cad-svg .cad-wall-line{stroke:#334c3e;stroke-width:6}
+.rh-cad-svg .cad-level{fill:none;stroke:#8fa18f;stroke-width:1.2;stroke-dasharray:5 7}
+.cad-journey{height:670svh;position:relative;background:#e2e2d8;color:#223427}
+.cad-sticky{position:sticky;top:0;height:100svh;min-height:650px;overflow:hidden;display:grid;grid-template-columns:minmax(280px,33%) minmax(0,67%);grid-template-rows:100px minmax(0,1fr) 170px;background:linear-gradient(135deg,#e8e9e0,#d4ddce)}
+.cad-topline{grid-column:1/-1;grid-row:1;align-self:end;padding:0 5% 20px;border-bottom:1px solid #1c40312b;display:flex;justify-content:space-between;gap:20px;align-items:center;z-index:2;font-size:11px;font-weight:600}
+.cad-topline span:last-child{font:600 10px 'Manrope',sans-serif;letter-spacing:.09em;color:#71826f}
+.cad-journey-copy{grid-column:1;grid-row:2;position:relative;z-index:2;align-self:center;padding:0 10% 0 4%}
+.cad-phase-count{display:block;color:#697a63;font-size:12px;font-weight:600;margin-bottom:12px}
+.cad-journey-copy h2{font:500 clamp(48px,5vw,92px)/1.28 'Noto Naskh Arabic',serif;letter-spacing:-.035em;color:#213b2d;margin:0 0 18px}
+.cad-journey-copy p{font-size:13px;line-height:2.18;max-width:375px;color:#4e6554;margin:0}
+.cad-drawing-link{display:inline-flex;gap:30px;align-items:center;border-bottom:1px solid #7b9178;font-size:11px;padding-bottom:8px;margin-top:25px}
+.cad-drawing-link span{font-size:18px}
+.cad-sheet-frame{grid-column:2;grid-row:2;align-self:center;margin:12px 5.5% 15px 0;box-shadow:0 24px 64px #1d34252a;overflow:hidden;border:1px solid #63746650;transform:perspective(1400px) rotateY(-3deg);transform-origin:center;transition:transform .5s ease}
+.cad-sheet-frame:hover{transform:none}
+.cad-sheet-frame .rh-cad-svg{background:#edece5}
+.cad-journey-final{grid-column:2;grid-row:2;align-self:center;margin:12px 5.5% 12px 0;min-width:0;max-height:100%;overflow:hidden}
+.cad-final-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cad-final-pair>div{min-width:0;box-shadow:0 12px 28px #2439241d;border:1px solid #a4b1a075}
+.cad-real-reference{position:relative;margin-top:9px;height:150px;overflow:hidden;border:1px solid #a4b1a075}
+.cad-real-reference img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+.cad-real-reference span{position:absolute;bottom:0;right:0;left:0;background:#203226db;color:#eef4e5;font-size:9px;line-height:1.6;padding:12px 14px}
+.cad-journey-bottom{grid-column:1/-1;grid-row:3;padding:20px 5% 14px;background:#d5ddcfb8;border-top:1px solid #61796037;z-index:3}
+.cad-phase-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.cad-phase-tabs button{background:transparent;border:1px solid #8ea38a94;border-radius:100px;padding:11px 17px;color:#57705a;font-size:10px;transition:background .2s,color .2s}
+.cad-phase-tabs button.active{background:#284531;border-color:#284531;color:#e8f0e3}
+.cad-progress-meta{margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#526a55;font-size:10px}
+.cad-progress-meta>span:first-child{font:700 11px 'Manrope',sans-serif}
+.cad-progress-meta button{font-size:10px;background:none;border:0;border-bottom:1px solid #71876f;padding:0 0 6px;color:#334e38}
+.cad-progress-line{height:3px;background:#a3b3a077;margin-top:18px;overflow:hidden}
+.cad-progress-line span{display:block;height:100%;width:100%;background:#395940;transform:scaleX(.001);transform-origin:right}
+.cad-disclosure{position:absolute;bottom:0;left:5%;color:#667b69;font-size:8px;margin:0 0 3px;z-index:4}
+@media(max-width:1100px){.cad-sticky{grid-template-columns:39% 61%}.cad-journey-copy{padding-right:9%}.cad-journey-copy h2{font-size:clamp(42px,5.8vw,78px)}.cad-phase-tabs button{padding:9px 12px;font-size:9px}.cad-sheet-frame{margin-right:3%}}
+@media(max-width:760px){
+.cad-journey{height:620svh}.cad-sticky{min-height:610px;display:grid;grid-template-columns:1fr;grid-template-rows:70px minmax(0,1fr) 190px 150px}
+.cad-topline{grid-row:1;grid-column:1;padding:0 5% 12px;font-size:9px}
+.cad-topline span:last-child{font-size:7px}
+.cad-journey-copy{grid-row:3;grid-column:1;padding:10px 6% 18px;align-self:end;background:linear-gradient(0deg,#dae0d3 84%,#dae0d3b6)}
+.cad-phase-count{font-size:9px;margin-bottom:0}
+.cad-journey-copy h2{font-size:clamp(39px,8vw,58px);margin:0 0 3px}
+.cad-journey-copy p{font-size:10px;line-height:1.7;max-width:520px}
+.cad-drawing-link{font-size:9px;margin-top:9px}
+.cad-sheet-frame,.cad-journey-final{grid-row:2;grid-column:1;margin:0 3% 0;align-self:center;transform:none}
+.cad-final-pair{grid-template-columns:1fr 1fr}
+.cad-real-reference{height:115px}
+.cad-journey-bottom{grid-row:4;grid-column:1;padding:12px 5%}
+.cad-phase-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.cad-phase-tabs button{white-space:nowrap;flex-shrink:0;padding:8px 10px;font-size:8px}
+.cad-progress-meta{margin-top:12px;gap:6px;font-size:8px}
+.cad-progress-meta span:nth-child(2){display:none}
+.cad-progress-meta button{font-size:8px}
+.cad-progress-line{margin-top:11px}
+.cad-disclosure{display:none}
+}
+@media(max-width:370px){.cad-sticky{grid-template-rows:60px minmax(0,1fr) 190px 135px}.cad-topline span:last-child{display:none}.cad-journey-copy h2{font-size:38px}.cad-phase-tabs button{font-size:7.5px}}
+@media(prefers-reduced-motion:reduce){.cad-sheet-frame,.cad-phase-tabs button{transition:none!important;transform:none!important}}
