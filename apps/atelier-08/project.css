@@ -27,3 +27,70 @@
 .lab-subtools p{max-width:300px;margin:0;line-height:1.8}
 .download-svg{border:1px solid #e0e7d380;color:#e1e9d6;background:transparent;padding:12px 17px;border-radius:100px;font-size:10px}
 .download-svg:hover{background:#e0e7d3;color:#122017}
+
+/* =============================================
+   THE HOUSE / seven-stop 3D architectural assembly.
+   A long, NATIVE-scrolling chapter. Its canvas stays in view,
+   while a real object collection receives the scroll position.
+   ============================================= */
+.assembly-chapter{height:660svh;background:#d5d2c4;color:#18251e;position:relative;isolation:isolate;direction:rtl}
+.assembly-chapter[hidden]{display:none}
+.assembly-sticky{height:100svh;min-height:590px;position:sticky;top:0;overflow:hidden;background:radial-gradient(ellipse at 44% 36%,#eee9da 0%,#d2d4c4 58%,#b7c3b5 120%)}
+.assembly-canvas{position:absolute;inset:0;z-index:1}
+.assembly-canvas canvas{height:100%;width:100%;display:block}
+.assembly-loader{position:absolute;inset:0;display:grid;place-items:center;z-index:10;color:#405a43;font-size:12px;background:#dde0d4}
+.assembly-ambient{position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(90deg,#d5d8c930,transparent 45%,#d5d7c8e8 88%,#d6d7ca 100%),linear-gradient(0deg,#ced4c2bb,transparent 23%);}
+.assembly-heading{position:absolute;z-index:6;top:35px;right:6%;left:6%;border-bottom:1px solid #1a2d2433;display:flex;justify-content:space-between;gap:18px;padding-bottom:18px;font-size:10px;font-weight:600;letter-spacing:.06em}
+.assembly-heading span:last-child{font:600 9px var(--latin);letter-spacing:.13em;color:#687968}
+.assembly-blueprint{position:absolute;z-index:4;left:5%;top:12%;width:min(25vw,290px);pointer-events:none;transition:opacity .25s}
+.assembly-blueprint>span{display:block;font:600 9px var(--latin);letter-spacing:.12em;color:#455a4b;margin-bottom:12px}
+.assembly-blueprint svg{background:#1c3125;display:block;width:100%;box-shadow:12px 14px 0 #6779602c;padding:13px}
+.assembly-copy{position:absolute;z-index:5;right:6.3%;top:24%;width:min(32vw,460px);height:50%;pointer-events:none}
+.assembly-copy article{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:start;opacity:0;visibility:hidden;transform:translateY(22px);transition:opacity .55s,transform .6s,visibility .55s}
+.assembly-copy article.current{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.assembly-ordinal{font-size:11px;color:#536e57;letter-spacing:.03em;font-weight:600}
+.assembly-copy h2{font:500 clamp(54px,5.9vw,103px)/1.18 var(--display);margin:20px 0;letter-spacing:-.025em;color:#213a28}
+.assembly-copy h2 em{color:#827353;font-style:normal;font-weight:500}
+.assembly-copy p{max-width:355px;color:#405347;font-size:12px;line-height:2.2;margin:0}
+.assembly-save{background:#1c3625;color:#f4eee1;border:0;padding:13px 22px;border-radius:100px;font-size:11px;margin-top:22px;pointer-events:auto}
+.assembly-save:hover{background:#31523a}
+.assembly-controls{position:absolute;z-index:7;right:6%;left:6%;bottom:5%;pointer-events:auto}
+.assembly-steplist{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #1b2c213b;padding-top:22px}
+.assembly-steplist button{background:#faf9ed8c;color:#516450;border:1px solid #31523b35;border-radius:100px;padding:11px 16px;font-size:10px;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.assembly-steplist button.active,.assembly-steplist button:hover{background:#29432d;color:#f4f0e5;border-color:#29432d}
+.assembly-bottom{display:flex;justify-content:space-between;gap:14px;margin-top:15px;align-items:center;color:#465e4b;font-size:9px}
+.assembly-bottom>span:first-child{font:700 10px var(--latin);letter-spacing:.14em}
+.assembly-track{height:2px;background:#738f724a;transform-origin:right;overflow:hidden;margin-top:14px}
+.assembly-track span{display:block;background:#405d44;height:100%;width:100%;transform:scaleX(.012);transform-origin:right}
+.assembly-disclaimer{position:absolute;z-index:6;left:6%;bottom:18%;font-size:9px;color:#526553;text-align:left;max-width:270px;line-height:1.8}
+@media(max-width:1100px){
+.assembly-copy{width:36vw;right:5%}.assembly-copy h2{font-size:clamp(53px,6vw,80px)}
+.assembly-blueprint{left:3%;width:230px}
+.assembly-controls{right:5%;left:5%}
+.assembly-ambient{background:linear-gradient(90deg,transparent 20%,#d9dacbcf 83%,#dcdfd3ef),linear-gradient(0deg,#d5d9cacc,transparent 29%)}
+}
+@media(max-width:730px){
+.assembly-chapter{height:600svh}
+.assembly-sticky{min-height:560px}
+.assembly-heading{right:5%;left:5%;top:23px;font-size:9px}
+.assembly-heading span:last-child{font-size:7px}
+.assembly-blueprint{top:10%;left:5%;width:115px}
+.assembly-blueprint>span{font-size:7px}
+.assembly-blueprint svg{padding:6px;box-shadow:4px 5px 0 #637f6733}
+.assembly-ambient{background:linear-gradient(0deg,#d6dbcbe8 0%,#d8dbced9 27%,transparent 49%),linear-gradient(270deg,#d6d7c754,transparent 48%)}
+.assembly-copy{right:6%;left:6%;top:auto;bottom:21%;width:88%;height:160px}
+.assembly-copy article{justify-content:flex-end}
+.assembly-ordinal{font-size:9px}
+.assembly-copy h2{font-size:clamp(44px,9vw,65px);margin:7px 0}
+.assembly-copy h2 br{display:none}
+.assembly-copy p{font-size:10px;line-height:1.75;max-width:355px}
+.assembly-save{font-size:9px;padding:9px 13px;margin-top:8px}
+.assembly-controls{right:5%;left:5%;bottom:3%}
+.assembly-steplist{gap:4px;padding-top:11px;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+.assembly-steplist button{font-size:8px;padding:9px 10px;flex-shrink:0}
+.assembly-bottom{font-size:8px;gap:7px;margin-top:9px}
+.assembly-bottom span:last-child{display:none}
+.assembly-disclaimer{bottom:17%;left:5%;right:5%;max-width:none;font-size:7px;text-align:center}
+}
+@media(max-width:390px){.assembly-copy{bottom:20%;height:145px}.assembly-copy h2{font-size:40px}.assembly-copy p{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.assembly-copy article{transition:none}.assembly-blueprint{transition:none}}
