@@ -161,6 +161,42 @@ for(const [a,b,len,ori] of glass)for(const t of [-.05,.05]){if(ori==='h')ln(a,b+
 for(const [a,b,w,h] of furnishings)rec(a,b,w,h,'A-FURN');rec(6.25,5,5.5,4.25,'A-POOL');
 for(const [a,b] of lights){push('CIRCLE','E-LIGHT',[[10,a],[20,b],[30,0],[40,.15]]);}
 for(const [id,ar,en,a,b] of rooms)push('TEXT','A-LABEL',[[10,a],[20,b],[30,0],[40,.16],[1,id+' '+en]]);
+
+// CAD elevations, a section and its architectural level markers are placed to
+// the right of the plan in modelspace. They use the same 18m building span,
+// the same 3.70m lower height and 6.80m upper elevation as the SVG studies.
+const txt=(value,a,b,l='A-NOTES',h=.22)=>push('TEXT',l,[[10,a],[20,b],[30,0],[40,h],[1,value]]);
+const level=(y,name)=>{ln(24,y,44,y,'A-LEVEL');txt(name,44.35,y,'A-LEVEL',.16);};
+txt('RH-01 GROUND FLOOR PLAN / CONCEPT',0,-3,'A-TITLE',.38);
+txt('ALL DIMENSIONS IN METRES / NOT FOR CONSTRUCTION',0,-4,'A-NOTES',.20);
+txt('RH-02 COURTYARD ELEVATION',25,-3,'A-TITLE',.36);
+rec(25,0,5.75,3.70,'A-ELEV');
+rec(37.25,0,5.75,3.70,'A-ELEV');
+rec(25,3.70,10.60,3.10,'A-ELEV');
+rec(25.9,.70,3.50,2.40,'A-GLAZING');
+rec(38.1,.70,3.55,2.40,'A-GLAZING');
+rec(26.00,4.20,8.40,2.05,'A-GLAZING');
+for(const xx of [27.0,28.2,29.4,39.0,40.2,41.4])ln(xx,.70,xx,3.10,'A-FACADE-FINS');
+for(const yy of [0,3.70,6.80])level(yy,yy.toFixed(2)+' m');
+txt('RH-03 SECTION A-A',25,17.8,'A-TITLE',.36);
+for(const [xa,xb] of [[25,30.75],[37.25,43]]){
+ ln(xa,20,xb,20,'A-SECTION');
+ ln(xa,23.70,xb,23.70,'A-SECTION');
+ ln(xa,20,xa,23.70,'A-SECTION');
+ ln(xb,20,xb,23.70,'A-SECTION');
+}
+rec(25,23.70,10.60,3.10,'A-SECTION');
+ln(30.75,20,37.25,20,'A-SECTION');
+txt('OPEN COURTYARD',32,22.0,'A-LABEL',.18);
+txt('CONCEPT SECTION / LEVELS INDICATIVE',25,29.0,'A-NOTES',.16);
+txt('RH-04 TYPICAL ARCHITECTURAL DETAILS (SCHEMATIC)',25,34.0,'A-TITLE',.32);
+for(let i=0;i<4;i++){
+ const xx=25+i*5;
+ rec(xx,36,4.35,4.35,'A-DETAIL');
+ rec(xx+.25,36+.65,1.2,2.4,'A-DETAIL');
+ ln(xx+1.5,38.8,xx+3.92,38.8,'A-DETAIL-LEADER');
+ txt(['D-01 ROOF','D-02 GLASS','D-03 FINS','D-04 POOL'][i],xx+.22,40.7,'A-NOTES',.16);
+}
 let header='0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';
 return header+records.join('')+'0\nENDSEC\n0\nEOF\n';
 }
