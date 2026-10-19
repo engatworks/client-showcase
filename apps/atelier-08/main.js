@@ -36,7 +36,7 @@ function renderProjects(){
     const n=projects.indexOf(p);
     return '<article class="project">'+
       '<a href="./project.html?case='+encodeURIComponent(p.slug)+'" class="project-cover" aria-label="استعرض الدراسة التفصيلية لمشروع '+p.name+'">'+
-       '<img src="'+img(p.image)+'" alt="صورة معمارية توضيحية لتصوّر '+p.name+'" loading="lazy" decoding="async">'+
+       '<img src="'+img(p.image,820)+'" srcset="'+[480,820,1200].map(w=>img(p.image,w)+' '+w+'w').join(', ')+'" sizes="(max-width: 640px) 88vw, 44vw" alt="صورة فوتوغرافية مرجعية لأجواء '+p.name+' وليست صورة مشروع منفذ" loading="lazy" decoding="async">'+
        '<span class="cover-index">'+String(n+1).padStart(2,'0')+' / 06</span>'+
        '<span class="cover-tag">تصوّر تصميمي · 16 لوحة معمارية</span>'+
        '<span class="project-plan-thumb" aria-hidden="true">'+thumbnailPlan(n)+'</span>'+
