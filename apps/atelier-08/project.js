@@ -270,12 +270,24 @@ $('#downloadSvg').addEventListener('click',()=>{
  setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 const lightbox=$('#lightbox');let lightboxId='plan';
+let zoom=1;
+function setZoom(next){
+ zoom=Math.min(4,Math.max(1,next));
+ const media=$('#lbMedia'),el=media?.firstElementChild;
+ media?.classList.toggle('zoomed',zoom>1);
+ if(el){el.style.width=(zoom*100)+'%';el.style.height=zoom>1?'auto':'';el.style.maxHeight=zoom>1?'none':'';}
+ $('#lbZoomLevel').textContent=Math.round(zoom*100)+'%';
+}
+$('#lbZoomIn').addEventListener('click',()=>setZoom(zoom+.5));
+$('#lbZoomOut').addEventListener('click',()=>setZoom(zoom-.5));
+$('#lbZoomReset').addEventListener('click',()=>setZoom(1));
+
 function visibleFrames(){return frames.filter(f=>group==='all'||f.kind===group);}
 function showFrame(id){
  const f=frames.find(x=>x.id===id)||frames[0];lightboxId=f.id;
  $('#lbMedia').innerHTML=f.kind==='drawing'?drawingSvg(f.code):'<img src="'+frameImage(f.src,1500)+'" alt="صورة مرجعية: '+f.name+'">';
  $('#lbIndex').textContent=String(f.index+1).padStart(2,'0')+' / 16 — '+(f.kind==='drawing'?'DRAWING':'VISUAL REFERENCE');
- $('#lbTitle').textContent=f.name;$('#lbDesc').textContent=f.description;
+ $('#lbTitle').textContent=f.name;$('#lbDesc').textContent=f.description;setZoom(1);
 }
 function openFrame(id){showFrame(id);lightbox.showModal();document.body.classList.add('lb-open');}
 function moveFrame(direction){const a=visibleFrames(),i=a.findIndex(f=>f.id===lightboxId);showFrame(a[(i+direction+a.length)%a.length].id);}
