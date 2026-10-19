@@ -51,7 +51,7 @@ const frames=[
 ];
 document.title=p.name+' | دراسة معمارية — رحاب حيدر';
 $('#metaDescription').content=p.name+' — دراسة معمارية تصوّرية تشمل 16 محطة بصرية ومخططات وواجهات ومقاطع تفاعلية.';
-$('#heroImage').src=photo(p.photos[0],1800);$('#heroImage').alt='صورة مرجعية تصور روح '+p.name;
+$('#heroImage').src=photo(p.photos[0],1200);$('#heroImage').srcset=[640,960,1440,1920].map(w=>photo(p.photos[0],w)+' '+w+'w').join(', ');$('#heroImage').sizes='100vw';$('#heroImage').alt='صورة مرجعية تصور روح '+p.name;
 $('#caseTitle').textContent=p.name;$('#caseLead').textContent=p.lead;$('#caseNumber').textContent=String(index+1).padStart(2,'0')+' / 06';
 $('#caseHeroMeta').textContent=p.city+' / '+p.type+' / '+p.year;
 $('#caseStatement').textContent=p.statement;$('#caseStory').textContent=p.story;
