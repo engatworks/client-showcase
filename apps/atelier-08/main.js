@@ -1,9 +1,9 @@
 const q=(s,root=document)=>root.querySelector(s), qa=(s,root=document)=>Array.from(root.querySelectorAll(s));
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const projects=[
-  {name:"Solace House",category:"Residential",type:"Private residence",location:"Copenhagen, Denmark",year:"2026",photo:"photo-1600607687920-4e2a09cf159d",description:"A study in stillness: expansive daylight, carefully balanced geometry, and natural materials that invite a slower way of living."},
+  {name:"Solace House",category:"Residential",type:"Private residence",location:"Copenhagen, Denmark",year:"2026",photo:"photo-1600585154340-be6161a56a0c",description:"A study in stillness: expansive daylight, carefully balanced geometry, and natural materials that invite a slower way of living."},
   {name:"The Quiet Room",category:"Interiors",type:"Interior architecture",location:"London, United Kingdom",year:"2025",photo:"photo-1600210492486-724fe5c67fb0",description:"An intimate interior landscape where rhythm and soft tactility make the everyday feel extraordinary."},
-  {name:"Villa Serein",category:"Residential",type:"Coastal residence",location:"Algarve, Portugal",year:"2025",photo:"photo-1600585154340-be6161a56a0c",description:"A considered architectural response to the coastline, framing long views and the changing quality of coastal light."},
+  {name:"Villa Serein",category:"Residential",type:"Coastal residence",location:"Algarve, Portugal",year:"2025",photo:"photo-1600596542815-ffad4c1539a9",description:"A considered architectural response to the coastline, framing long views and the changing quality of coastal light."},
   {name:"The Material House",category:"Interiors",type:"Spatial renovation",location:"Stockholm, Sweden",year:"2024",photo:"photo-1600607687939-ce8a6c25118c",description:"Texture takes the leading role as oak, pale plaster and honest craftsmanship meet contemporary functionality."},
   {name:"Civic Light",category:"Cultural",type:"Community space",location:"Oslo, Norway",year:"2024",photo:"photo-1487958449943-2429e8be8625",description:"A proposed cultural landmark shaped around the principle that public architecture should feel open, generous and quietly welcoming."},
   {name:"Casa Forma",category:"Residential",type:"Contemporary home",location:"Barcelona, Spain",year:"2023",photo:"photo-1600566752355-35792bedcfea",description:"A composed dialogue between inside and outside, with materials chosen to become more beautiful over time."}
@@ -23,7 +23,7 @@ function openProject(i){const p=projects[i];q('#projectDetail').innerHTML='<div 
 q('#projectClose').addEventListener('click',()=>projectDialog.close());
 projectDialog.addEventListener('close',()=>document.body.classList.remove('dialog-open'));
 projectDialog.addEventListener('click',e=>{if(e.target===projectDialog)projectDialog.close()});
-const heroPhotos=['photo-1600607687920-4e2a09cf159d','photo-1600566753190-17f0baa2a6c3','photo-1600585154340-be6161a56a0c'];
+const heroPhotos=['photo-1600585154340-be6161a56a0c','photo-1600566753190-17f0baa2a6c3','photo-1600585154340-be6161a56a0c'];
 qa('[data-atm]').forEach(b=>b.addEventListener('click',()=>{const ix=+b.dataset.atm;q('#heroImage').style.backgroundImage='url("'+img(heroPhotos[ix],1800)+'")';qa('[data-atm]').forEach(x=>{const a=b===x;x.classList.toggle('is-active',a);x.setAttribute('aria-pressed',String(a))});q('.hero-rail span').textContent='0'+(ix+1)+' / 03'}));
 const menuButton=q('#menuButton'),mobileNav=q('#mobileNav');
 function setMenu(open){menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');mobileNav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);mobileNav.inert=!open}
