@@ -6,8 +6,11 @@
 <title>دراسة معمارية | رحاب حيدر</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./project.css">
-<script src="./house-config.js" defer></script><script src="./project.js" defer></script>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./project.css"><link rel="stylesheet" href="./cad-journey.css">
+<script src="./house-config.js" defer></script>
+<script src="./cad-studio.js" defer></script>
+<script src="./project.js" defer></script>
+<script src="./cad-journey.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">تجاوز إلى المشروع</a>
@@ -33,7 +36,7 @@
 <div class="eyeline"><span>01 / قراءة المشروع</span><span dir="ltr">DESIGN INTENT</span></div>
 <div class="narrative-layout"><div class="narrative-side"><span>اللغة التصميمية</span><div class="accent-asterisk" aria-hidden="true">✳</div></div><div><h2 id="caseStatement">عندما يصبح الضوء جزءًا من تفاصيل الحياة.</h2><p class="narrative-paragraph" id="caseStory"></p><div class="facts" id="caseFacts"></div></div></div>
 </section>
-<section class="assembly-chapter" id="assembly" aria-label="تجربة بناء منزل بيت الفناء مرحلة بمرحلة">
+<section class="assembly-chapter" id="assembly" aria-label="تجربة ظهور المخطط المعماري مرحلة بمرحلة">
   <div class="assembly-sticky">
     <div class="assembly-canvas" id="assemblyCanvas">
       <div class="assembly-loader" id="assemblyLoader" role="status">جاري تجهيز النموذج المعماري…</div>
@@ -101,16 +104,16 @@
 
 <section class="lab-section section" id="lab">
 <div class="eyeline light"><span>02 / من المخطط إلى الفراغ</span><span dir="ltr">THE SPACE LAB</span></div>
-<div class="lab-heading"><div><span class="overline">التصميم من الداخل إلى الخارج</span><h2>حرّك المؤشر.<br><em>شاهد الفكرة تتشكّل.</em></h2></div><p>مقارنة تفاعلية بين مخطط أفقي وتجسيم معماري مولّد من هندسته الأساسية. حرّك المؤشر أو استخدم لوحة المفاتيح لاكتشاف التحوّل.</p></div>
+<div class="lab-heading"><div><span class="overline">التصميم من الداخل إلى الخارج</span><h2>انتقل بين المسقط <em>والواجهة.</em></h2></div><p>مقارنة تفاعلية بين المسقط الأفقي وقراءة الواجهة. تحرّك بين الرسمين، وافتح الأطلس أدناه لتشاهد طبقات التفاصيل.</p></div>
 <div class="comparison" id="comparison">
-<div class="compare-top"><span id="comparePlanCaption">المخطط الأفقي / PLAN 01</span><span class="compare-center" dir="ltr">DRAWING <span>↔</span> MASSING</span><span id="compareSpaceCaption">تجسيم الكتلة / SPACE 02</span></div>
+<div class="compare-top"><span id="comparePlanCaption">المخطط الأفقي / PLAN 01</span><span class="compare-center" dir="ltr">PLAN <span>↔</span> ELEVATION</span><span id="compareSpaceCaption">الواجهة / ELEVATION 02</span></div>
 <div class="compare-stage" id="compareStage">
 <div class="compare-layer" id="spaceLayer" aria-hidden="true"></div>
 <div class="compare-layer compare-plan" id="planLayer" aria-hidden="true"></div>
 <div class="compare-rule" id="compareRule" aria-hidden="true"><span>↔</span></div>
 <input type="range" id="compareRange" min="0" max="100" value="50" aria-label="نسبة إظهار المخطط مقارنة بالتجسيم" aria-valuetext="50 بالمئة مخطط و50 بالمئة كتلة">
 </div>
-<div class="compare-bottom"><span>100% مخطط</span><span>اسحب الخط لمقارنة <strong>نفس التكوين الهندسي</strong></span><span>100% تجسيم</span></div>
+<div class="compare-bottom"><span>100% مخطط</span><span>حرّك الخط لمقارنة <strong>المسقط والواجهة</strong></span><span>100% واجهة</span></div>
 </div>
 <div class="lab-controls">
 <div class="layers-controls" role="group" aria-label="تفاصيل الرسم"><button class="layer-btn active" data-technical="plan" aria-pressed="true">المخطط</button><button class="layer-btn" data-technical="furniture" aria-pressed="false">توزيع الأثاث</button><button class="layer-btn" data-technical="dimensions" aria-pressed="false">الأبعاد</button><button class="layer-btn" data-technical="circulation" aria-pressed="false">الحركة</button><button class="layer-btn" data-technical="sun" aria-pressed="false">الضوء</button></div>
