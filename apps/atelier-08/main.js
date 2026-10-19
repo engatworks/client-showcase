@@ -7,12 +7,12 @@ const img=(id,w=1300)=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&
 // Every record below is a fictional design study for the demo: no real client, location,
 // built status, professional award or project ownership is asserted.
 const projects=[
- {slug:'courtyard',name:'بيت الفناء',type:'سكني',place:'الرياض',year:'2026',area:'680 م²',lead:'بيتٌ يلتفّ حول الضوء.',desc:'تصوّر لفيلا سعودية تعيد الفناء إلى قلب الحياة اليومية، حيث تبدأ الخصوصية من التكوين المعماري لا من إغلاق النوافذ.',story:'تتوزّع الفراغات حول قلب مضاء يخلق علاقة هادئة بين الداخل والخارج. الكتل الصامتة، تدرّج الخصوصية، وممرات الظل تشكّل حياةً تتبدّل مع حركة الشمس خلال اليوم.',image:'photo-1600585154340-be6161a56a0c',secondary:'photo-1600607687920-4e2a09cf159d',details:['فناء مركزي','طبقات خصوصية','واجهات حجرية'],aspect:'1.03'},
+ {slug:'courtyard',name:'بيت الفناء',type:'سكني',place:'الرياض',year:'2026',area:'680 م²',lead:'بيتٌ يلتفّ حول الضوء.',desc:'تصوّر لفيلا سعودية تعيد الفناء إلى قلب الحياة اليومية، حيث تبدأ الخصوصية من التكوين المعماري لا من إغلاق النوافذ.',story:'تتوزّع الفراغات حول قلب مضاء يخلق علاقة هادئة بين الداخل والخارج. الكتل الصامتة، تدرّج الخصوصية، وممرات الظل تشكّل حياةً تتبدّل مع حركة الشمس خلال اليوم.',image:'photo-1600585154340-be6161a56a0c',secondary:'photo-1600607687939-ce8a6c25118c',details:['فناء مركزي','طبقات خصوصية','واجهات حجرية'],aspect:'1.03'},
  {slug:'material',name:'ملاذ المواد',type:'داخلي',place:'جدة',year:'2025',area:'265 م²',lead:'حين يصبح الملمس لغة.',desc:'تصوّر لصالة معيشة معاصرة تتعامل مع الخشب والحجر والضوء باعتبارها عناصر معمارية لا إضافات زخرفية.',story:'اعتمدنا لوحة خامات هادئة تسمح لاختلاف الضوء بأن يمنح الفراغ شخصية جديدة عند كل ساعة. الرفوف المدمجة، الإضاءة غير المباشرة، ونعومة انتقال المواد تصنع دفئًا دون صخب.',image:'photo-1600566753190-17f0baa2a6c3',secondary:'photo-1600210492486-724fe5c67fb0',details:['خشب طبيعي','إضاءة مخفية','تفاصيل نجارة'],aspect:'1.11'},
  {slug:'monolith',name:'جناح السكون',type:'ضيافة',place:'العلا',year:'2026',area:'940 م²',lead:'عمارة تستمع إلى الأرض.',desc:'مفهوم جناح ضيافة منخفض الكتلة يختار الانسجام مع المشهد بدل منافسته، مع إطلالات مؤطّرة بعناية.',story:'تم تخيّل المسارات كرحلة عبر الظل والحجر، بحيث تصبح لحظة الانتقال من الخارج إلى الداخل جزءًا من التجربة. لا يفرض المكان نفسه على الطبيعة؛ بل يكشفها تدريجيًا.',image:'photo-1487958449943-2429e8be8625',secondary:'photo-1600566752355-35792bedcfea',details:['ضيافة بوتيكية','مسارات ظل','ارتباط بالموقع'],aspect:'1.2'},
  {slug:'urban',name:'دار الأفق',type:'تجاري',place:'الخبر',year:'2025',area:'1,320 م²',lead:'هوية تبدأ قبل الدخول.',desc:'تصوّر لمقر أعمال معاصر يحوّل الاستقبال والحركة والواجهات إلى تجربة واحدة تعكس وضوح العلامة.',story:'فصلنا بين الحركة العامة والمساحات المركّزة، وبنينا منطقة وصول تحمل حضورًا معماريًا واضحًا. زجاج محسوب، أسقف عالية، وتكوين يوازن بين الانفتاح والاحتواء.',image:'photo-1486406146926-c627a92ad1ab',secondary:'photo-1497366754035-f200968a6e72',details:['مقار عمل','واجهات مؤسسية','هوية مكانية'],aspect:'1.04'},
  {slug:'quiet',name:'مجلس النور',type:'داخلي',place:'الدمام',year:'2024',area:'310 م²',lead:'خصوصية تستقبل الآخرين.',desc:'تصوّر لمجلس ضيافة منزلي يحتفظ بروح الكرم، ويعبّر عنها عبر نسب مريحة ومواد غنية دون مبالغة.',story:'صاغت الإضاءة غير المباشرة إحساسًا مرحّبًا، بينما وفّرت المقاعد وتوزيعات الحركة تجربة اجتماعية سهلة. الفكرة هنا هي أن تكون الفخامة محسوسة قبل أن تكون مرئية.',image:'photo-1600607687939-ce8a6c25118c',secondary:'photo-1616486338812-3dadae4b4ace',details:['مجالس خاصة','ضوء دافئ','مواد هادئة'],aspect:'1.12'},
- {slug:'open',name:'بيت الظل',type:'سكني',place:'الرياض',year:'2026',area:'750 م²',lead:'الظل جزء من التصميم.',desc:'تصوّر لمنزل عائلي تستثمر واجهاته البروزات والتجويفات لتمنح كل غرفة خصوصيتها من دون فقدان انفتاحها.',story:'تُرسم التجربة عبر العلاقة بين فتحات الضوء وكتل الظل والتراسات. يفتح المخطط تدريجيًا من المدخل إلى المنطقة العائلية، بينما تبقى الواجهات بسيطة وواضحة.',image:'photo-1600566752355-35792bedcfea',secondary:'photo-1600607687920-4e2a09cf159d',details:['منازل معاصرة','تظليل سلبي','تراس داخلي'],aspect:'1.03'}
+ {slug:'open',name:'بيت الظل',type:'سكني',place:'الرياض',year:'2026',area:'750 م²',lead:'الظل جزء من التصميم.',desc:'تصوّر لمنزل عائلي تستثمر واجهاته البروزات والتجويفات لتمنح كل غرفة خصوصيتها من دون فقدان انفتاحها.',story:'تُرسم التجربة عبر العلاقة بين فتحات الضوء وكتل الظل والتراسات. يفتح المخطط تدريجيًا من المدخل إلى المنطقة العائلية، بينما تبقى الواجهات بسيطة وواضحة.',image:'photo-1600566752355-35792bedcfea',secondary:'photo-1600607687939-ce8a6c25118c',details:['منازل معاصرة','تظليل سلبي','تراس داخلي'],aspect:'1.03'}
 ];
 const byId=s=>projects.find(p=>p.slug===s);
 const state={filter:'الكل',selected:'courtyard'};
@@ -31,7 +31,24 @@ function renderProjects(){
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
   state.filter=b.dataset.filter;
   $$('[data-filter]').forEach(x=>{const a=x===b;x.classList.toggle('active',a);x.setAttribute('aria-pressed',String(a));});
-  renderProjects();
+  
+// A single lightweight handwriting-style reveal rather than an endless typing loop.
+// Grapheme segmentation avoids splitting Arabic marks across frames.
+const heroIndicator=$('.hero-indicator span:last-child');
+if(heroIndicator && !reduced){
+ const message=heroIndicator.textContent.trim();
+ const segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ar',{granularity:'grapheme'}):null;
+ const glyphs=segmenter?Array.from(segmenter.segment(message),x=>x.segment):Array.from(message);
+ heroIndicator.setAttribute('aria-label',message);
+ heroIndicator.textContent='';
+ let letter=0;
+ const write=()=>{
+   heroIndicator.textContent=glyphs.slice(0,++letter).join('');
+   if(letter<glyphs.length)setTimeout(write,36);
+ };
+ setTimeout(write,1150);
+}
+renderProjects();
 }));
 const modal=$('#projectDialog');
 let previousFocus=null;
