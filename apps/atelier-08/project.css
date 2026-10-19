@@ -22,3 +22,8 @@
 @keyframes rh-out{to{opacity:.36;filter:blur(4px)}}
 @keyframes rh-in{from{opacity:.35;transform:translateY(11px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+
+.lab-subtools{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+.lab-subtools p{max-width:300px;margin:0;line-height:1.8}
+.download-svg{border:1px solid #e0e7d380;color:#e1e9d6;background:transparent;padding:12px 17px;border-radius:100px;font-size:10px}
+.download-svg:hover{background:#e0e7d3;color:#122017}
