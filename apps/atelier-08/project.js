@@ -33,6 +33,17 @@ const technical=[
  {id:'axon',name:'التجسيم الهندسي',sub:'المخطط يرتفع إلى كتلة',description:'منظور أكسونومتري منشأ من نفس حدود المخطط التجريبي.'},
  {id:'materials',name:'دراسة المواد',sub:'لوحة الألوان والخامات',description:'اقتراح ألوان وخامات يُكمل لغة المشروع دون الادعاء بأنها مواصفات نهائية.'}
 ];
+if(p.slug==='courtyard'){
+  Object.assign(technical.find(x=>x.id==='plan'),{name:'مخطط الدور الأرضي',sub:'لوحة A-101 — توزيع الفراغات'});
+  Object.assign(technical.find(x=>x.id==='furniture'),{name:'فرش الدور الأرضي',sub:'دراسة الأثاث ومسارات الاستخدام'});
+  Object.assign(technical.find(x=>x.id==='zoning'),{name:'توزيع الوظائف',sub:'تحليل مناطق العائلة والضيافة'});
+  Object.assign(technical.find(x=>x.id==='circulation'),{name:'مسارات الحركة',sub:'من المدخل إلى الفراغات'});
+  Object.assign(technical.find(x=>x.id==='sun'),{name:'مخطط الإضاءة',sub:'توزيع نقاط الإضاءة المقترح',description:'مخطط إنارة تصوّري؛ ليس دراسة ضوء شمسي أو مخطط كهرباء تنفيذي.'});
+  Object.assign(technical.find(x=>x.id==='dimensions'),{name:'الأبعاد وشبكة المحاور',sub:'اللوحة المعمارية المشروحة'});
+  Object.assign(technical.find(x=>x.id==='elevation'),{name:'الواجهة الداخلية',sub:'لوحة A-201 — دراسة الارتفاعات'});
+  Object.assign(technical.find(x=>x.id==='section'),{name:'قطاع A–A',sub:'لوحة A-301 — القراءة الرأسية'});
+  Object.assign(technical.find(x=>x.id==='axon'),{name:'تفاصيل التقاء المواد',sub:'لوحة A-401 — أربع دراسات تفصيلية',description:'رسومات مفاهيمية لالتقاء السقف بالواجهة، والزجاج بالكسوة، والشرائح الخشبية، وحافة المسبح. تفاصيل غير معتمدة للتنفيذ.'});
+}
 const captions=['الكتلة والواجهة','اللقطة الخارجية','ضوء المساحات','حضور المواد','إيقاع التفاصيل','أجواء المساء'];
 const frames=[
  ...technical.map((x,i)=>({...x,kind:'drawing',index:i,code:x.id})),
@@ -205,6 +216,7 @@ function materialSvg(){
  sw.map((c,i)=>'<rect x="'+(78+i*164)+'" y="165" width="138" height="225" rx="2" fill="'+c+'"/><text x="'+(78+i*164)+'" y="417" font-size="13" fill="#e2e5d2" font-family="Manrope,Arial,sans-serif">M—0'+(i+1)+'</text>').join(''),'لوحة مواد وألوان تصوّرية');
 }
 function drawingSvg(kind){
+ if(p.slug==='courtyard'&&kind==='axon')return window.REHAB_CAD.details();
  if(['plan','furniture','zoning','circulation','sun','dimensions'].includes(kind))return planSvg(kind);
  if(kind==='axon')return axonSvg();
  if(kind==='elevation')return elevationSvg();
