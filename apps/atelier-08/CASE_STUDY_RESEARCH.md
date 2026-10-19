@@ -126,3 +126,7 @@ The featured Courtyard House now contains an additional scroll chapter before th
 - For other five fictional cases the photo references remain separate illustrative assets; they DO NOT automatically depict corresponding constructed buildings or authentic AutoCAD models.
 - See [135-candidate tools research](OPEN_SOURCE_TOOL_REVIEW.md). Catalog vs hands-on validation is explicitly distinguished.
 - QA: JS syntax checks + mocked Three.js API initialization and six-case data model checks passed; actual remote-CDN / browser GPU screenshots and mobile-frame-rate audits remain **untested in this environment**.
+
+## Latest implementation supersedes former 3D experiments
+
+The earlier section describing a Three.js scene and runtime screenshots is **historical research**, not the present shipped website. The Three.js assembly file was deleted. The active flagship chapter uses a shared-dimension vector technical drawing and CAD R12 DXF, plus seven stage-controlled SVG layer reveals. Details are in cad-studio.js and cad-journey.js. Photographs are now explicitly separate mood references; they are **not** extracted from a matching 3D model, not rendered proof of the fictional structure, and not completed-building images. The second-order schematic layers and junction details remain unapproved studies.
