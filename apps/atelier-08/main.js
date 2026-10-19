@@ -27,36 +27,24 @@ function thumbnailPlan(i){
 }
 function renderProjects(){
   const filtered=projects.filter(p=>state.filter==='الكل'||p.type===state.filter);
-  $('#projectGrid').innerHTML=filtered.map((p,i)=>'<article class="project">'+
-    '<button type="button" class="project-cover" data-open="'+p.slug+'" aria-label="استعرض مشروع '+p.name+'">'+
-      '<img src="'+img(p.image)+'" alt="صورة معمارية توضيحية لتصوّر '+p.name+'" loading="lazy" decoding="async">'+
-      '<span class="cover-index">'+String(projects.indexOf(p)+1).padStart(2,'0')+' / 06</span>'+
-      '<span class="cover-tag">تصوّر تصميمي • '+p.type+'</span><span class="cover-arrow" aria-hidden="true">↗</span></button>'+
-    '<div class="project-text"><div><p>'+p.place+' / '+p.type+'</p><h3>'+p.name+'</h3></div><span class="project-year">'+p.year+'</span></div>'+
-    '<div class="project-note">'+p.lead+'</div>'+
-   '</article>').join('');
+  $('#projectGrid').innerHTML=filtered.map(p=>{
+    const n=projects.indexOf(p);
+    return '<article class="project">'+
+      '<a href="./project.html?case='+encodeURIComponent(p.slug)+'" class="project-cover" aria-label="استعرض الدراسة التفصيلية لمشروع '+p.name+'">'+
+       '<img src="'+img(p.image)+'" alt="صورة معمارية توضيحية لتصوّر '+p.name+'" loading="lazy" decoding="async">'+
+       '<span class="cover-index">'+String(n+1).padStart(2,'0')+' / 06</span>'+
+       '<span class="cover-tag">تصوّر تصميمي · 16 لوحة معمارية</span>'+
+       '<span class="project-plan-thumb" aria-hidden="true">'+thumbnailPlan(n)+'</span>'+
+       '<span class="cover-arrow" aria-hidden="true">↗</span></a>'+
+      '<div class="project-text"><div><p>'+p.place+' / '+p.type+'</p><h3>'+p.name+'</h3></div><span class="project-year">'+p.year+'</span></div>'+
+      '<div class="project-note">'+p.lead+' <span class="go-case">استكشف المخططات والمقاطع ←</span></div>'+
+     '</article>';
+  }).join('');
 }
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
   state.filter=b.dataset.filter;
-  $$('[data-filter]').forEach(x=>{const a=x===b;x.classList.toggle('active',a);x.setAttribute('aria-pressed',String(a));});
-  
-// A single lightweight handwriting-style reveal rather than an endless typing loop.
-// Grapheme segmentation avoids splitting Arabic marks across frames.
-const heroIndicator=$('.hero-indicator span:last-child');
-if(heroIndicator && !reduced){
- const message=heroIndicator.textContent.trim();
- const segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ar',{granularity:'grapheme'}):null;
- const glyphs=segmenter?Array.from(segmenter.segment(message),x=>x.segment):Array.from(message);
- heroIndicator.setAttribute('aria-label',message);
- heroIndicator.textContent='';
- let letter=0;
- const write=()=>{
-   heroIndicator.textContent=glyphs.slice(0,++letter).join('');
-   if(letter<glyphs.length)setTimeout(write,36);
- };
- setTimeout(write,1150);
-}
-renderProjects();
+  $$('[data-filter]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
+  renderProjects();
 }));
 $$('[data-scene-button]').forEach(b=>b.addEventListener('click',()=>{
   const ix=b.dataset.sceneButton;
@@ -109,4 +97,17 @@ addEventListener('scroll',()=>{if(queued)return;queued=true;requestAnimationFram
  const total=document.documentElement.scrollHeight-innerHeight;
  readProgress.style.width=(total>0?scrollY/total*100:0)+'%';queued=false;
 });},{passive:true});
+// A restrained, one-time Arabic grapheme reveal in the hero kicker.
+const heroIndicator=$('.hero-indicator span:last-child');
+if(heroIndicator && !reduced){
+ const message=heroIndicator.textContent.trim();
+ const segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ar',{granularity:'grapheme'}):null;
+ const glyphs=segmenter?Array.from(segmenter.segment(message),x=>x.segment):Array.from(message);
+ heroIndicator.setAttribute('aria-label',message);
+ heroIndicator.textContent='';
+ let letter=0;
+ const write=()=>{heroIndicator.textContent=glyphs.slice(0,++letter).join('');if(letter<glyphs.length)setTimeout(write,36);};
+ setTimeout(write,1100);
+}
+
 renderProjects();
