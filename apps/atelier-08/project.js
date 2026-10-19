@@ -18,6 +18,14 @@ const cases=[
 const slug=new URLSearchParams(location.search).get('case');
 const index=Math.max(0,cases.findIndex(p=>p.slug===slug));
 const p=cases[index],next=cases[(index+1)%cases.length];
+const houseAssembly = $('#assembly');
+if(p.slug==='courtyard'){
+  const loader=document.createElement('script');
+  loader.type='module';loader.src='./assembly.js';
+  loader.onerror=()=>{const el=$('#assemblyLoader');if(el)el.textContent='تعذّر تشغيل العرض ثلاثي الأبعاد. يمكنك متابعة المخططات والصور في بقية الملف.';};
+  document.body.appendChild(loader);
+}else if(houseAssembly){houseAssembly.hidden=true;}
+
 const technical=[
  {id:'plan',name:'المسقط الأفقي',sub:'منطق توزيع الفراغات',description:'رسم متجهي مفاهيمي لتقسيم المساحة وعلاقة الغرف بالمحور الرئيس.'},
  {id:'furniture',name:'فرش وتوزيع',sub:'مقياس الإنسان داخل الفراغ',description:'أماكن الجلوس والطاولات والفراغات المساعدة على المخطط نفسه.'},
