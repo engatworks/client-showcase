@@ -67,3 +67,10 @@ These are design-study references; the implemented logo, copy, layouts and inter
 - Visual QA must be completed on the live Cloudflare Pages deployment (desktop 1440/1024, mobile 390/320, Safari and Chrome).
 - Verify all remote image URLs. If an Unsplash image fails, replace it with a project-licensed image. The environment that produced the code has limited live-site browsing access.
 - Measure Lighthouse mobile LCP, CLS, contrast and long-task timings. Ensure loaded external fonts fall back acceptably under slow networks.
+
+## Current signature upgrade (19 Oct 2026)
+- The Courtyard House now has a **seven-stage interactive 3D build** on scroll. The model is procedural Three.js, not a stock 3D asset and not a built photograph.
+- [House dimension source](house-config.js) is the shared plan/model authority; plan, elevation and section use matching footprint/level intent.
+- Four architectural storytelling levels coexist: 2D floor plan; technical overlays; solid 3D assembly; six camera angles rendered from that same source.
+- The opening hero / rendered gallery views of the Courtyard case are generated at runtime from the same model. Other project case studies remain **separately fictional** reference galleries until actual source files exist.
+- [Tool landscape](OPEN_SOURCE_TOOL_REVIEW.md) — 135 named candidates catalogued and a focused stack chosen; NOT 135 hands-on installations.
