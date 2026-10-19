@@ -68,9 +68,14 @@ These are design-study references; the implemented logo, copy, layouts and inter
 - Verify all remote image URLs. If an Unsplash image fails, replace it with a project-licensed image. The environment that produced the code has limited live-site browsing access.
 - Measure Lighthouse mobile LCP, CLS, contrast and long-task timings. Ensure loaded external fonts fall back acceptably under slow networks.
 
-## Current signature upgrade (19 Oct 2026)
-- The Courtyard House now has a **seven-stage interactive 3D build** on scroll. The model is procedural Three.js, not a stock 3D asset and not a built photograph.
-- [House dimension source](house-config.js) is the shared plan/model authority; plan, elevation and section use matching footprint/level intent.
-- Four architectural storytelling levels coexist: 2D floor plan; technical overlays; solid 3D assembly; six camera angles rendered from that same source.
-- The opening hero / rendered gallery views of the Courtyard case are generated at runtime from the same model. Other project case studies remain **separately fictional** reference galleries until actual source files exist.
-- [Tool landscape](OPEN_SOURCE_TOOL_REVIEW.md) — 135 named candidates catalogued and a focused stack chosen; NOT 135 hands-on installations.
+## Current signature direction (October 2026)
+
+The active concept rejects the prior cartoon-like WebGL demonstration. The live signature interaction is now **seven scroll-driven layers of real SVG architectural vector linework**, revealing the plot, walls, openings, furniture, light locations, dimensioning/annotations, elevation and section. The master concept grid is in house-config.js, and the actual SVG/DXF source is in cad-studio.js.
+
+- A-101 ground-floor concept plan, A-201 courtyard elevation, A-301 section and A-401 four schematic junction studies.
+- Direct .dxf download from the site; browser can also export at a requested 3840×2160 resolution.
+- Native scroll, zoomable 100%–400% drawing lightbox and a reduced-motion static presentation.
+- The first courtyard concept has a coherent shared plan envelope; **reference photos are separate** and are NOT the executed/photoreal results of the exact floor plan.
+- The research file OPEN_SOURCE_TOOL_REVIEW.md catalogues 135 candidates, **not** 135 individually installed/tested tools; previous procedural 3D work was retired.
+
+Release blockers: real owner's approved project files, truthful project credits, verified imagery, professional checking of technical details, actual business contacts and live desktop/mobile browser QA.
