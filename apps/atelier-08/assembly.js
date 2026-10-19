@@ -282,7 +282,7 @@ function update(t){
  groundGrid.visible=v<.21;
  const move=smooth(clamp((v-.14)/.82));
  const mobile=canvasHost.clientWidth<650;
- camera.position.set(blend(mobile?29:27,mobile?23:23,move),blend(mobile?29:30,mobile?13.8:13,move),blend(mobile?30:33,mobile?30:27,move));
+ camera.position.set(blend(mobile?29:27,mobile?30:20,move),blend(mobile?29:30,mobile?20:12.5,move),blend(mobile?30:33,mobile?37:24,move));
  camera.lookAt(0,blend(.5,2.15,move),0);
  sun.intensity=blend(3.7,2.8,clamp((v-.75)*4));
  ambient.intensity=blend(2.55,1.9,clamp((v-.75)*4));
@@ -345,6 +345,23 @@ if(blueprint){
  '<text x="200" y="190" text-anchor="middle" fill="#d5decf" font-family="Arial,sans-serif" font-size="10">COURTYARD</text></svg>';
  blueprint.innerHTML=plan;
 }
-resize();update(fromScroll());
+resize();
+// The prominent project hero image is rendered from exactly this 3D scene.
+// The original architectural stock photo remains only as a fallback if WebGL fails.
+try{
+ update(1);
+ renderer.setClearColor('#d9dacc',1);
+ render();
+ const output=renderer.domElement.toDataURL('image/png');
+ const hero=document.querySelector('#heroImage');
+ if(hero&&output.startsWith('data:image/png')){
+   hero.src=output;
+   hero.alt='رندر معماري توضيحي لبيت الفناء؛ ملتقط من النموذج ثلاثي الأبعاد نفسه، وليس صورة لمبنى منفّذ';
+   const foot=document.querySelector('.hero-foot span:last-child');
+   if(foot)foot.textContent='3D VISUALIZATION / SAME MODEL / NOT BUILT';
+ }
+ renderer.setClearColor('#e3e1d6',0);
+}catch(e){console.warn('Project preview render unavailable; reference image retained.',e);}
+update(fromScroll());
 $('#assemblyLoader')?.remove();
 window.__rehabAssembly={geometry:H,stages:stageNames.length,setProgress:update};
