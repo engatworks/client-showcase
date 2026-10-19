@@ -85,7 +85,7 @@ function planSvg(kind='plan'){
  return svgWrap(extra+base+'<g font-family="Manrope,Arial,sans-serif" font-size="13" fill="#dce7d6" text-anchor="middle" letter-spacing="1">'+
  '<text x="'+((105+a)/2)+'" y="'+((82+c)/2)+'">LIVING</text><text x="'+((a+b)/2)+'" y="'+((82+c)/2)+'">COURT</text><text x="'+((b+685)/2)+'" y="'+((82+c)/2)+'">DINING</text><text x="'+((105+a)/2)+'" y="'+((c+442)/2)+'">LOUNGE</text><text x="'+((a+685)/2)+'" y="'+((d+442)/2)+'">PRIVATE</text></g>',"مخطط مفاهيمي "+p.name);
 }
-function isoPt(x,y,z){return [418+(x-y)*.70,92+(x+y)*.34-z*.85];}
+function isoPt(x,y,z){return [385+(x-y)*.70,92+(x+y)*.34-z*.85];}
 function point(x,y,z){const [a,b]=isoPt(x,y,z);return a.toFixed(1)+','+b.toFixed(1);}
 function poly(points,fill,stroke='#a8b59a'){return '<polygon points="'+points.map(q=>point(...q)).join(' ')+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.7"/>';}
 function wall(x1,y1,x2,y2,h,color){return poly([[x1,y1,0],[x2,y2,0],[x2,y2,h],[x1,y1,h]],color);}
@@ -163,8 +163,8 @@ function renderAtlas(){
  $$('[data-frame]').forEach(btn=>btn.addEventListener('click',()=>openFrame(btn.dataset.frame)));
 }
 $$('[data-group]').forEach(b=>b.addEventListener('click',()=>{
- group=b.dataset.group;$$('[data-group]').forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on));});
- renderAtlas();
+ const update=()=>{group=b.dataset.group;$('[data-group]').forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on));});renderAtlas();};
+ if(document.startViewTransition&&!reduced)document.startViewTransition(update);else update();
 }));
 const lightbox=$('#lightbox');let lightboxId='plan';
 function visibleFrames(){return frames.filter(f=>group==='all'||f.kind===group);}
