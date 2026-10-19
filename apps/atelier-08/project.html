@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./project.css">
 <script src="./project.js" defer></script>
+<script type="module" src="./assembly.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">تجاوز إلى المشروع</a>
@@ -33,6 +34,72 @@
 <div class="eyeline"><span>01 / قراءة المشروع</span><span dir="ltr">DESIGN INTENT</span></div>
 <div class="narrative-layout"><div class="narrative-side"><span>اللغة التصميمية</span><div class="accent-asterisk" aria-hidden="true">✳</div></div><div><h2 id="caseStatement">عندما يصبح الضوء جزءًا من تفاصيل الحياة.</h2><p class="narrative-paragraph" id="caseStory"></p><div class="facts" id="caseFacts"></div></div></div>
 </section>
+<section class="assembly-chapter" id="assembly" aria-label="تجربة بناء منزل بيت الفناء مرحلة بمرحلة">
+  <div class="assembly-sticky">
+    <div class="assembly-canvas" id="assemblyCanvas">
+      <div class="assembly-loader" id="assemblyLoader" role="status">جاري تجهيز النموذج المعماري…</div>
+    </div>
+    <div class="assembly-ambient" aria-hidden="true"></div>
+    <div class="assembly-heading">
+      <span>02 / من أول خط إلى آخر تفصيلة</span>
+      <span dir="ltr">REHAB HAIDER / HOUSE ASSEMBLY</span>
+    </div>
+    <div class="assembly-blueprint" id="assemblyBlueprint"><span>GROUND FLOOR / SAME FOOTPRINT</span></div>
+    <div class="assembly-copy">
+      <article data-build-step="0" class="current">
+        <span class="assembly-ordinal">01 / قراءة الموقع</span>
+        <h2>هنا تبدأ<br><em>الحكاية.</em></h2>
+        <p>قبل الواجهات والألوان، نفهم الأرض واتجاهاتها. كل قرار يبدأ من سؤال بسيط: كيف نبغى نعيش في هذا المكان؟</p>
+      </article>
+      <article data-build-step="1">
+        <span class="assembly-ordinal">02 / توزيع المساحات</span>
+        <h2>نرسم الحياة<br><em>أولًا.</em></h2>
+        <p>المجلس، المعيشة، الفناء، وممرات الحركة. كل فراغ له مكانه وسبب وجوده — قبل ما ترتفع أول جدار.</p>
+      </article>
+      <article data-build-step="2">
+        <span class="assembly-ordinal">03 / الهيكل المعماري</span>
+        <h2>المخطط يبدأ<br><em>يرتفع.</em></h2>
+        <p>الأعمدة والكمرات توضح إيقاع الكتل، وتبدأ العلاقات اللي رسمناها على الورق تصير ملموسة قدامنا.</p>
+      </article>
+      <article data-build-step="3">
+        <span class="assembly-ordinal">04 / الجدران والفتحات</span>
+        <h2>نفتح للضوء<br><em>مكانه.</em></h2>
+        <p>تتحدد الجدران، وتتضح الواجهات الزجاجية حول الفناء. الخصوصية والإطلالة هنا يكملون بعض.</p>
+      </article>
+      <article data-build-step="4">
+        <span class="assembly-ordinal">05 / الغلاف المعماري</span>
+        <h2>تبدأ الملامح<br><em>تتكامل.</em></h2>
+        <p>الأسقف، البروزات، والتظليل تصنع شخصية البيت، وتحوّل التوزيع الداخلي إلى عمارة لها حضور.</p>
+      </article>
+      <article data-build-step="5">
+        <span class="assembly-ordinal">06 / المواد والتفاصيل</span>
+        <h2>وهنا يبان<br><em>الفرق.</em></h2>
+        <p>الحجر، الخشب، الفتحات، والمياه في الفناء. التفاصيل ما تجي بالصدفة؛ كل اختيار يخدم إحساس المكان.</p>
+      </article>
+      <article data-build-step="6">
+        <span class="assembly-ordinal">07 / المشهد النهائي</span>
+        <h2>من رسم…<br><em>إلى بيت.</em></h2>
+        <p>هذا تصوّر ثلاثي الأبعاد صُمم خصيصًا للتجربة، وكل قطعة فيه مرتبطة بتوزيع البيت الأساسي. النموذج تجريبي، وليس مشروعًا منفّذًا.</p>
+        <button type="button" class="assembly-save" id="assemblySave">احفظ منظور النموذج ↗</button>
+      </article>
+    </div>
+    <div class="assembly-controls">
+      <div class="assembly-steplist" role="group" aria-label="انتقل إلى مرحلة من مراحل البناء">
+        <button data-assembly-jump="0" class="active" aria-current="step">الموقع</button>
+        <button data-assembly-jump="1">المخطط</button>
+        <button data-assembly-jump="2">الهيكل</button>
+        <button data-assembly-jump="3">الواجهات</button>
+        <button data-assembly-jump="4">السقف</button>
+        <button data-assembly-jump="5">التفاصيل</button>
+        <button data-assembly-jump="6">النتيجة</button>
+      </div>
+      <div class="assembly-bottom"><span id="assemblyNumber" dir="ltr">01 / 07</span><span id="assemblyStatus" role="status">الموقع — 0%</span><span>حرّك الصفحة لتبني البيت خطوة بخطوة ↓</span></div>
+      <div class="assembly-track" aria-hidden="true"><span id="assemblyProgress"></span></div>
+    </div>
+    <div class="assembly-disclaimer">تصوّر معماري ثلاثي الأبعاد مرتبط بمخططه · ليس تصويرًا لمبنى منفّذ</div>
+  </div>
+</section>
+
 <section class="lab-section section" id="lab">
 <div class="eyeline light"><span>02 / من المخطط إلى الفراغ</span><span dir="ltr">THE SPACE LAB</span></div>
 <div class="lab-heading"><div><span class="overline">التصميم من الداخل إلى الخارج</span><h2>حرّك المؤشر.<br><em>شاهد الفكرة تتشكّل.</em></h2></div><p>مقارنة تفاعلية بين مخطط أفقي وتجسيم معماري مولّد من هندسته الأساسية. حرّك المؤشر أو استخدم لوحة المفاتيح لاكتشاف التحوّل.</p></div>
