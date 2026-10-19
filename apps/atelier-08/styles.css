@@ -28,3 +28,18 @@
 .drawing-deep-link{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:23px;border:1px solid #d9e8d052;padding:16px 20px;color:#e7e5d2;background:#a7b9a610;font:500 11px/1.8 var(--ar);transition:background .25s}
 .drawing-deep-link:hover{background:#b7ccab24}.drawing-deep-link span{font:400 23px var(--en)}
 @media(max-width:640px){.drawing-deep-link{font-size:9px;padding:14px}}
+
+/* Featured architectural assembly gateway — a distinct piece of editorial wayfinding. */
+.assembly-promo{display:grid;grid-template-columns:1.2fr auto;column-gap:25px;row-gap:16px;position:relative;margin:0 0 52px;padding:34px 42px 36px;overflow:hidden;border:1px solid #b7baa267;background:radial-gradient(circle at 82% 20%,#54725878,transparent 34%),linear-gradient(115deg,#354b38,#222e27);color:#f0f2e8;transition:transform .4s,box-shadow .4s}
+.assembly-promo:hover{transform:translateY(-5px);box-shadow:0 20px 50px #0004}
+.assembly-promo::before{content:"";position:absolute;left:10%;top:-45%;width:450px;height:450px;border:1px solid #ffffff20;transform:rotate(35deg);pointer-events:none}
+.assembly-promo::after{content:"";position:absolute;left:15%;top:-30%;width:300px;height:400px;border:1px solid #ffffff25;transform:rotate(35deg);pointer-events:none}
+.promo-kicker{grid-column:1/-1;font-size:10px;letter-spacing:.03em;color:#d4e0cb;display:flex;justify-content:space-between;gap:15px}
+.promo-kicker span{font:500 9px var(--en);letter-spacing:.12em}
+.promo-title{grid-column:1;font:500 clamp(57px,7.4vw,116px)/1.13 var(--calligraphy)}
+.promo-title em{font-style:normal;font-weight:500;color:#c7dbb7}
+.promo-description{grid-column:1;color:#d4dfcf;font-size:12px;line-height:2.05;max-width:550px}
+.promo-action{grid-column:2;grid-row:2/4;align-self:center;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;width:150px;height:150px;border:1px solid #d7e0cd88;border-radius:50%;font-size:12px;z-index:1}
+.promo-action b{font:400 34px var(--en)}
+@media(max-width:660px){.assembly-promo{padding:24px 20px;grid-template-columns:1fr}.promo-title{font-size:59px}.promo-description{font-size:10px}.promo-action{grid-column:1;grid-row:auto;align-self:start;width:auto;height:auto;flex-direction:row;justify-content:space-between;border:0;border-top:1px solid #fff4;border-radius:0;padding-top:16px;font-size:11px}.promo-action b{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.assembly-promo:hover{transform:none}}
