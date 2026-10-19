@@ -116,3 +116,13 @@ For commercial use representing the actual architect, acquire and verify:
 - Route slugs were compared against the homepage's six project records and matched.
 - Real browser QA, visual screenshot comparison, viewport reflow and external photo availability remain unverified because the public Cloudflare Pages URL is blocked to this chat's browser.
 - Test at 360, 390, 412, 768, 1024 and 1440 CSS pixels before production handoff.
+
+## 19 Oct 2026 update — consistent architectural assembly
+The featured Courtyard House now contains an additional scroll chapter before the old plan scrubber:
+- Shared master dimensions: `house-config.js` (single house footprint).
+- Seven-layer procedural assembly: `assembly.js`, 3D object modelled as scene components, in a native sticky scroll environment.
+- Original SVG plan/elevation/section/axon for the courtyard now use the same master geometry configuration instead of unrelated rectilinear studies.
+- Six camera views are generated in the browser from this house model and **replace unrelated mood-stock images for this one case**; its project hero image also comes from the same renderer. **These are not photographs of finished construction.**
+- For other five fictional cases the photo references remain separate illustrative assets; they DO NOT automatically depict corresponding constructed buildings or authentic AutoCAD models.
+- See [135-candidate tools research](OPEN_SOURCE_TOOL_REVIEW.md). Catalog vs hands-on validation is explicitly distinguished.
+- QA: JS syntax checks + mocked Three.js API initialization and six-case data model checks passed; actual remote-CDN / browser GPU screenshots and mobile-frame-rate audits remain **untested in this environment**.
