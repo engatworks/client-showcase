@@ -123,5 +123,17 @@ section.querySelector('#cadExport4k').addEventListener('click',async e=>{
   finally{setTimeout(()=>{button.disabled=false;button.textContent=original;},2400);}
 });
 
-stepContent(0);update();
+if(reduce){
+  // Reduced-motion users get the complete blueprint and both vertical studies
+  // directly, without several screen heights of artificial scroll.
+  stepContent(5);
+  frame.hidden=false;
+  frame.innerHTML=cad.sheet(6);
+  final.hidden=false;
+  tabs.hidden=true;
+  currentNum.textContent='A-101 / A-201 / A-301';
+}else{
+  stepContent(0);
+  update();
+}
 })();
