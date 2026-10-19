@@ -1,2 +1,0 @@
-# Keep deployment configuration out of public static assets.
-wrangler.jsonc
