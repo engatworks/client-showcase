@@ -17,6 +17,11 @@ const projects=[
 const byId=s=>projects.find(p=>p.slug===s);
 const state={filter:'الكل',selected:'courtyard'};
 function thumbnailPlan(i){
+
+ if(i===0&&window.REHAB_CAD){
+   return window.REHAB_CAD.sheet(4)
+     .replace('viewBox="0 0 1300 825"','viewBox="125 150 620 520"');
+ }
  const split=44+i*4, edge=91-i*2;
  return '<svg viewBox="0 0 150 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+
  '<g fill="none" stroke="#d9ddcb" stroke-width="2.2"><path d="M13 13H137V101H13Z"/>'+
@@ -61,14 +66,23 @@ $$('[data-palette]').forEach(b=>b.addEventListener('click',()=>{
  $$('.palette-bars i').forEach((el,i)=>el.style.background=p.tones[i]);
  $$('[data-palette]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
 }));
-const layerDescription={plan:'الطبقة 01 / قراءة توزيع الفراغات والأبعاد',light:'الطبقة 02 / دراسة حركة الشمس والظل',flow:'الطبقة 03 / العلاقات والحركة داخل المساحة'};
+const layerDescription={
+ plan:'اللوحة A-101 / توزيع المساحات والمداخل',
+ light:'مخطط الإنارة / نقاط إضاءة تصوّرية',
+ flow:'مسارات الحركة / من المدخل إلى الفراغات'
+};
+function updateFloorPlan(mode){
+  if(!window.REHAB_CAD)return;
+  const kind=mode==='light'?'sun':mode==='flow'?'circulation':'plan';
+  $('#floorPlan').innerHTML=window.REHAB_CAD.frame(kind);
+  $('#boardCaption').textContent=layerDescription[mode];
+}
 $$('[data-layer]').forEach(b=>b.addEventListener('click',()=>{
  const active=b.dataset.layer;
- $('#layerLight').setAttribute('opacity',active==='light'?'1':'0');
- $('#layerFlow').setAttribute('opacity',active==='flow'?'1':'0');
- $('#boardCaption').textContent=layerDescription[active];
+ updateFloorPlan(active);
  $$('[data-layer]').forEach(x=>{const yes=x===b;x.classList.toggle('active',yes);x.setAttribute('aria-pressed',String(yes));});
 }));
+updateFloorPlan('plan');
 const menuButton=$('#menuToggle'),menu=$('#mobileMenu');
 function setMenu(open){
  menu.classList.toggle('open',open);menu.inert=!open;document.body.classList.toggle('menu-open',open);
