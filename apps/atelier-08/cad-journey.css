@@ -88,3 +88,16 @@
 }
 @media(max-width:370px){.cad-sticky{grid-template-rows:60px minmax(0,1fr) 190px 135px}.cad-topline span:last-child{display:none}.cad-journey-copy h2{font-size:38px}.cad-phase-tabs button{font-size:7.5px}}
 @media(prefers-reduced-motion:reduce){.cad-sheet-frame,.cad-phase-tabs button{transition:none!important;transform:none!important}}
+
+@media(prefers-reduced-motion:reduce){
+  .cad-journey{height:auto!important}
+  .cad-sticky{position:relative!important;height:auto!important;min-height:0!important;display:block!important;overflow:visible}
+  .cad-topline{display:flex;padding:25px 5%}
+  .cad-journey-copy{padding:30px 6%!important;background:none!important}
+  .cad-sheet-frame,.cad-journey-final{margin:20px 5%!important;transform:none!important}
+  .cad-final-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cad-journey-bottom{padding:24px 6%}
+  .cad-journey-bottom [hidden]{display:none!important}
+  .cad-progress-line{display:none}
+  .cad-disclosure{position:static;padding:14px 6%;margin:0}
+}
