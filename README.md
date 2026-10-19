@@ -7,7 +7,30 @@ A zero-dependency static monorepo for showing prospective freelance web clients 
 | ATELIER / 08 | `apps/atelier-08` | Cinematic portfolio for a fictional architecture + interiors studio |
 | Goodside Learning | `apps/goodside-learning` | Warm, thoughtful 1:1 private tutor website |
 
-## Deploy for free on Cloudflare Pages
+## Recommended deployment: Cloudflare Workers Static Assets (free, Git-connected)
+
+Both sites have their own `wrangler.jsonc` and `.assetsignore`, so you can connect the same repository to **two different Workers**, without a package manager or build command.
+
+**Architecture Worker:**
+- Git repository: `engatworks/client-showcase` 
+- Production branch: `main`
+- **Root directory:** `apps/atelier-08`
+- **Build command:** blank
+- **Deploy command:** `npx wrangler deploy`
+- Wrangler name: `atelier-08-demo` (if you already created a Worker with another name, update `wrangler.jsonc` to match the name in the dashboard when Cloudflare does not automatically override it)
+- Build watch include path: `apps/atelier-08/*`
+
+**Tutor Worker:** identical except root directory is `apps/goodside-learning`, Wrangler name is `goodside-tutor-demo`, and watch path `apps/goodside-learning/*`.
+
+Wrangler serves static assets from `./` relative to each site's config file. Each site's `.assetsignore` excludes its deployment config from public asset uploads. No Worker JavaScript entry point, GitHub Actions, paid service, or npm build required. If the Cloudflare project was created with a root directory of `/`, you must change it in **Worker → Settings → Build** or Wrangler won't see the site's config file. Changing GitHub repo files alone does not change that Worker dashboard setting.
+
+**For quick repair without changing a Worker's root directory:** keep root `/` and change its deploy command to `npx wrangler deploy --assets ./apps/atelier-08` (or `./apps/goodside-learning` for the tutor). Cloudflare documents the `--assets` flag for static deploys. This may require a Worker name/config depending on the existing project setup; the per-site Wrangler configuration above is the more maintainable approach.
+
+Reference: https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/ , https://developers.cloudflare.com/workers/static-assets/binding/ , https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/
+
+---
+
+## Alternative deployment: Cloudflare Pages
 
 Create **two Pages projects** using the same GitHub repository.
 
