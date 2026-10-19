@@ -21,17 +21,8 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = matchMedia('(pointer:coarse)').matches;
 if (!section || !canvasHost) throw new Error('Architectural assembly container is unavailable.');
 
-const H = Object.freeze({
-  width: 18,
-  depth: 14,
-  sideWing: 5.75,
-  courtyardWidth: 6.5,
-  courtLength: 8.35,
-  rearWingDepth: 4.2,
-  floorHeight: 3.7,
-  roofThickness: .34,
-  upperFloorHeight: 3.1
-});
+const H = window.REHAB_HOUSE_GEOMETRY;
+if(!H) throw new Error('House geometry config is missing.');
 const positions = [-9, -3.25, 3.25, 9];
 const roofZ = -4.9;
 const stageStarts = [0, .08, .21, .34, .49, .65, .81];
