@@ -1,68 +1,165 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#131511">
-  <meta name="description" content="ATELIER / 08 is a fictional architecture studio portfolio demonstration exploring the intersection of place, memory and material.">
-  <title>ATELIER / 08 — Architecture for a life less ordinary</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./main.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#191b18">
+<meta name="description" content="رحاب حيدر | REHAB HAIDER — تجارب معمارية وتصميم داخلي. استكشف مشاريع سكنية وتجارية وتصوّرات مكانية بطابع معاصر.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="رحاب حيدر | عمارة تُشعَر قبل أن تُرى">
+<meta property="og:description" content="تصاميم تستجيب للإنسان، للنور، ولروح المكان. تجربة تعريفية لاستوديو عمارة وتصميم داخلي.">
+<title>رحاب حيدر — عمارة تُشعَر قبل أن تُرى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=82">
+<link rel="stylesheet" href="./styles.css">
+<script src="./main.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div id="progress" class="progress" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor" id="cursor" aria-hidden="true"><span>VIEW</span></div>
-  <header class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Atelier 08, back to top"><span class="brand-mark">A<span class="brand-slash">/</span>08</span><span class="brand-desc">AN INDEPENDENT<br>DESIGN PRACTICE</span></a>
-    <nav class="desktop-links" aria-label="Main navigation"><a href="#work">Selected work <span>01</span></a><a href="#philosophy">Our philosophy <span>02</span></a><a href="#studio">The studio <span>03</span></a></nav>
-    <div class="nav-right"><span class="nav-time">LONDON · <span id="clock">09:41</span></span><a class="talk-link" href="#contact">START A PROJECT <span aria-hidden="true">↗</span></a><button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button></div>
-  </header>
-  <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" inert>
-    <a href="#work">Selected work <span>01</span></a><a href="#philosophy">Philosophy <span>02</span></a><a href="#studio">Studio <span>03</span></a><a href="#contact">Let's talk <span>↗</span></a>
-    <p>ATELIER / 08 &copy; 2026 · FICTIONAL STUDIO / LIVE DESIGN DEMO</p>
+<a class="skip" href="#content">تجاوز إلى المحتوى</a>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+<header class="header" id="header">
+  <a href="#top" class="identity" aria-label="رحاب حيدر — الصفحة الرئيسية">
+    <svg class="rh-symbol" width="52" height="52" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <path d="M5 59V5H59V59" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M17 59V31C17 21 23 15 32 15C41 15 47 21 47 31V59" stroke="currentColor" stroke-width="2.3"/>
+      <path d="M17 43H47" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M32 43V59" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M5 5L17 17M59 5L47 17" stroke="currentColor" stroke-width=".6" opacity=".48"/>
+      <circle cx="32" cy="9" r="1.6" fill="currentColor"/>
+    </svg>
+    <span class="brand-words"><strong>رحاب حيدر</strong><small>REHAB HAIDER <span>—</span> ARCHITECTURE & INTERIORS</small></span>
+  </a>
+  <nav class="nav" aria-label="التنقل الرئيسي">
+    <a href="#work" class="nav-link">المشاريع <sup>06</sup></a>
+    <a href="#approach" class="nav-link">فلسفة التصميم</a>
+    <a href="#expertise" class="nav-link">مجالات العمل</a>
+    <a href="#studio" class="nav-link">الاستوديو</a>
   </nav>
-  <main id="main">
-    <section class="hero" id="top" aria-label="Studio introduction">
-      <div class="hero-image" id="heroImage" role="img" aria-label="Contemporary residence with expansive glass and geometric architecture"></div>
-      <div class="hero-grad"></div>
-      <div class="hero-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <div class="hero-topline"><span><span class="pulse"></span> ARCHITECTURE, WITHOUT THE ORDINARY</span><span>51°30' N / 0°07' W</span></div>
-      <div class="hero-content">
-        <div class="hero-eyebrow"><span class="hero-dash"></span><span>SPACES SHAPED BY FEELING<br>AND DEFINED BY DETAIL.</span></div>
-        <h1 class="hero-title"><span class="reveal-wrap"><span>THE ART</span></span><span class="reveal-wrap"><span class="hero-title-bottom">OF <em>BEING.</em></span></span></h1>
-        <div class="hero-bottom"><p>Thoughtful places. Distinctive lives.<br>Architecture that stays with you.</p><a href="#work" class="round-cta" aria-label="Explore selected work"><span>EXPLORE<br>OUR WORK</span><span class="cta-arrow">↘</span></a></div>
-      </div>
-      <div class="hero-rail"><span>01 / 03</span><span>SCROLL TO EXPLORE</span><span>↓</span></div>
-      <div class="atmosphere" role="group" aria-label="Choose featured architectural atmosphere"><span>ATMOSPHERE</span><button class="atm is-active" data-atm="0" aria-label="Show Residence" aria-pressed="true">01</button><button class="atm" data-atm="1" aria-label="Show Interior" aria-pressed="false">02</button><button class="atm" data-atm="2" aria-label="Show Pavilion" aria-pressed="false">03</button></div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee-inner">NOT JUST BUILDINGS <span>✳</span> THE WAY WE LIVE <span>✳</span> NOT JUST BUILDINGS <span>✳</span> THE WAY WE LIVE <span>✳</span></div></div>
-    <section class="intro section-pad" id="philosophy">
-      <div class="section-index"><span>01 / WHAT DRIVES US</span><span>↓</span></div>
-      <div class="intro-layout"><p class="intro-aside">A PRACTICE ROOTED IN<br>THE HUMAN EXPERIENCE.</p><div><h2 class="statement" data-reveal>Good design doesn't <span>just change</span> how a place looks. <em>It changes how you feel.</em></h2><div class="intro-foot"><p>We believe the spaces we inhabit shape the stories we tell. We balance architectural restraint with the unexpected, creating homes and places that feel unmistakably personal.</p><a class="line-link" href="#studio">DISCOVER OUR APPROACH <span>↗</span></a></div></div></div>
-    </section>
-    <section class="work section-pad" id="work">
-      <div class="section-index dark-index"><span>02 / SELECTED WORK</span><span>2023—2026</span></div>
-      <div class="work-title"><h2 data-reveal>Spaces with <em>soul.</em></h2><p>An exploration of light, form, and all the things that make a place feel like yours.</p></div>
-      <div class="work-controls"><div class="filters" role="group" aria-label="Filter projects"><button class="filter is-active" data-filter="all" aria-pressed="true">All projects <sup>06</sup></button><button class="filter" data-filter="Residential" aria-pressed="false">Residential</button><button class="filter" data-filter="Interiors" aria-pressed="false">Interiors</button><button class="filter" data-filter="Cultural" aria-pressed="false">Cultural</button></div><div class="views" role="group" aria-label="Project view"><button id="gridView" class="is-active" aria-label="Grid view" aria-pressed="true">▦</button><button id="listView" aria-label="List view" aria-pressed="false">☰</button></div></div>
-      <div class="projects" id="projects" aria-live="polite"></div>
-      <div class="work-after"><span>END OF SELECTED WORK / 06</span><span>EVERY SPACE TELLS A STORY.</span></div>
-    </section>
-    <section class="manifesto" id="studio">
-      <div class="manifesto-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85" alt="Warm minimal interior with considered materials" loading="lazy"></div>
-      <div class="manifesto-content"><span class="overline">03 / OUR WAY OF THINKING</span><div class="manifesto-rule"></div><h2 data-reveal>Less noise.<br><em>More feeling.</em></h2><p>Architecture should never shout to be heard. Our work finds its power in proportion, light, texture, and the quieter moments that turn spaces into experiences.</p><div class="manifesto-list"><div><span>01</span><span>LISTEN FIRST</span><span>↗</span></div><div><span>02</span><span>DESIGN WITH INTENT</span><span>↗</span></div><div><span>03</span><span>MAKE IT HUMAN</span><span>↗</span></div></div><span class="small-note">THIS STUDIO AND ITS WORK ARE FICTIONAL — A DESIGN SHOWCASE.</span></div>
-    </section>
-    <section class="numbers section-pad"><div class="section-index"><span>THE DETAILS MATTER</span><span>EVERY TIME.</span></div><div class="numbers-grid"><div><span class="stat-large">01<sup> /</sup></span><p>ONE CLEAR POINT OF VIEW</p></div><div><span class="stat-large">∞</span><p>POSSIBILITIES WITHIN A SPACE</p></div><div><span class="stat-large">100<sup>%</sup></span><p>INTENTION, NOT DECORATION</p></div></div></section>
-    <section class="contact" id="contact"><div class="contact-top"><span>04 / THE NEXT CHAPTER</span><span>YOUR IDEA, OUR NEXT CONVERSATION.</span></div><p>HAVE SOMETHING IN MIND?</p><button id="contactTrigger" class="contact-headline" type="button">LET'S MAKE<br><em>SPACE.</em><span class="big-arrow">↗</span></button><div class="contact-bottom"><span>ATELIER / 08<br>INDEPENDENT DESIGN PRACTICE</span><span>FOR CONVERSATIONS THAT LEAD SOMEWHERE.</span><a href="#top">BACK TO TOP ↑</a></div></section>
-  </main>
-  <footer class="footer"><span>ATELIER / 08 <span class="footer-dim">© 2026</span></span><span>FICTIONAL ARCHITECTURE STUDIO · DESIGN SHOWCASE</span><span>CRAFTED TO BE EXPERIENCED</span></footer>
-  <dialog id="projectDialog" class="project-dialog" aria-label="Project details"><button class="dialog-close" id="projectClose" type="button" aria-label="Close project details">CLOSE <span>✕</span></button><div id="projectDetail"></div></dialog>
-  <dialog id="contactDialog" class="contact-dialog" aria-label="Project inquiry demo"><div class="contact-dialog-inside"><button id="contactClose" class="simple-close" aria-label="Close">✕</button><span class="overline">START A CONVERSATION</span><h2>Tell us about <em>your space.</em></h2><p>This is a working form preview. Because this is a fictional studio, it prepares a project brief for you to copy rather than pretending to send it.</p><form id="contactForm"><label>YOUR NAME<input name="name" placeholder="How should we call you?" required></label><label>PROJECT TYPE<select name="type"><option>New residence</option><option>Interior transformation</option><option>Commercial / cultural</option><option>Something else</option></select></label><label>YOUR VISION<textarea name="vision" rows="3" placeholder="A little about what you have in mind…" required></textarea></label><button type="submit" class="dialog-submit">PREPARE BRIEF <span>↗</span></button></form><div id="briefOutput" class="brief-output" hidden><p>YOUR PROJECT BRIEF</p><pre id="briefText"></pre><button type="button" id="copyBrief">COPY THE BRIEF ↗</button></div></div></dialog>
-  <span class="demo-tag">DESIGN CONCEPT / NOT A REAL PRACTICE</span>
+  <div class="nav-end"><a href="#inquire" class="nav-cta">لنبدأ محادثة <span>↗</span></a><button class="menu-toggle" id="menuToggle" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="فتح القائمة"><i></i><i></i></button></div>
+</header>
+<nav id="mobileMenu" class="mobile-menu" aria-label="قائمة الجوال" inert><a href="#work">المشاريع <span>٠١</span></a><a href="#approach">فلسفة التصميم <span>٠٢</span></a><a href="#expertise">مجالات العمل <span>٠٣</span></a><a href="#studio">الاستوديو <span>٠٤</span></a><a href="#inquire">تواصل معنا <span>↗</span></a></nav>
+
+<main id="content">
+<section class="hero" id="top" aria-label="استوديو رحاب حيدر">
+  <div class="hero-images" aria-hidden="true"><div class="hero-photo active" data-scene="0"></div><div class="hero-photo" data-scene="1"></div><div class="hero-photo" data-scene="2"></div></div>
+  <div class="hero-shade"></div>
+  <div class="hero-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-overline"><span>ممارسة تصميمية مستقلة</span><span class="lang-mark" dir="ltr">RH—ARCH / 2026</span></div>
+  <div class="hero-body">
+    <div class="hero-indicator"><span class="indicator-line"></span><span>نصمم للمكان ما يستحقه من حياة</span></div>
+    <h1><span class="line-clip"><span>عمارةٌ تُشعَر</span></span><span class="line-clip"><span><em>قبل أن تُرى.</em></span></span></h1>
+    <div class="hero-low">
+      <p>من الضوء الأول إلى أدقّ التفاصيل؛ نبحث عن لغة معمارية تُشبه أصحابها، وتمنح كل مساحة سببًا لتُتذكّر.</p>
+      <a href="#work" class="circle-action" aria-label="استكشف المشاريع"><span>اكتشف<br>الأعمال</span><span class="action-arrow">↙</span></a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="scene-switch" role="group" aria-label="تبديل المشهد المعماري"><span class="micro">استكشف الأجواء</span><button class="scene active" data-scene-button="0" aria-pressed="true">01 — العمارة</button><button class="scene" data-scene-button="1" aria-pressed="false">02 — الداخل</button><button class="scene" data-scene-button="2" aria-pressed="false">03 — الأثر</button></div>
+    <span class="scroll-hint">مرّر لاكتشاف رحلتنا <span>↓</span></span>
+  </div>
+  <div class="hero-side" dir="ltr">SPACE. LIGHT. INTENTION.</div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="ribbon-track">رحاب حيدر <b>✳</b> حوارٌ بين الإنسان والمكان <b>✳</b> ARCHITECTURE AS AN EXPERIENCE <b>✳</b> رحاب حيدر <b>✳</b> حوارٌ بين الإنسان والمكان <b>✳</b> ARCHITECTURE AS AN EXPERIENCE <b>✳</b></div></div>
+
+<section class="prologue page-pad" id="approach">
+  <div class="chapter"><span>01 / الرؤية</span><span>AN APPROACH TO SPACE</span></div>
+  <div class="prologue-grid"><div class="small-idea"><span class="star-shape" aria-hidden="true">✳</span><p>لا نبدأ من الشكل.<br>نبدأ من الإنسان.</p></div><div><h2 class="editorial" data-reveal>المكان الجيّد لا يطلب منك الانتباه. <em>إنه يجعلك ترغب بالبقاء.</em></h2><div class="prologue-tail"><p>نؤمن أن أجمل المشاريع هي التي تتجاوز الصورة. تصميم يُصغي للموقع، يستثمر الضوء، ويحترم التفاصيل الصغيرة التي تغيّر طريقة عيشنا للمكان.</p><a href="#studio" class="underline-cta">تعرّف على منهجنا <span>↗</span></a></div></div></div>
+</section>
+
+<section class="work page-pad" id="work">
+  <div class="chapter light"><span>02 / أعمال مختارة</span><span>SELECTED DESIGN STUDIES — 2024 / 2026</span></div>
+  <div class="section-intro"><div><span class="eyebrow">أكثر من لقطة جميلة</span><h2 data-reveal>مشاريع تروي <em>حكاياتها.</em></h2></div><p>مجموعة من التصوّرات المعمارية والداخلية المصاغة لعرض طريقة التفكير، المواد، والنسب المكانية. اضغط على أي مشروع لاستكشاف تفاصيله.</p></div>
+  <div class="work-toolbar"><div class="filter-group" role="group" aria-label="تصنيف المشاريع"><button class="filter active" data-filter="الكل" aria-pressed="true">الكل <sup>06</sup></button><button class="filter" data-filter="سكني" aria-pressed="false">سكني</button><button class="filter" data-filter="داخلي" aria-pressed="false">تصميم داخلي</button><button class="filter" data-filter="تجاري" aria-pressed="false">تجاري</button><button class="filter" data-filter="ضيافة" aria-pressed="false">ضيافة</button></div><span class="work-toolbar-note">تصوّرات توضيحية غير منفذة <span class="live-dot"></span></span></div>
+  <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+  <div class="work-bottom"><span>END OF SELECTION / 06</span><a href="#inquire">هل لديك مشروع في ذهنك؟ <span>↗</span></a></div>
+</section>
+
+<section class="material-chapter" id="material">
+  <div class="material-visual">
+    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1500&q=82" alt="تصميم داخلي معاصر بمواد طبيعية وإضاءة دافئة" loading="lazy">
+    <span class="material-image-label" dir="ltr">STUDY / 03 — MATERIAL & LIGHT</span>
+  </div>
+  <div class="material-copy">
+    <span class="eyebrow">03 / المادة والضوء</span>
+    <h2 data-reveal>القليل من الضجيج.<br><em>الكثير من الإحساس.</em></h2>
+    <p>ليس الهدف أن تبدو المساحة فاخرة ليوم واحد؛ بل أن تظلّ جميلة كلما تغيّر الضوء، وامتد الوقت، وأصبحت التفاصيل جزءًا من الحياة اليومية.</p>
+    <div class="material-swatch-row" role="group" aria-label="اختر لوحة المواد">
+      <button class="swatch active" data-palette="stone" aria-pressed="true"><i style="background:#b9ae99"></i>حجر طبيعي</button>
+      <button class="swatch" data-palette="wood" aria-pressed="false"><i style="background:#8a6046"></i>خشب دافئ</button>
+      <button class="swatch" data-palette="shadow" aria-pressed="false"><i style="background:#47453d"></i>ظلال عميقة</button>
+    </div>
+    <div class="palette-preview" id="palettePreview" aria-live="polite">
+      <span class="palette-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong id="paletteName">ذاكرة الحجر</strong><small id="paletteDescription">عاجي، رملي، وبيج دافئ — درجات تترك الضوء يؤدي دوره.</small></span>
+    </div>
+    <a class="underline-cta" href="#inquire">تحدث إلينا عن مساحتك <span>↗</span></a>
+  </div>
+</section>
+
+<section class="expertise page-pad" id="expertise">
+  <div class="chapter"><span>04 / الخبرات</span><span>WHAT WE DESIGN</span></div>
+  <div class="section-intro"><div><span class="eyebrow">من الفكرة إلى التجربة</span><h2 data-reveal>ما نصمّمه يغيّر <em>كيف نعيش.</em></h2></div><p>نعالج كل مشروع وفق موقعه وهدفه وتجربة مستخدميه، وليس من خلال قالب بصري متكرر.</p></div>
+  <div class="service-list">
+    <article><span>01</span><h3>العمارة السكنية</h3><p>منازل وفيلات تنطلق من العائلة والموقع والخصوصية والضوء.</p><span class="service-star">↗</span></article>
+    <article><span>02</span><h3>التصميم الداخلي</h3><p>تكوين فراغي متكامل: المواد، الإضاءة، الأثاث، وحركة الاستخدام.</p><span class="service-star">↗</span></article>
+    <article><span>03</span><h3>التجاري والضيافة</h3><p>وجهات تخلق انطباعًا أول يدوم، وتربط الهوية بالتجربة.</p><span class="service-star">↗</span></article>
+    <article><span>04</span><h3>التطوير المفاهيمي</h3><p>دراسات تكوين وواجهات ولوحات مواد تُقرّب الفكرة إلى قرار.</p><span class="service-star">↗</span></article>
+  </div>
+</section>
+
+<section class="drawing page-pad" id="drawing">
+  <div class="chapter"><span>05 / ما وراء الصورة</span><span>DESIGN IS A PROCESS</span></div>
+  <div class="drawing-layout">
+    <div class="drawing-title"><span class="eyebrow">قراءة الفكرة معماريًا</span><h2 data-reveal>من الخط الأول…<br><em>إلى حياة كاملة.</em></h2><p>الفكرة لا تنتهي عند صورة ثلاثية الأبعاد. وراء كل مساحة منطق للحركة، وللضوء، وللمقياس. استكشف الطبقات التالية لترى كيف نبني التصوّر.</p>
+      <div class="diagram-controls" role="group" aria-label="طبقات الرسم المعماري"><button class="diagram-control active" data-layer="plan" aria-pressed="true">المخطط <span>01</span></button><button class="diagram-control" data-layer="light" aria-pressed="false">مسار الضوء <span>02</span></button><button class="diagram-control" data-layer="flow" aria-pressed="false">حركة الاستخدام <span>03</span></button></div>
+    </div>
+    <div class="drawing-board">
+      <div class="board-top"><span dir="ltr">RH / CONCEPT STUDIO / PLAN 01</span><span>رسم توضيحي أصلي</span></div>
+      <svg id="floorPlan" viewBox="0 0 680 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم معماري توضيحي تفاعلي يشرح طبقات المخطط والضوء والحركة">
+        <defs><pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#a2a999" stroke-opacity=".15" stroke-width=".65"/></pattern><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#b38d5d"/></marker></defs>
+        <rect x="0" y="0" width="680" height="490" fill="url(#grid)"/>
+        <g stroke="#687367" stroke-width="3" fill="none" stroke-linecap="square"><path d="M92 86H585V410H92Z"/><path d="M92 245H270M270 86V410M270 280H585M455 86V280M455 190H585M365 280V410"/><path d="M92 310H270M585 335H470" stroke-width="2"/></g>
+        <g stroke="#b1b9a8" stroke-width="1.2" fill="none" opacity=".8"><path d="M112 106H250V225H112Z"/><path d="M290 106H432V258H290Z"/><path d="M385 300H565V390H385Z"/><path d="M108 330H250V391H108Z"/></g>
+        <g class="plan-labels" font-family="Manrope,Arial,sans-serif" fill="#9da99c" font-size="13" text-anchor="middle"><text x="182" y="172">LIVING</text><text x="356" y="182">COURT</text><text x="519" y="151">DINING</text><text x="178" y="353">GALLERY</text><text x="474" y="356">PRIVATE</text><text x="315" y="453">01 / GROUND LEVEL</text></g>
+        <g id="layerLight" opacity="0"><path d="M40 65L288 148L230 326L28 247Z" fill="#e2bc7e" opacity=".17"/><path d="M635 24L411 138L510 368L680 293Z" fill="#e2bc7e" opacity=".22"/><g stroke="#d6aa69" stroke-width="2" stroke-dasharray="7 10"><path d="M48 84L212 170"/><path d="M610 64L489 210"/><path d="M608 102L518 265"/></g><circle cx="50" cy="76" r="17" fill="#e5bc75"/></g>
+        <g id="layerFlow" opacity="0" fill="none" stroke="#b38d5d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M330 454V353H225V245H180V174" marker-end="url(#arrow)"/><path d="M330 353H505V226H522V151" marker-end="url(#arrow)"/><circle cx="330" cy="353" r="12" fill="#b38d5d"/></g>
+      </svg>
+      <div class="board-bottom"><span id="boardCaption">الطبقة 01 / قراءة توزيع الفراغات والأبعاد</span><span dir="ltr">1:100 / STUDY ONLY</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="studio page-pad" id="studio">
+  <div class="chapter light"><span>06 / الاستوديو</span><span>THE PERSON BEHIND THE PRACTICE</span></div>
+  <div class="studio-grid">
+    <div class="studio-image"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1300&q=83" alt="عمارة معاصرة بخطوط ونسب واضحة" loading="lazy"><span dir="ltr">THE ART OF CONSIDERING EVERY DETAIL.</span></div>
+    <div class="studio-text"><span class="eyebrow">رحاب حيدر / REHAB HAIDER</span><h2 data-reveal>المساحة لا تتحدّث عن نفسها فقط.<br><em>بل عن الأشخاص الذين يعيشونها.</em></h2><p>هذه هوية تصوّرية لاستوديو تصميم مستقل، صُمّمت لتُظهر كيف يمكن لرحاب حيدر أن تُقدّم رؤيتها، أعمالها، وطريقة تعاونها مع العميل في حضور رقمي راقٍ وواضح.</p><div class="process-mini"><div><span>01</span><strong>نستمع</strong><small>الموقع، الاحتياج، ونمط الحياة</small></div><div><span>02</span><strong>نكتشف</strong><small>المفهوم، الضوء، والمواد</small></div><div><span>03</span><strong>نطوّر</strong><small>الخيارات ومخرجات التصميم</small></div><div><span>04</span><strong>نصقل</strong><small>التفاصيل وتجربة المكان</small></div></div></div>
+  </div>
+</section>
+
+<section class="contact page-pad" id="inquire">
+  <div class="chapter light"><span>07 / لنبدأ</span><span>THE NEXT SPACE STARTS HERE</span></div>
+  <div class="contact-head"><span>لديك فكرة تستحق أن تُرى؟</span><h2>لنصنع لها <em>مكانًا.</em></h2><p>شاركنا ملامح مشروعك. سنرتّبها في موجز واضح يمكنك الاحتفاظ به أو مشاركته مع استوديو التصميم.</p></div>
+  <form class="inquiry-form" id="inquiryForm">
+    <div class="field"><label for="clientName">الاسم <b>*</b></label><input id="clientName" name="name" placeholder="كيف نُناديك؟" maxlength="90" required></div>
+    <div class="field"><label for="projectType">نوع المشروع</label><select id="projectType" name="type"><option>فيلا / منزل</option><option>تصميم داخلي</option><option>تجاري / مكاتب</option><option>ضيافة</option><option>فكرة أخرى</option></select></div>
+    <div class="field"><label for="projectCity">المدينة</label><input id="projectCity" name="city" placeholder="مثال: الرياض" maxlength="80"></div>
+    <div class="field"><label for="projectBrief">حدثنا عن الفكرة <b>*</b></label><textarea id="projectBrief" name="brief" rows="4" maxlength="1200" placeholder="ماذا تريد للمكان أن يكون؟" required></textarea></div>
+    <button class="send-cta" type="submit">جهّز موجز المشروع <span>↗</span></button>
+    <p class="privacy-line">هذه نسخة توضيحية. البيانات لا تُرسل إلى خادم أو بريد ولا تُحفظ في قاعدة بيانات.</p>
+  </form>
+  <div class="inquiry-result" id="inquiryResult" hidden><div><span>موجزك جاهز</span><button type="button" id="copyInquiry">نسخ النص ↗</button></div><pre id="inquiryText"></pre><p>أضف وسيلة تواصل حقيقية عند تحويل هذا النموذج إلى موقع تجاري مباشر.</p></div>
+  <div class="contact-footer"><span>رحاب حيدر / REHAB HAIDER</span><a href="#top">العودة إلى البداية ↑</a><span>العمارة × الضوء × الإنسان</span></div>
+</section>
+</main>
+<footer class="footer"><span>© 2026 REHAB HAIDER</span><span>هوية ومشاريع تصوّرية لأغراض العرض — ليست مشاريع منفذة أو اعتمادات موثّقة.</span><span dir="ltr">DESIGNED TO BE EXPERIENCED.</span></footer>
+
+<dialog class="project-dialog" id="projectDialog" aria-label="تفاصيل المشروع">
+<button class="dialog-close" id="projectClose" type="button" aria-label="إغلاق تفاصيل المشروع">إغلاق <span>✕</span></button>
+<div id="projectDetail"></div>
+</dialog>
 </body>
 </html>
