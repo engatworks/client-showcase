@@ -69,6 +69,15 @@ function svgWrap(content,aria,light=false){
 }
 function planSvg(kind='plan'){
  const {a,b,c,d}=g;
+ const cadDetails='<g fill="none" stroke="#a7c6b8" stroke-width="1.4">'+
+  '<path d="M'+(a-3)+' '+(c+35)+'a34 34 0 0 1 34 34M'+(b-3)+' 164a31 31 0 0 1 31 31M'+(a+56)+' '+(d-3)+'a30 30 0 0 1 30 30" stroke="#d9ba88"/>'+
+  '<path d="M181 85V77H260V85M504 442V450H596V442M105 170H97V225H105" stroke="#b2d0c4"/>'+
+  '<path d="M181 81H260M504 447H596M101 170V225" stroke="#7bc1b6" stroke-width="3"/>'+
+  '<path d="M'+(a+3)+' '+(c+35)+'h30M'+(b+2)+' 164h30M'+(a+56)+' '+(d+2)+'v30" stroke="#d9ba88"/>'+
+  '<path d="M715 102l14 -23 14 23M729 80V139M711 140H746" stroke="#d4c7a1"/>'+
+  '<path d="M67 82H92M67 442H92M82 63V461" stroke-dasharray="5 7" opacity=".48"/>'+
+  '</g><g fill="#d0ddcf" font-size="10" font-family="Manrope,Arial,sans-serif">'+
+  '<text x="722" y="65">N</text><text x="40" y="266" transform="rotate(-90 40 266)">SECTION A–A</text></g>';
  const base='<g fill="none" stroke="#b9cfbd" stroke-width="5" stroke-linejoin="miter">'+
  '<path d="M105 82H685V442H105Z"/>'+
  '<path d="M'+a+' 82V442M'+b+' 82V'+d+'M105 '+c+'H685M'+a+' '+d+'H685"/>'+
@@ -82,7 +91,7 @@ function planSvg(kind='plan'){
  if(kind==='circulation')extra='<g fill="none" stroke="'+accent+'" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M395 486V395H'+(a+20)+'V'+(c-35)+'H178V143" stroke-dasharray="12 10"/><path d="M395 395H585V177" stroke-dasharray="12 10"/></g><g fill="'+accent+'"><circle cx="178" cy="143" r="13"/><circle cx="585" cy="177" r="13"/></g>';
  if(kind==='sun')extra='<g fill="none" stroke="'+accent+'" stroke-width="2"><path d="M50 65L205 175M720 60L550 180M745 390L545 290" stroke-dasharray="8 8"/><circle cx="50" cy="65" r="27" fill="#d5ab70" fill-opacity=".7"/><path d="M50 20V4M50 110V127M5 65H0M85 30L100 15"/></g><path d="M73 80L300 80L360 365L80 365Z" fill="#dab36f" opacity=".13"/>';
  if(kind==='dimensions')extra='<g stroke="'+accent+'" fill="'+accent+'" stroke-width="1.4" font-family="Manrope,Arial,sans-serif" font-size="13"><path d="M105 60H685M105 48V71M685 48V71M82 82V442M69 82H94M69 442H94"/><text x="395" y="53" text-anchor="middle" stroke="none">18.00</text><text x="52" y="260" text-anchor="middle" stroke="none" transform="rotate(-90 52 260)">12.00</text><path d="M'+a+' 82V49M'+b+' 82V49M105 '+c+'H73M105 '+d+'H73" opacity=".8"/></g>';
- return svgWrap(extra+base+'<g font-family="Manrope,Arial,sans-serif" font-size="13" fill="#dce7d6" text-anchor="middle" letter-spacing="1">'+
+ return svgWrap(extra+base+cadDetails+'<g font-family="Manrope,Arial,sans-serif" font-size="13" fill="#dce7d6" text-anchor="middle" letter-spacing="1">'+
  '<text x="'+((105+a)/2)+'" y="'+((82+c)/2)+'">LIVING</text><text x="'+((a+b)/2)+'" y="'+((82+c)/2)+'">COURT</text><text x="'+((b+685)/2)+'" y="'+((82+c)/2)+'">DINING</text><text x="'+((105+a)/2)+'" y="'+((c+442)/2)+'">LOUNGE</text><text x="'+((a+685)/2)+'" y="'+((d+442)/2)+'">PRIVATE</text></g>',"مخطط مفاهيمي "+p.name);
 }
 function isoPt(x,y,z){return [385+(x-y)*.70,92+(x+y)*.34-z*.85];}
