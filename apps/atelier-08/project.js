@@ -75,7 +75,72 @@ function svgWrap(content,aria,light=false){
  '<g fill="#e8e9d7" font-size="10" font-family="Manrope,Arial,sans-serif" letter-spacing="2">'+
  '<text x="41" y="40">REHAB HAIDER / CONCEPT DRAWING</text><text x="735" y="40" text-anchor="end">RH / 0'+(index+1)+'</text><text x="40" y="512">STUDY ONLY / NOT FOR CONSTRUCTION</text><text x="753" y="512" text-anchor="end">01 : 100</text></g>'+content+'</svg>';
 }
+
+// Featured house uses EXACTLY the master footprint also loaded by the live Three.js
+// assembly. Technical SVG is an explanatory representation, not DWG construction data.
+function courtyardPlanSvg(kind='plan'){
+ const H=window.REHAB_HOUSE_GEOMETRY;
+ const px=x=>173+(x+9)*25.2,py=z=>76+(z+7)*25.2;
+ const rect=(x,z,w,d,attrs='')=>'<rect x="'+px(x)+'" y="'+py(z)+'" width="'+w*25.2+'" height="'+d*25.2+'" '+attrs+'/>';
+ const paths='<g fill="none" stroke="#cfdbcd" stroke-width="5">'+
+  rect(-9,-7,18,4.2)+rect(-9,-2.8,H.sideWing,H.courtLength)+rect(H.innerEastX,-2.8,H.sideWing,H.courtLength)+
+  '<path d="M'+px(-3.25)+' '+py(-2.8)+'V'+py(5.55)+'M'+px(3.25)+' '+py(-2.8)+'V'+py(5.55)+'" stroke="#a1bcaa" stroke-width="3"/></g>';
+ const furniture='<g fill="none" stroke="#d6b27d" stroke-width="1.9">'+
+ rect(-7.9,-.2,3.2,.9,'rx="5"')+rect(4.5,-.1,3.2,.95,'rx="5"')+
+ rect(-7.4,2.4,1.65,1.6,'rx="6"')+rect(4.9,2.3,1.7,1.4,'rx="6"')+
+ rect(-1.35,.7,2.7,1.2,'rx="2"')+
+ '</g>';
+ const zoning='<g opacity=".43">'+rect(-9,-7,18,4.2,'fill="#92a89b"')+rect(-9,-2.8,5.75,8.35,'fill="#d7b985"')+rect(3.25,-2.8,5.75,8.35,'fill="#a6c1b3"')+rect(-3.25,-2.8,6.5,8.35,'fill="#6a907a"')+'</g>';
+ const route='<g fill="none" stroke="#e5be7d" stroke-width="7" stroke-dasharray="12 9" stroke-linecap="round"><path d="M'+px(0)+' '+py(7.15)+'V'+py(2.5)+'H'+px(-4.2)+'V'+py(-1)+'"/><path d="M'+px(0)+' '+py(2.5)+'H'+px(5.2)+'V'+py(-1)+'"/></g>';
+ const sun='<g fill="#ebca91" fill-opacity=".25"><path d="M50 56L'+px(-2.9)+' '+py(1)+'L'+px(1.5)+' '+py(5)+'L50 236Z"/><path d="M765 80L'+px(5)+' '+py(-1)+'L'+px(2)+' '+py(4)+'Z"/></g>';
+ let dims='<g font-size="12" font-family="Manrope,Arial" fill="#dac69d"><path d="M'+px(-9)+' 56H'+px(9)+'M'+px(-9)+' 48V64M'+px(9)+' 48V64M151 '+py(-7)+'V'+py(7)+'" stroke="#d8b47d" stroke-width="1.5" fill="none"/><text x="400" y="49" text-anchor="middle">18,000</text><text x="138" y="254" transform="rotate(-90 138 254)">14,000</text></g>';
+ const detail='<g fill="none" stroke="#b5c8b8" stroke-width="1.4">'+
+  '<path d="M'+px(-3.25)+' '+py(-1.5)+'v60M'+px(3.25)+' '+py(-1.5)+'v60" stroke="#7bc9b6" stroke-width="3"/>'+
+  '<path d="M'+px(-9)+' '+py(2.1)+'h8M'+px(9)+' '+py(1.2)+'h-8M'+px(0)+' '+py(-2.8)+'v8" stroke="#ebc58c"/>'+
+  '</g>';
+ const labels='<g fill="#e6e9d8" font-family="Manrope,Arial" font-size="12" text-anchor="middle"><text x="'+px(-5.7)+'" y="'+py(1)+'">WEST WING</text><text x="'+px(5.7)+'" y="'+py(1)+'">EAST WING</text><text x="'+px(0)+'" y="'+py(-4.8)+'">REAR LIVING</text><text x="'+px(0)+'" y="'+py(1.5)+'">COURT</text></g>';
+ const under=kind==='zoning'?zoning:kind==='sun'?sun:'';
+ const top=kind==='furniture'?furniture:kind==='circulation'?route:kind==='dimensions'?dims:'';
+ return svgWrap(under+paths+detail+top+labels,'مخطط بيت الفناء مطابق لأبعاد نموذج البيت ثلاثي الأبعاد');
+}
+function courtyardAxonSvg(){
+ const proj=(x,z,y)=>[402+(x-z)*14.5,282+(x+z)*6.3-y*19];
+ const pt=(x,z,y)=>proj(x,z,y).map(v=>v.toFixed(1)).join(',');
+ const face=(a,b,c,d,fill)=>'<polygon points="'+[a,b,c,d].map(q=>pt(...q)).join(' ')+'" fill="'+fill+'" stroke="#ced9c8" stroke-width="1.5"/>';
+ function prism(x1,x2,z1,z2,y0,h){
+  const y=y0+h;
+  return face([x1,z2,y0],[x2,z2,y0],[x2,z2,y],[x1,z2,y],'#a2ab9b')+
+   face([x2,z1,y0],[x2,z2,y0],[x2,z2,y],[x2,z1,y],'#d5d4be')+
+   face([x1,z1,y],[x2,z1,y],[x2,z2,y],[x1,z2,y],'#e6e0d0');
+ }
+ const building=prism(-9,9,-7,-2.8,0,3.7)+prism(-9,-3.25,-2.8,5.55,0,3.7)+prism(3.25,9,-2.8,5.55,0,3.7)+prism(-8.9,1.7,-6.7,-3.1,3.7,3.1);
+ const labels='<g fill="#e9e5d3" font-family="Manrope,Arial" font-size="12"><text x="65" y="66">SAME HOUSE / 18 x 14</text><text x="65" y="466">VOLUMETRIC STUDY</text></g>';
+ return svgWrap(building+labels,'تجسيم كتلي لبيت الفناء من هندسة الأجنحة الثلاثة نفسها');
+}
+function courtyardElevationSvg(){
+ const facade='<g fill="none" stroke="#dfe6d3" stroke-width="3">'+
+ '<path d="M100 369H700M114 369V213H291V369M509 369V213H686V369"/>'+
+ '<path d="M114 213H686"/>'+
+ '<path d="M115 213V144H423V213M115 141H423" stroke="#d7bc91"/>'+
+ '</g><g fill="#8db2a2" fill-opacity=".24" stroke="#d7e2d0" stroke-width="1.8">'+
+ '<rect x="147" y="238" width="113" height="106"/><rect x="540" y="238" width="114" height="106"/>'+
+ '<rect x="162" y="166" width="230" height="40"/></g>'+
+ '<g stroke="#baa27d" stroke-width="2">'+Array.from({length:6},(_,i)=>'<path d="M'+(119+i*24)+' 239V349"/>').join('')+'</g>'+
+ '<g fill="#e4e6d5" font-family="Manrope,Arial" font-size="11"><text x="104" y="398">SOUTH COURT ELEVATION</text><text x="690" y="398" text-anchor="end">±0.00</text></g>';
+ return svgWrap(facade,'واجهة منزل الفناء توضح جناحي البيت والفناء الوسطي والدور العلوي الخلفي');
+}
+function courtyardSectionSvg(){
+ const content='<g stroke="#d9e3d4" stroke-width="4" fill="#799782" fill-opacity=".19">'+
+ '<path d="M110 388V230H282V388M518 388V230H690V388M110 229H282M518 229H690"/>'+
+ '<path d="M110 225V138H389V225" fill="#d3d9bd" fill-opacity=".19"/>'+
+ '</g><path d="M95 390H708" stroke="#c4d2c1" stroke-width="4"/>'+
+ '<g fill="#dabc82" fill-opacity=".24"><path d="M350 156L464 306L406 388L282 215Z"/></g>'+
+ '<g stroke="#9ac1a9" stroke-width="2"><path d="M274 235V372M526 235V372"/></g>'+
+ '<g fill="#f1e7d3" font-family="Manrope,Arial" font-size="12"><text x="110" y="423">SECTION A-A / THE COURTYARD GAP</text><text x="690" y="423" text-anchor="end">0.00</text></g>';
+ return svgWrap(content,'مقطع تصوّري عبر الفناء والجناحين والسقف والكتلة العليا');
+}
 function planSvg(kind='plan'){
+ if(p.slug==='courtyard')return courtyardPlanSvg(kind);
  const {a,b,c,d}=g;
  const cadDetails='<g fill="none" stroke="#a7c6b8" stroke-width="1.4">'+
   '<path d="M'+(a-3)+' '+(c+35)+'a34 34 0 0 1 34 34M'+(b-3)+' 164a31 31 0 0 1 31 31M'+(a+56)+' '+(d-3)+'a30 30 0 0 1 30 30" stroke="#d9ba88"/>'+
@@ -107,6 +172,7 @@ function point(x,y,z){const [a,b]=isoPt(x,y,z);return a.toFixed(1)+','+b.toFixed
 function poly(points,fill,stroke='#a8b59a'){return '<polygon points="'+points.map(q=>point(...q)).join(' ')+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.7"/>';}
 function wall(x1,y1,x2,y2,h,color){return poly([[x1,y1,0],[x2,y2,0],[x2,y2,h],[x1,y1,h]],color);}
 function axonSvg(){
+ if(p.slug==='courtyard')return courtyardAxonSvg();
  const W=g.w,H=g.h,xa=g.a-g.x,xb=g.b-g.x,yc=g.c-g.y,yd=g.d-g.y;
  // Same x/y extents and subdivisions as planSvg, projected into a readable isometric.
  const bg='<rect width="800" height="535" fill="#213429"/><g stroke="#7d967d" opacity=".15" stroke-width="1">'+Array.from({length:19},(_,i)=>'<path d="M0 '+(i*30)+'H800"/>').join('')+'</g>';
@@ -121,6 +187,7 @@ function axonSvg(){
  return '<svg viewBox="0 0 800 535" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="كتلة ثلاثية الأبعاد متجهة منشأة من هندسة مخطط '+p.name+'">'+bg+base+courtyard+walls+roof+topMarks+'</svg>';
 }
 function elevationSvg(){
+ if(p.slug==='courtyard')return courtyardElevationSvg();
  const v=p.variant;let apertures='';
  for(let i=0;i<5;i++){let x=110+i*112+(v%3)*4;apertures+='<rect x="'+x+'" y="'+(145+(i%2)*12)+'" width="'+(68+(v%2)*5)+'" height="'+(166-(i%2)*28)+'" fill="#799d88" fill-opacity=".3" stroke="#c9d2be" stroke-width="2"/>';}
  const content='<path d="M72 355H735M110 335V120H680V335Z" fill="#647c69" fill-opacity=".22" stroke="#dce6d3" stroke-width="4"/>'+apertures+
@@ -128,6 +195,7 @@ function elevationSvg(){
  return svgWrap(content,'الواجهة الأمامية المفاهيمية '+p.name);
 }
 function sectionSvg(){
+ if(p.slug==='courtyard')return courtyardSectionSvg();
  const v=p.variant, split=300+v*11,mid=520-v*6;
  const content='<path d="M95 377H708M120 112H690V377H120Z" fill="#6f8771" fill-opacity=".19" stroke="#cfdaca" stroke-width="4"/>'+
  '<path d="M120 235H690M'+split+' 235V377M'+mid+' 112V235" stroke="#ccd7c8" stroke-width="6"/>'+
