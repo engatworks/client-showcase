@@ -170,3 +170,20 @@ html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink)}.site-
 .cinema-scenes-nav button[aria-pressed="true"] .scene-track::after{animation:none!important;transform:scaleX(1)}
 .cinematic-home.cinema-ready .work-card:not(.is-visible){opacity:1;transform:none}
 }
+
+
+/* Kinetic type is staged per line, as an architectural reveal rather than a loading screen. */
+@media(prefers-reduced-motion:no-preference){
+.cinema-title .cinema-line .cinema-word{animation:cinema-type-emerge 1.35s cubic-bezier(.16,1,.3,1) both}
+.cinema-title .cinema-line:nth-child(2) .cinema-word{animation-delay:.19s}
+.cinema-meta{animation:cinema-caption-rise 1.15s .1s cubic-bezier(.16,1,.3,1) both}
+.cinema-afterword{animation:cinema-caption-rise 1.15s .5s cubic-bezier(.16,1,.3,1) both}
+.cinema-interlude.is-visible .cinema-interlude-phrase{animation:cinema-caption-rise 1.5s cubic-bezier(.16,1,.3,1) both}
+}
+@keyframes cinema-type-emerge{from{transform:translate3d(0,104%,0);opacity:.68}to{transform:translate3d(0,0,0);opacity:1}}
+@keyframes cinema-caption-rise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.cinema-title .cinema-word,.cinema-meta,.cinema-afterword,.cinema-interlude-phrase{animation:none!important;transform:none!important;opacity:1!important}}
+/* Browser fallback where clipping a live photograph into type is unsupported. */
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+.cinema-title .cinema-word--cutout{background:none;color:#f6ece0;-webkit-text-fill-color:#f6ece0;-webkit-text-stroke:0;filter:none}
+}
