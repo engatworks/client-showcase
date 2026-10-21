@@ -44,7 +44,7 @@ class Reader(HTMLParser):
                 self.canonical = True
             if a.get("rel") == "alternate":
                 self.alternates.add(a.get("hreflang"))
-            if "portfolio.css?v=5" in a.get("href", ""):
+            if any(("portfolio.css?v=" + v) in a.get("href", "") for v in ("5", "6")):
                 self.css_v5 = True
         for attr in ("href", "src"):
             if a.get(attr):
@@ -88,16 +88,18 @@ for page in PAGES:
     home = page == ROOT / "index.html" or page == ROOT / "en/index.html"
     if home and (text.count('class="work-card work-card--') != 6 or 'class="editorial-cover"' in text):
         problems.append("homepage portfolio index unexpectedly changed")
-    if home and not all(t in text for t in ('class="hero editorial-cover"', 'class="manifesto"', 'id="work"', 'id="about"')):
+    if home and not all(t in text for t in ('class="hero cinematic-hero"', 'class="cinema-interlude"', 'class="manifesto"', 'id="work"', 'id="about"')):
         problems.append("missing editorial homepage sections")
     new_problems = problems[before:]
     print(f"{page.relative_to(ROOT)}: " + ("FAIL " + "; ".join(new_problems) if new_problems else "OK"))
 
 css = (ROOT / "portfolio.css").read_text(encoding="utf-8")
-if css.count("{") != css.count("}") or "EDITION 02 / THE THRESHOLD" not in css:
+if css.count("{") != css.count("}") or "CINEMATIC EDITION / FRAMED BY LIGHT" not in css:
     problems.append("CSS layer invalid or absent")
 if not (ROOT / "gallery.js").is_file():
     problems.append("gallery.js is missing")
+if not (ROOT / "cinema.js").is_file():
+    problems.append("cinema.js is missing")
 if problems:
     print("\nRelease QA FAILED:", len(problems), "issues")
     for p in problems:
