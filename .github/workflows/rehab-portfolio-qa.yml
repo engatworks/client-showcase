@@ -1,0 +1,27 @@
+name: Rehab portfolio release QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/atelier-08/**"
+      - ".github/workflows/rehab-portfolio-qa.yml"
+  pull_request:
+    paths:
+      - "apps/atelier-08/**"
+      - ".github/workflows/rehab-portfolio-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-release-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python apps/atelier-08/tools/check_release.py
