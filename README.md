@@ -1,32 +1,41 @@
-# Rehab Haider — simple architecture portfolio
+# Rehab Haider — The Threshold (bilingual portfolio demonstration)
 
-Live site: https://atelier-08-demo.pages.dev/
+**Arabic:** https://atelier-08-demo.pages.dev/  
+**English:** https://atelier-08-demo.pages.dev/en/index.html
 
-Active source: `apps/atelier-08`. An Arabic RTL demonstration portfolio: six fictional design studies with explicitly labelled independent reference photographs. This is not a record of Rehab Haider's commissioned or completed work.
+Active Cloudflare Pages source: `apps/atelier-08`, production branch `main`.
 
-## Current presentation
+## Design, 22 October 2026
+The Threshold is a bespoke, editorial architecture portfolio **demonstration**, not a verified professional project archive. The new landing pages include:
+- Architectural cover layouts in Arabic and English, monumental display lettering, a typographic R/H identity and precise drawing-style illustration.
+- Expressive English *Instrument Serif* and Arabic *Noto Naskh Arabic* headlines, set against readable DM Sans and Alexandria navigation/body text.
+- One prominent reference photograph with clear provenance disclaimers, sparse architectural linework and page numbering.
+- A manifesto bridging the hero to a staggered index of six fictional spatial studies, each with native AR and EN project pages.
+- Responsive layouts, functional page navigation, language alternatives, reduced-motion support, and static HTML/CSS delivery without a heavyweight framework.
+- Static route/asset validation under `tools/check_release.py` and `.github/workflows/rehab-portfolio-qa.yml`.
 
-- A light, static homepage with six project cards and a short introduction.
-- Six static pages under `projects/`, each with a short concept, two reference images, and next/back navigation.
-- Optional native-dialog image viewer with Escape dismissal and focus restoration. Image links work without JavaScript.
-- Local WebP images at 640px and 1440px widths, responsive selection, lazy loading and intrinsic dimensions.
-- No animation, CAD simulation, carousel, drawing controls or simulated inquiry submission in active pages.
-- Existing `project.html?case=...` URLs redirect to matching static pages. The original DXF URL is retained.
+## Portfolio truth
+All six spatial studies are fictional concepts. The photographs are independent mood references, **not** commissions, buildings or projects completed by Rehab Haider. No actual identity approval, commissioned projects, client contact details, or project-specific CAD files were supplied. Do not substitute invented claims. Replace all reference material with licensed, verified project assets and approved biography before commercial publication.
 
-Only `portfolio.css` and `gallery.js` are loaded by the new project pages. Legacy drawing files remain as unused historical source.
+## Local validation
+From the repository root:
+```sh
+python3 apps/atelier-08/tools/check_release.py
+```
+The check covers fourteen bilingual routes, link/asset targets, language metadata and structural expectations. It does **not** substitute for actual device screenshots, accessibility audits, Lighthouse scoring or a verified Cloudflare deployment.
 
-## Editing
-
-`tools/portfolio-content.json` retains original concept data. `tools/simplify-portfolio.py` generates the current pages with a smaller image selection and revised descriptions. Run with Python and Pillow installed. Images in `assets/` are committed; serving the site requires no build step.
-
-Photographs were retained from the previous site's Unsplash reference selection. Source photo identifiers are preserved in asset filenames. These photographs must never be attributed to Rehab as her built work.
-
-## Existing Cloudflare Pages configuration
-
+## Cloudflare Pages
 - Repository: `engatworks/client-showcase`
 - Production branch: `main`
 - Root: `apps/atelier-08`
 - Build command: `exit 0`
-- Build output: `.`
+- Build output directory: `.`
 
-The separate `apps/goodside-learning` demo is unchanged.
+Cloudflare availability and published content should be verified independently; a successful GitHub commit does not demonstrate a successful deployment.
+
+## Architecture inspirations
+- John Pawson — disciplined image-first project index: https://www.johnpawson.com/architecture
+- Norm Architects — atmosphere and editorial project navigation: https://normcph.com/project_category/architecture/
+- Büro Haeberli / Atelier Risi — architectural identity: https://www.buerohaeberli.ch/projekte/atelier-risi-identity-webdesign-print
+
+The sister `apps/goodside-learning` demo remains a separate project.
