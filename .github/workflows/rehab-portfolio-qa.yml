@@ -27,6 +27,7 @@ jobs:
       - run: python apps/atelier-08/tools/check_release.py
       - run: node --check apps/atelier-08/living-motion.js
       - run: node --check apps/atelier-08/cad-studio.js
+      - run: node --check apps/atelier-08/drafting-exhibits.js
 
   visual-snapshots:
     runs-on: ubuntu-latest
@@ -76,6 +77,18 @@ jobs:
                 return {htmlLang:document.documentElement.lang,hero:!!hero,words:words.length,cadLayers:cad.querySelectorAll('[data-drawing-layer]').length,cadWidth:cad.getAttribute('viewBox'),image:img.complete&&img.naturalWidth>0,ticker:!!document.querySelector('.living-band-inner'),type:!!document.querySelector('[data-typed]'),buttons:document.querySelectorAll('[data-scene-button]').length,overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth};
               });
               if(state.htmlLang!==lang||state.words!==2||state.cadLayers!==6||!state.image||!state.ticker||!state.type||state.buttons!==0||state.overflow>4||errors.length)throw new Error(JSON.stringify({route,width,state,errors}));
+              await page.waitForFunction(()=>document.querySelector('[data-cad-paper="site"] .drafting-svg text')?.textContent?.length>1,{timeout:12000});
+              const drawingStatus=await page.evaluate(()=>({
+                indexSheets:document.querySelectorAll('.drafting-work-preview .drafting-svg,.drafting-work-preview .rh-cad-svg').length,
+                svgSite:document.querySelector('[data-cad-paper="site"] .drafting-svg')?.outerHTML.includes('SITE BOUNDARY'),
+                dxfs:document.querySelectorAll('a[href$=".dxf"],a[download]').length
+              }));
+              if(drawingStatus.indexSheets!==4||!drawingStatus.svgSite||drawingStatus.dxfs!==0)throw new Error(JSON.stringify({route,drawingStatus}));
+              const inspect=page.locator('[data-cad-paper="site"] [data-open-drawing]');
+              await inspect.click();
+              if(!await page.locator('dialog.draft-viewer[open] .drafting-svg').count())throw new Error('Zoom viewer not opened '+route);
+              await page.locator('dialog.draft-viewer [data-zoom-in]').click();
+              await page.locator('dialog.draft-viewer [data-zoom-close]').click();
               await page.close();
               passed++;
               console.log('PASS',route,width,'CAD layers',state.cadLayers);
