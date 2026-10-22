@@ -1,4 +1,4 @@
-# Rehab Haider — Framed by Light (bilingual cinematic portfolio demonstration)
+# Rehab Haider — Living Motion / Framed by Light (bilingual cinematic demo)
 
 **Arabic:** https://atelier-08-demo.pages.dev/  
 **English:** https://atelier-08-demo.pages.dev/en/index.html
@@ -13,6 +13,19 @@ Framed by Light is a bespoke, cinematic architecture portfolio **demonstration**
 - A second full-bleed typographic/photo interlude and an editorial manifesto, then a staggered index of six fictional spatial studies, each with native AR and EN project pages.
 - Responsive layouts, functional page navigation, language alternatives, reduced-motion support, static HTML/CSS and a lightweight local `cinema.js` module without animation frameworks or scroll hijacking.
 - Static route/asset validation under `tools/check_release.py` and `.github/workflows/rehab-portfolio-qa.yml`.
+
+## Kinetic interface update (22 October 2026)
+- The site is an actual web implementation, **not** the earlier generated picture/mockup.
+- Arabic and English homepages load `living-motion.js` and `living-motion.css`. Hero names animate down into view; short editorial statements type in sequence; a moving typographic band and scroll-triggered word reveals create motion past the first screen. The auto-crossfading three-photo experience does not require pointless scene buttons.
+- Motion pauses when the hero is outside the viewport or the tab is hidden, and respects reduced-motion settings. Arabic text is animated by whole connected words, not disconnected letters.
+- The former decorative `architecture-mark` sketch has been removed from both homepages. The about/CAD section renders the real project **concept geometry** through `house-config.js` and `cad-studio.js` as a measured floor plan (six layers), concept elevation and section. The existing editable `rehab-haider-courtyard-concept.dxf` is linked for download.
+- These are **DXF-compatible conceptual drawings rendered in the browser**, not files certified or exported by the AutoCAD application. Neither they nor the six fictional project studies should be represented as commissioned work.
+- `tools/check_release.py` and `.github/workflows/rehab-portfolio-qa.yml` test the new hooks and attempt real Chromium mobile/desktop layout and drawing checks. The workflow's completed result, screenshots and Cloudflare deployment still require independent verification.
+
+### Motion references
+- [Motion: Text animation](https://motion.dev/docs/text-animation) — staggered words, clipping, typewriter and scroll reveals.
+- [GSAP SplitText documentation](https://gsap.com/docs/v3/Plugins/SplitText/) — responsive, accessible split text; Arabic remains whole-word.
+- [Codrops: scroll-driven type](https://tympanus.net/codrops/2025/11/04/creating-3d-scroll-driven-text-animations-with-css-and-gsap/) — scroll-linked kinetic composition.
 
 ## Portfolio truth
 All six spatial studies are fictional concepts. The photographs are independent mood references, **not** commissions, buildings or projects completed by Rehab Haider. No actual identity approval, commissioned projects, client contact details, or project-specific CAD files were supplied. Do not substitute invented claims. Replace all reference material with licensed, verified project assets and approved biography before commercial publication.
