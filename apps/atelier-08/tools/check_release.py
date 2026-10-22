@@ -90,6 +90,12 @@ for page in PAGES:
         problems.append("homepage portfolio index unexpectedly changed")
     if home and not all(t in text for t in ('class="hero cinematic-hero"', 'class="cinema-interlude"', 'class="manifesto"', 'id="work"', 'id="about"')):
         problems.append("missing editorial homepage sections")
+    if home and not all(t in text for t in ('data-typed', 'class="living-band"', 'data-cad-build', 'data-cad-paper="plan"', 'data-cad-paper="elevation"', 'data-cad-paper="section"', 'living-motion.js?v=1', 'living-motion.css?v=1', 'cad-studio.js', 'house-config.js')):
+        problems.append("missing live motion or authentic CAD render hooks")
+    if home and any(t in text for t in ('data-scene-button', 'class="cinema-diagram"', 'class="atelier-drawing"')):
+        problems.append("retired scene buttons or faux drafting illustration returned")
+    if home and text.count('class="cinema-scene') < 3:
+        problems.append("cinematic photo scenes missing")
     new_problems = problems[before:]
     print(f"{page.relative_to(ROOT)}: " + ("FAIL " + "; ".join(new_problems) if new_problems else "OK"))
 
@@ -98,8 +104,12 @@ if css.count("{") != css.count("}") or "CINEMATIC EDITION / FRAMED BY LIGHT" not
     problems.append("CSS layer invalid or absent")
 if not (ROOT / "gallery.js").is_file():
     problems.append("gallery.js is missing")
-if not (ROOT / "cinema.js").is_file():
-    problems.append("cinema.js is missing")
+if not (ROOT / "living-motion.js").is_file():
+    problems.append("living-motion.js is missing")
+if not (ROOT / "living-motion.css").is_file():
+    problems.append("living-motion.css is missing")
+if not (ROOT / "house-config.js").is_file() or not (ROOT / "cad-studio.js").is_file():
+    problems.append("DXF source geometry or CAD renderer is missing")
 if problems:
     print("\nRelease QA FAILED:", len(problems), "issues")
     for p in problems:
