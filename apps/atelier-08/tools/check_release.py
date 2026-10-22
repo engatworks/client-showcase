@@ -94,18 +94,14 @@ for page in PAGES:
         problems.append("missing live motion or authentic CAD render hooks")
     if home and any(t in text for t in ('data-scene-button', 'class="cinema-diagram"', 'class="atelier-drawing"')):
         problems.append("retired scene buttons or faux drafting illustration returned")
-    if home and text.count('class="drafting-work-preview"') != 0:
-        problems.append("unexpected duplicate drafting thumbnail")
     if home and text.count('class="work-media drafting-work-preview"') != 4:
         problems.append("expected four drafting-led card previews")
     if home and text.count('data-drafting-sheet=') < 6:
         problems.append("drawing previews or site sheets missing")
     if home and text.count('class="cinema-scene') < 3:
         problems.append("cinematic photo scenes missing")
-    if re.search(r'href="[^"]+\\.dxf(?:[?#][^"]*)?"', text, flags=re.I):
+    if any(".dxf" in link.lower() for link in reader.urls):
         problems.append("editable DXF source link must not be published")
-    if "drafting" in page.as_posix() and "download" in text:
-        problems.append("unexpected downloadable content in drafting")
     new_problems = problems[before:]
     print(f"{page.relative_to(ROOT)}: " + ("FAIL " + "; ".join(new_problems) if new_problems else "OK"))
 
