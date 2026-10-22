@@ -23,6 +23,7 @@
       if(!paper)continue;
       const mount=$('.cad-paper-inner',paper);
       mount.innerHTML=svg;
+      mount.classList.remove('cad-paper--empty');
       if(kind==='plan'&&!lowMotion()){
         $$('[data-drawing-layer]',mount).forEach((layer,i)=>layer.style.setProperty('--layer',String(i)));
         paper.dataset.cadReady='true';
