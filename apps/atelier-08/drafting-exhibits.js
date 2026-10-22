@@ -48,12 +48,29 @@ for(const [a,b,len,dir] of CAD.data.glass){
  m+=line(x(5+a)-2,y(4+b),x(5+a)-2,y(4+b+len),'glazing')+line(x(5+a)+2,y(4+b),x(5+a)+2,y(4+b+len),'glazing');
  }
 }
-for(const [a,b,w,h] of CAD.data.furnishings||[])m+=rect(x(5+a),y(4+b),w*S,h*S,'furniture');
+// Door swing arcs are calculated from the same conceptual openings, not decorative flourishes.
+for(const [a,b,r,degree] of CAD.data.door){
+ const rad=degree*Math.PI/180,hx=x(5+a),hy=y(4+b),rr=r*S;
+ const ex=hx+rr*Math.cos(rad),ey=hy+rr*Math.sin(rad);
+ const endx=hx+rr*Math.cos(rad+Math.PI/2),endy=hy+rr*Math.sin(rad+Math.PI/2);
+ m+=line(hx,hy,ex,ey,'door')+path('M'+px(ex)+' '+px(ey)+' A'+px(rr)+' '+px(rr)+' 0 0 1 '+px(endx)+' '+px(endy),'door');
+}
+// Furnishings are conceptual orthographic symbols, not an as-built survey.
+const furnishing=[
+ [6.3,9.4,2.5,.8],[6.3,11.1,.8,1.4],[9.1,9.5,.55,1.4],
+ [19.2,9.4,2.7,.8],[20.0,11.2,.9,1.4],
+ [6.6,13.4,2.1,1.35],[19.2,13.4,2.2,1.45],
+ [6.5,5.1,3.0,.82],[13.0,5.1,1.9,.9],[19.0,5.1,2.2,.85]
+];
+for(const [a,b,w,h] of furnishing){
+ m+=rect(x(a),y(b),w*S,h*S,'furniture')+
+    rect(x(a)+4,y(b)+4,w*S-8,Math.max(5,h*S-8),'furniture-detail');
+}
+for(const [a,b] of [[8,6.6],[13.8,6.5],[20,6.5]])m+=circ(x(a),y(b),7,'furniture-round');
 m+=rect(x(11.35),y(9),5.4*S,3.4*S,'pool');
-m+=T(x(14),y(10.7),'COURTYARD','roomlabel','text-anchor="middle')+T(x(14),y(12),'LIGHT / AIR','tiny','text-anchor="middle"');
-for(const [txt,a,b] of [['MAJLIS',7.4,10],['GUEST',7.4,15],['LIVING',25.3,10],['BEDROOM',25.3,15],['DINING',8.5,6],['FAMILY',14,6],['KITCHEN',20,6]]){
- const inside=a>28?27.2:a;
- m+=T(x(inside),y(b),txt,'roomlabel','text-anchor="middle"');
+m+=T(x(14),y(10.7),'COURTYARD','roomlabel','text-anchor="middle"')+T(x(14),y(12),'LIGHT / AIR','tiny','text-anchor="middle"');
+for(const [txt,a,b] of [['MAJLIS',7.8,8.6],['GUEST',7.8,13.1],['LIVING',20.4,8.6],['BEDROOM',20.4,13.1],['DINING',7.7,5.0],['FAMILY',13.5,5.0],['KITCHEN',20.4,5.0]]){
+ m+=T(x(a),y(b),txt,'roomlabel','text-anchor="middle"');
 }
 m+=rect(x(5),y(0),18*S,4*S,'setback')+rect(x(0),y(0),5*S,25*S,'setback')+
  rect(x(23),y(0),5*S,25*S,'setback')+rect(x(5),y(18),18*S,7*S,'setback');
@@ -94,6 +111,7 @@ for(const [i,txt] of [
 ['N05','CHECK ALL LOCAL CODES BEFORE USE'],
 ['N06','ROAD / ACCESS LOCATION ASSUMED']
 ])m+=T(950,450+36*(+i.slice(1)-1),i+'   '+txt,'note');
+m+=line(x(6),y(10),x(22),y(10),'section-cut')+circ(x(6),y(10),10,'section-bubble')+T(x(6),y(10)+4,'A','bubble-text','text-anchor="middle"')+circ(x(22),y(10),10,'section-bubble')+T(x(22),y(10)+4,'A','bubble-text','text-anchor="middle"');
 m+=T(950,705,'SYMBOLS / LINEWORK','panel-heading')+line(950,727,1315,727,'hairline');
 m+=line(956,751,1023,751,'boundary')+T(1035,755,'SITE BOUNDARY','tiny');
 m+=line(956,780,1023,780,'wall')+T(1035,784,'WALL / PLAN','tiny');
