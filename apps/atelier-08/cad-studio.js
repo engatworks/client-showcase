@@ -150,56 +150,7 @@ if(kind==='dimensions')return sheet(6);
 if(kind==='zoning')return sheet(2);
 return sheet(6);
 }
-// Simple valid ASCII DXF R12, editable LINE / CIRCLE / TEXT entities on named layers.
-// The more detailed multilevel R2013 DXF set is also provided separately as a download.
-function dxf(){
-const records=[];function push(type,layer,fields){records.push('0\n'+type+'\n8\n'+layer+'\n'+fields.map((v,i)=>v[0]+'\n'+v[1]).join('\n')+'\n');}
-const ln=(a,b,c,d,l)=>push('LINE',l,[[10,a],[20,b],[30,0],[11,c],[21,d],[31,0]]);
-const rec=(a,b,w,h,l)=>{ln(a,b,a+w,b,l);ln(a+w,b,a+w,b+h,l);ln(a+w,b+h,a,b+h,l);ln(a,b+h,a,b,l);};
-for(const [a,b,c,d,t] of walls){if(Math.abs(b-d)<.001)rec(Math.min(a,c),b-t/2,Math.abs(a-c),t,'A-WALL');else rec(a-t/2,Math.min(b,d),t,Math.abs(b-d),'A-WALL');}
-for(const [a,b,len,ori] of glass)for(const t of [-.05,.05]){if(ori==='h')ln(a,b+t,a+len,b+t,'A-GLAZING');else ln(a+t,b,a+t,b+len,'A-GLAZING');}
-for(const [a,b,w,h] of furnishings)rec(a,b,w,h,'A-FURN');rec(6.25,5,5.5,4.25,'A-POOL');
-for(const [a,b] of lights){push('CIRCLE','E-LIGHT',[[10,a],[20,b],[30,0],[40,.15]]);}
-for(const [id,ar,en,a,b] of rooms)push('TEXT','A-LABEL',[[10,a],[20,b],[30,0],[40,.16],[1,id+' '+en]]);
-
-// CAD elevations, a section and its architectural level markers are placed to
-// the right of the plan in modelspace. They use the same 18m building span,
-// the same 3.70m lower height and 6.80m upper elevation as the SVG studies.
-const txt=(value,a,b,l='A-NOTES',h=.22)=>push('TEXT',l,[[10,a],[20,b],[30,0],[40,h],[1,value]]);
-const level=(y,name)=>{ln(24,y,44,y,'A-LEVEL');txt(name,44.35,y,'A-LEVEL',.16);};
-txt('RH-01 GROUND FLOOR PLAN / CONCEPT',0,-3,'A-TITLE',.38);
-txt('ALL DIMENSIONS IN METRES / NOT FOR CONSTRUCTION',0,-4,'A-NOTES',.20);
-txt('RH-02 COURTYARD ELEVATION',25,-3,'A-TITLE',.36);
-rec(25,0,5.75,3.70,'A-ELEV');
-rec(37.25,0,5.75,3.70,'A-ELEV');
-rec(25,3.70,10.60,3.10,'A-ELEV');
-rec(25.9,.70,3.50,2.40,'A-GLAZING');
-rec(38.1,.70,3.55,2.40,'A-GLAZING');
-rec(26.00,4.20,8.40,2.05,'A-GLAZING');
-for(const xx of [27.0,28.2,29.4,39.0,40.2,41.4])ln(xx,.70,xx,3.10,'A-FACADE-FINS');
-for(const yy of [0,3.70,6.80])level(yy,yy.toFixed(2)+' m');
-txt('RH-03 SECTION A-A',25,17.8,'A-TITLE',.36);
-for(const [xa,xb] of [[25,30.75],[37.25,43]]){
- ln(xa,20,xb,20,'A-SECTION');
- ln(xa,23.70,xb,23.70,'A-SECTION');
- ln(xa,20,xa,23.70,'A-SECTION');
- ln(xb,20,xb,23.70,'A-SECTION');
-}
-rec(25,23.70,10.60,3.10,'A-SECTION');
-ln(30.75,20,37.25,20,'A-SECTION');
-txt('OPEN COURTYARD',32,22.0,'A-LABEL',.18);
-txt('CONCEPT SECTION / LEVELS INDICATIVE',25,29.0,'A-NOTES',.16);
-txt('RH-04 TYPICAL ARCHITECTURAL DETAILS (SCHEMATIC)',25,34.0,'A-TITLE',.32);
-for(let i=0;i<4;i++){
- const xx=25+i*5;
- rec(xx,36,4.35,4.35,'A-DETAIL');
- rec(xx+.25,36+.65,1.2,2.4,'A-DETAIL');
- ln(xx+1.5,38.8,xx+3.92,38.8,'A-DETAIL-LEADER');
- txt(['D-01 ROOF','D-02 GLASS','D-03 FINS','D-04 POOL'][i],xx+.22,40.7,'A-NOTES',.16);
-}
-let header='0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';
-return header+records.join('')+'0\nENDSEC\n0\nEOF\n';
-}
+// Editable DXF generation intentionally retired from the public demonstration.
 function details(){
  const panel=(x,y,title,subtitle,inner)=>'<g transform="translate('+x+' '+y+')"><rect width="540" height="292" fill="#eceae1" stroke="#b9c3b6" stroke-width="1.5"/><text x="24" y="37" font-size="21" font-weight="700" fill="#2e4736" font-family="Alexandria,Arial">'+esc(title)+'</text><text x="24" y="60" font-size="11" fill="#7e8c7a" font-family="Manrope,Arial">'+subtitle+'</text>'+inner+'</g>';
  const p1=panel(65,116,'تفصيلة التقاء السقف والواجهة','D-01 / ROOF EDGE — SCHEMATIC',
@@ -229,5 +180,5 @@ function details(){
  '<text x="64" y="785" class="cad-doc-sub">DETAIL PRINCIPLES ONLY — NO MATERIAL SPECIFICATION, WATERPROOFING OR STRUCTURAL APPROVAL IMPLIED</text></svg>';
 }
 
-window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame:technicalFrame,elevation,section,dxf,details,config:H};
+window.REHAB_CAD={data:{rooms,walls,glass,door,lights},sheet,frame:technicalFrame,elevation,section,details,config:H};
 })();
