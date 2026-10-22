@@ -129,3 +129,14 @@
 .is-ar .cad-proof-viewonly{font:500 10px/1.9 "Alexandria",sans-serif;letter-spacing:0}
 @media(max-width:700px){.drafting-work-preview{padding:13px;aspect-ratio:1.25}.drafting-work-preview .drawing-overlay-id{inset-inline-start:12px;bottom:12px;font-size:8px}}
 @media(prefers-reduced-motion:reduce){.work-link .drafting-work-preview [data-drafting-sheet]{transition:none!important;transform:none!important}}
+
+
+.drafting-svg .elevation-mass{fill:#e0e3de;stroke:#26362b;stroke-width:2.2}
+.drafting-svg .glazing-panel{fill:#eaf1ee;stroke:#42665c;stroke-width:1.9}
+.drafting-svg .mullion{stroke:#49665b;stroke-width:1.5}
+.drafting-svg .facade-fin{fill:#7c8d7f;stroke:#324b3c;stroke-width:1.1}
+.drafting-svg .slab{fill:#3d4e43;stroke:#243c2f;stroke-width:1.3}
+.drafting-svg .foundation{fill:#9baca1;stroke:#3c5141;stroke-width:1.5}
+.drafting-svg .section-wall{fill:#27382d;stroke:#1a2c20;stroke-width:2.5}
+.drafting-svg .stair{stroke:#445849;fill:none;stroke-width:2}
+.drafting-svg .tree-trunk{stroke:#66806b;stroke-width:3}
