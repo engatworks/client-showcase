@@ -26,9 +26,9 @@ section.innerHTML='<div class="cad-sticky">'+
    '<span>صورة مرجعية للأجواء المعمارية، وليست صورة لتنفيذ هذا المخطط.</span></div>'+
  '</div>'+
  '<div class="cad-journey-bottom"><div class="cad-phase-tabs" id="cadPhaseTabs" role="group" aria-label="التنقل بين مراحل دراسة المخطط"></div>'+
- '<div class="cad-progress-meta"><span id="cadPhaseNumber">01 / 07</span><span>مرّر الصفحة لتكتمل طبقات الرسم ↓</span><button id="cadExport4k" type="button">لوحة 4K ↗</button><button id="cadDownload" type="button">ملف DXF ↗</button></div>'+
+ '<div class="cad-progress-meta"><span id="cadPhaseNumber">01 / 07</span><span>مرّر الصفحة لتكتمل طبقات الرسم ↓</span><button id="cadExport4k" type="button">لوحة 4K ↗</button></div>'+
  '<div class="cad-progress-line"><span id="cadProgressBar"></span></div></div>'+
- '<p class="cad-disclosure">دراسة رسم هندسي تصوّرية · ملفات تعليمية قابلة للتحرير · ليست مستندات تنفيذ معتمدة</p>'+
+ '<p class="cad-disclosure">دراسة رسم هندسي تصوّرية · معاينة فقط · ليست مستندات تنفيذ معتمدة</p>'+
  '</div>';
 const copy=section.querySelector('#cadStoryText');
 const frame=section.querySelector('#cadStorySheet');
@@ -77,15 +77,6 @@ tabs.addEventListener('click',e=>{
  const y=section.getBoundingClientRect().top+scrollY+(i+.05)/7*total();
  scrollTo({top:y,behavior:reduce?'auto':'smooth'});
 });
-section.querySelector('#cadDownload').addEventListener('click',()=>{
- const contents=cad.dxf();
- const blob=new Blob([contents],{type:'application/dxf'});
- const url=URL.createObjectURL(blob);
- const a=document.createElement('a');a.href=url;a.download='rehab-haider-courtyard-concept.dxf';
- document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
-});
-
 section.querySelector('#cadExport4k').addEventListener('click',async e=>{
   const button=e.currentTarget,original=button.textContent;
   button.disabled=true;button.textContent='تجهيز صورة 4K...';
