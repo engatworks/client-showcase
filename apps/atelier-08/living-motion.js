@@ -41,7 +41,7 @@
   }
 
   const scenes=$$('.cinema-scene',hero);
-  let scene=0,visible=true,lastScroll=0,frame=0;
+  let scene=0,visible=true,frame=0;
   const currentImage=()=>$('.cinema-scene.is-active img',hero);
   const count=$('[data-cinema-count]',hero);
   function showScene(i){
@@ -64,21 +64,24 @@
   let sceneStart=performance.now(),sceneDuration=9000;
   function updateVisuals(now){
     frame=0;
-    if(!hero.isConnected||lowMotion())return;
-    if(!document.hidden&&visible){
-      const elapsed=now-sceneStart;
-      if(elapsed>=sceneDuration&&scenes.length>1){
-        showScene((scene+1)%scenes.length);
-        sceneStart=now;
-      }
-      if(progress)progress.style.setProperty('--scene-progress',String(Math.min(1,(now-sceneStart)/sceneDuration)));
-    } else sceneStart=now;
-    const page=document.documentElement;
-    page.style.setProperty('--page-progress',String(Math.max(0,Math.min(1,window.scrollY/Math.max(1,page.scrollHeight-innerHeight)))));
-    hero.style.setProperty('--scroll-shift',Math.min(85,Math.max(-85,lastScroll*.1)).toFixed(1)+'px');
+    if(!hero.isConnected||lowMotion()||document.hidden||!visible)return;
+    if(now-sceneStart>=sceneDuration&&scenes.length>1){
+      showScene((scene+1)%scenes.length);
+      sceneStart=now;
+    }
+    if(progress)progress.style.setProperty('--scene-progress',String(Math.min(1,(now-sceneStart)/sceneDuration)));
     frame=requestAnimationFrame(updateVisuals);
   }
-  if(!lowMotion())frame=requestAnimationFrame(updateVisuals);
+  function startLoop(){
+    if(frame||lowMotion()||document.hidden||!visible)return;
+    sceneStart=performance.now();
+    frame=requestAnimationFrame(updateVisuals);
+  }
+  function stopLoop(){
+    if(frame)cancelAnimationFrame(frame);
+    frame=0;
+  }
+  startLoop();
 
   // After the intended font is ready, drop the two complete name lines into place.
   // The image-filled second line must retain a single connected text glyph run.
@@ -171,7 +174,7 @@
   if('IntersectionObserver' in window){
     new IntersectionObserver(entries=>{
       visible=entries[0]?.isIntersecting===true;
-      if(visible)sceneStart=performance.now();
+      if(visible)startLoop();else stopLoop();
     },{threshold:.02}).observe(hero);
     const interlude=$('.cinema-interlude');
     if(interlude)new IntersectionObserver((entries,observer)=>{
@@ -179,16 +182,18 @@
     },{threshold:.12}).observe(interlude);
   }
   function onScroll(){
-    lastScroll=Math.min(window.scrollY,hero.offsetHeight);
-    if(frame||lowMotion()){
-      const root=document.documentElement;
-      root.style.setProperty('--page-progress',String(Math.max(0,Math.min(1,window.scrollY/Math.max(1,root.scrollHeight-innerHeight)))));
-    }
+    const root=document.documentElement;
+    root.style.setProperty('--page-progress',String(Math.max(0,Math.min(1,scrollY/Math.max(1,root.scrollHeight-innerHeight)))));
+    if(visible&&!lowMotion())hero.style.setProperty('--scroll-shift',Math.min(85,Math.max(-85,Math.min(scrollY,hero.offsetHeight)*.1)).toFixed(1)+'px');
   }
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-  document.addEventListener('visibilitychange',()=>{sceneStart=performance.now();});
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  onScroll();
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stopLoop();else startLoop();
+  });
   reduce.addEventListener?.('change',()=>{
-    if(lowMotion()){cancelAnimationFrame(frame);frame=0;showScene(0);hero.style.setProperty('--scroll-shift','0px');}
-    else if(!frame)frame=requestAnimationFrame(updateVisuals);
+    if(lowMotion()){stopLoop();showScene(0);hero.style.setProperty('--scroll-shift','0px');}
+    else startLoop();
   });
 })();
