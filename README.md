@@ -18,7 +18,7 @@ Framed by Light is a bespoke, cinematic architecture portfolio **demonstration**
 - The site is an actual web implementation, **not** the earlier generated picture/mockup.
 - Arabic and English homepages load `living-motion.js` and `living-motion.css`. Hero names animate down into view; short editorial statements type in sequence; a moving typographic band and scroll-triggered word reveals create motion past the first screen. The auto-crossfading three-photo experience does not require pointless scene buttons.
 - Motion pauses when the hero is outside the viewport or the tab is hidden, and respects reduced-motion settings. Arabic text is animated by whole connected words, not disconnected letters.
-- The former decorative `architecture-mark` sketch has been removed from both homepages. The about/CAD section renders the real project **concept geometry** through `house-config.js` and `cad-studio.js` as a measured floor plan (six layers), concept elevation and section. The existing editable `rehab-haider-courtyard-concept.dxf` is linked for download.
+- The former decorative `architecture-mark` sketch has been removed from both homepages. The about/CAD section renders the real project **concept geometry** through `house-config.js` and `cad-studio.js` as a measured floor plan (six layers), concept elevation and section. The retired editable DXF is no longer publicly linked or present at the branch tip.
 - These are **DXF-compatible conceptual drawings rendered in the browser**, not files certified or exported by the AutoCAD application. Neither they nor the six fictional project studies should be represented as commissioned work.
 - `tools/check_release.py` and `.github/workflows/rehab-portfolio-qa.yml` test the new hooks and attempt real Chromium mobile/desktop layout and drawing checks. The workflow's completed result, screenshots and Cloudflare deployment still require independent verification.
 
@@ -26,6 +26,21 @@ Framed by Light is a bespoke, cinematic architecture portfolio **demonstration**
 - [Motion: Text animation](https://motion.dev/docs/text-animation) — staggered words, clipping, typewriter and scroll reveals.
 - [GSAP SplitText documentation](https://gsap.com/docs/v3/Plugins/SplitText/) — responsive, accessible split text; Arabic remains whole-word.
 - [Codrops: scroll-driven type](https://tympanus.net/codrops/2025/11/04/creating-3d-scroll-driven-text-animations-with-css-and-gsap/) — scroll-linked kinetic composition.
+
+## Drawing-led portfolio update (22 October 2026)
+The architecture demonstration now foregrounds **view-only technical drafting**, not six interchangeable photo concepts. Four index cards use generated vector drawing previews; five case-study routes contain original illustrative drawing studies.
+
+- A-001 plot/site plan: fictional plot boundary 28 × 25 m, 18 × 14 m courtyard-house envelope, indicative setbacks, site access, keynotes, north indication, room schedule, door swings, and chained dimensions.
+- A-101 architectural floor plan: six visible conceptual geometry layers, room names, openings, grids, furnishings and dimensions derived from the shared model.
+- E-101 illustrative lighting coordination sheet: fixture identifiers, switch groups and schematic circuit routes (not an engineered electrical plan).
+- A-201 elevation and A-301 section: level datums, slab and facade linework, schematic openings, dimension chains and coordinated shared massing.
+- A-401 schematic roof, glazing and joinery details: design-study drawings, not approved assemblies.
+
+Each drawing opens in a touch-friendly **view-only zoom interface**. No public DXF, DWG or editable CAD download is linked. The previously served `rehab-haider-courtyard-concept.dxf` has been removed from the current branch, its public browser generator API has been disabled, and the retired journey's download handler removed.
+
+**Security limitation:** GitHub commit history and already-cached Cloudflare downloads may still contain the old DXF. If the source was ever confidential (this repository's source describes it as a fictional demo), removing it from HEAD alone is not sufficient. A private repository / authenticated storage, history-cleaning coordinated with maintainers, Cloudflare cache purge, and replacement of any real client geometry with licensed non-sensitive preview sheets are needed. Browser-rendered SVG and JS source geometry are *inspectable* by visitors and must never contain genuinely confidential drawing data.
+
+Verification: view-only renderer executed with the actual source geometry in a lightweight runtime QA; live Cloudflare deploy and full desktop/mobile screenshot sign-off are not yet independently confirmed.
 
 ## Portfolio truth
 All six spatial studies are fictional concepts. The photographs are independent mood references, **not** commissions, buildings or projects completed by Rehab Haider. No actual identity approval, commissioned projects, client contact details, or project-specific CAD files were supplied. Do not substitute invented claims. Replace all reference material with licensed, verified project assets and approved biography before commercial publication.
