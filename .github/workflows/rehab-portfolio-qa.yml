@@ -25,6 +25,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python apps/atelier-08/tools/check_release.py
+      - run: node --check apps/atelier-08/living-motion.js
+      - run: node --check apps/atelier-08/cad-studio.js
 
   visual-snapshots:
     runs-on: ubuntu-latest
@@ -47,6 +49,40 @@ jobs:
           done
           cat /tmp/portfolio-server.log
           exit 1
+      - name: Verify real browser motion and generated CAD geometry
+        run: |
+          node --input-type=module <<'EOT'
+          import { chromium } from 'playwright';
+          const browser=await chromium.launch({headless:true});
+          let passed=0;
+          try {
+            for(const [route,lang,width,height] of [
+              ['/', 'ar', 390, 844],
+              ['/en/index.html', 'en', 390, 844],
+              ['/', 'ar', 1440, 900],
+              ['/en/index.html', 'en', 1440, 900],
+            ]){
+              const page=await browser.newPage({viewport:{width,height}});
+              const errors=[];
+              page.on('pageerror',e=>errors.push(e.message));
+              const result=await page.goto('http://127.0.0.1:8181'+route,{waitUntil:'networkidle'});
+              if(!result?.ok()) throw new Error('HTTP fail '+route);
+              await page.waitForFunction(()=>!!document.querySelector('[data-cad-paper="plan"] svg [data-drawing-layer="dimensions"]'),{timeout:12000});
+              const state=await page.evaluate(()=>{
+                const hero=document.querySelector('[data-cinema]');
+                const words=hero.querySelectorAll('.cinema-word');
+                const cad=document.querySelector('[data-cad-paper="plan"] svg');
+                const img=hero.querySelector('.cinema-scene.is-active img');
+                return {htmlLang:document.documentElement.lang,hero:!!hero,words:words.length,cadLayers:cad.querySelectorAll('[data-drawing-layer]').length,cadWidth:cad.getAttribute('viewBox'),image:img.complete&&img.naturalWidth>0,ticker:!!document.querySelector('.living-band-inner'),type:!!document.querySelector('[data-typed]'),buttons:document.querySelectorAll('[data-scene-button]').length,overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth};
+              });
+              if(state.htmlLang!==lang||state.words!==2||state.cadLayers!==6||!state.image||!state.ticker||!state.type||state.buttons!==0||state.overflow>4||errors.length)throw new Error(JSON.stringify({route,width,state,errors}));
+              await page.close();
+              passed++;
+              console.log('PASS',route,width,'CAD layers',state.cadLayers);
+            }
+          }finally{await browser.close();}
+          if(passed!==4)process.exitCode=1;
+          EOT
       - name: Capture actual Arabic/English desktop and mobile layouts
         run: |
           mkdir -p portfolio-screenshots
