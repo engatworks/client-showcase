@@ -1,0 +1,111 @@
+/* REHAB HAIDER / KINETIC EDITION
+   Live text, scroll response and DXF-derived technical plotting.
+   Runs on top of the existing typographic system. */
+.cinematic-home .cinema-diagram,.cinematic-home .cinema-scenes-nav,.cinematic-home .cinema-pause{display:none!important}
+.cinematic-home .cinema-baseline--clean{justify-content:space-between;align-items:center;gap:clamp(14px,3vw,45px)}
+.cinema-baseline--clean .cinema-counter{font:500 12px/1 "DM Sans",sans-serif;letter-spacing:.18em;color:#f9f5ed;white-space:nowrap}
+.cinema-baseline--clean .cinema-progress-rail{position:relative;flex:1;max-width:420px;height:1px;background:rgba(255,255,255,.36);overflow:hidden}
+.cinema-progress-rail::after{content:"";position:absolute;inset:0;background:#f1d4a6;transform:scaleX(var(--scene-progress,0));transform-origin:left}
+.cinema-baseline--clean .cinema-scroll{display:inline-flex;align-items:center;max-width:none;white-space:nowrap;font-size:11px;letter-spacing:.02em}
+.cinematic-home .hero.cinematic-hero .cinema-title .cinema-word{animation:none!important}
+.cinematic-home.living-ready .cinema-title .cinema-word{will-change:transform,opacity}
+.cinematic-home .cinema-meta{font-size:11px}
+.cinematic-home .cinema-intro-label{font-size:11px;opacity:.92}
+.living-type{min-height:2.6em;display:flex;align-items:center;gap:9px;font:500 clamp(16px,2.2vw,29px)/1.5 "DM Sans",sans-serif;color:#e8c9a0;letter-spacing:-.015em}
+.is-ar .living-type{font:500 clamp(17px,2.2vw,29px)/1.6 "Alexandria",sans-serif;letter-spacing:0}
+.living-type-text{unicode-bidi:plaintext}
+.living-caret{display:inline-block;width:1.5px;height:1.1em;background:#ead1a9;animation:living-caret-blink .8s steps(1,end) infinite}
+@keyframes living-caret-blink{50%{opacity:0}}
+.cinematic-home .hero.cinematic-hero{--scroll-shift:0px}
+.cinematic-home .cinema-scene img{animation:none!important;transform:translate3d(0,var(--scroll-shift),0) scale(1.085);transition:transform .15s linear,filter 1s ease}
+.cinematic-home .cinema-scene{transition:opacity 1.5s ease,visibility 1.5s ease}
+.cinematic-home .cinema-reference{display:none}
+.cinematic-home .cinema-inner{padding-bottom:165px}
+.cinematic-home .cinema-afterword{margin-top:clamp(20px,4vh,65px);gap:22px}
+.cinematic-home .cinema-intro{max-width:520px}
+.cinematic-home .cinema-intro p:last-child:not(.living-type){max-width:470px}
+.living-band{overflow:hidden;background:#c8b69d;color:#1b2520;border-top:1px solid rgba(20,28,24,.25);border-bottom:1px solid rgba(20,28,24,.22);padding:17px 0;position:relative}
+.living-band-inner{display:flex;width:max-content;animation:living-marquee 32s linear infinite}
+.living-band-set{flex:none;display:flex;align-items:center;gap:clamp(22px,3vw,46px);padding-inline:clamp(18px,3vw,46px);white-space:nowrap;font:500 clamp(13px,1.3vw,18px)/1.7 "DM Sans",sans-serif;letter-spacing:.06em}
+.is-ar .living-band-set{font:500 clamp(14px,1.5vw,20px)/1.8 "Alexandria",sans-serif;letter-spacing:0}
+.living-band-set b{font-weight:500}.living-band-set .band-star{font:300 24px/1 Georgia,serif;opacity:.6}
+@keyframes living-marquee{to{transform:translateX(-50%)}}
+.is-ar .living-band-inner{animation-direction:reverse}
+.living-band:hover .living-band-inner{animation-play-state:paused}
+.living-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.living-scroll-progress{position:fixed;top:0;left:0;z-index:110;width:100%;height:2px;transform:scaleX(var(--page-progress,0));transform-origin:left;background:#c7a77d;pointer-events:none}
+.cinematic-home.living-ready .kinetic-heading .kinetic-word{display:inline-block;position:relative;vertical-align:baseline;opacity:.15;transform:translateY(.5em) rotate(2deg);transition:transform .95s cubic-bezier(.16,1,.3,1),opacity .85s ease;transition-delay:calc(var(--word-order,0) * 58ms)}
+.cinematic-home.living-ready .kinetic-heading.is-kinetic-visible .kinetic-word{opacity:1;transform:translateY(0) rotate(0)}
+.cinematic-home.living-ready .work-card:not(.is-visible){opacity:.15;transform:translateY(40px);transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity 1.1s}
+.cinematic-home.living-ready .work-card.is-visible{opacity:1;transform:translateY(0)}
+/* Actual geometrical drafting, not a geometric decoration. */
+.cad-proof{background:#e8e5dc;color:#202a25;padding:clamp(72px,10vw,150px) clamp(21px,5.5vw,104px) clamp(70px,9vw,135px);border-top:1px solid #b9bbaf;overflow:hidden}
+.cad-proof-inner{max-width:1690px;margin:auto}
+.cad-proof-top{display:grid;grid-template-columns:1fr minmax(0,1.75fr);gap:clamp(35px,7vw,120px);align-items:start;margin-bottom:clamp(32px,5vw,76px)}
+.cad-proof-overline{font:600 11px/1.5 "DM Sans",sans-serif;letter-spacing:.17em;color:#647467}
+.is-ar .cad-proof-overline{font:500 12px/1.6 "Alexandria",sans-serif;letter-spacing:0}
+.cad-proof-title{font:400 clamp(55px,6.5vw,108px)/.99 var(--display);letter-spacing:-.055em;max-width:1000px}
+.is-ar .cad-proof-title{font:500 clamp(43px,5.9vw,83px)/1.34 var(--ar-display);letter-spacing:-.035em}
+.cad-proof-title em{font-weight:400;color:#9a7555}
+.is-ar .cad-proof-title em{font-style:normal}
+.cad-proof-meta{display:flex;align-items:end;justify-content:space-between;flex-wrap:wrap;gap:20px 40px;margin-bottom:22px}
+.cad-proof-meta p{max-width:740px;font-size:14px;line-height:2;color:#4f6154}
+.cad-proof-download{display:inline-flex;align-items:center;gap:32px;color:#233b2e;font-weight:600;font-size:12px;padding:10px 0;border-bottom:1px solid currentColor}
+.cad-proof-download:hover{gap:43px}
+.cad-proof-download span:last-child{font:22px Georgia,serif}
+.cad-proof-viewport{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);gap:13px;direction:ltr;align-items:stretch}
+.cad-proof-viewport .cad-paper{background:#f7f6f1;min-width:0;overflow:hidden;border:1px solid #b9bdb6;box-shadow:0 14px 40px rgba(14,30,20,.07);position:relative}
+.cad-proof-plan{display:flex;flex-direction:column}
+.cad-proof-aside{display:grid;gap:13px;grid-template-rows:1fr 1fr;min-height:0}
+.cad-proof-viewport .cad-paper-inner{width:100%;min-width:0;aspect-ratio:1300/825}
+.cad-proof-viewport .rh-cad-svg{display:block;width:100%;height:100%;object-fit:contain;background:#f7f6f1}
+.cad-proof-viewport .rh-cad-svg>rect:first-child{fill:#f7f6f1}
+.cad-paper-label{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;border-bottom:1px solid #b9bdb6;direction:ltr;font:600 10px/1.6 "DM Sans",sans-serif;color:#26332c;letter-spacing:.09em}
+.cad-paper-label span:last-child{color:#617367}
+.cad-paper-footer{border-top:1px solid #b9bdb6;display:flex;justify-content:space-between;gap:20px;padding:10px 15px;font:500 9px/1.5 "DM Sans",sans-serif;color:#5b6d61}
+.cad-paper .rh-cad-svg .cad-wall{fill:#303c35;stroke:#141d19}
+.cad-paper .rh-cad-svg .cad-property,.cad-paper .rh-cad-svg .cad-site-tree,.cad-paper .rh-cad-svg .cad-grid,.cad-paper .rh-cad-svg .cad-level{stroke:#8e9d91}
+.cad-paper .rh-cad-svg .cad-window{stroke:#3a6c75}
+.cad-paper .rh-cad-svg .cad-door,.cad-paper .rh-cad-svg .cad-dim,.cad-paper .rh-cad-svg .cad-leader{stroke:#7a7770}
+.cad-paper .rh-cad-svg .cad-water{fill:#e0e9e6}
+.cad-paper .rh-cad-svg .cad-water-edge{fill:#edf1ec}
+.cad-paper .rh-cad-svg .cad-wall-soft{fill:#d4d8d3;stroke:#38473b}
+.cad-paper .rh-cad-svg .cad-glass-fill{fill:#e1e9e8;stroke:#3a6c75}
+.cad-paper .rh-cad-svg .cad-wall-line{stroke:#28352f}
+.cad-paper .rh-cad-svg .cad-num,.cad-paper .rh-cad-svg .cad-dim-label{fill:#555e56}
+.cad-paper .rh-cad-svg .cad-doc-heading,.cad-paper .rh-cad-svg .cad-room,.cad-paper .rh-cad-svg .cad-panel-title{fill:#273a30}
+.cad-paper .rh-cad-svg .cad-doc-sub,.cad-paper .rh-cad-svg .cad-key-en{fill:#52645a}
+.cad-proof-disclaimer{font-size:11px;line-height:1.9;color:#5c6c60;margin-top:22px}
+.cad-paper[data-cad-ready="true"] .rh-cad-svg [data-drawing-layer]{opacity:0;clip-path:inset(0 100% 0 0);transform:translateY(3px);transition:clip-path .9s cubic-bezier(.16,1,.3,1),opacity .8s ease,transform .9s ease;transition-delay:calc(var(--layer,0) * 205ms)}
+.cad-paper[data-cad-ready="true"].is-drawn .rh-cad-svg [data-drawing-layer]{opacity:1;clip-path:inset(0 0 0 0);transform:translateY(0)}
+.cad-proof .cad-paper--empty{display:grid;place-items:center;min-height:170px;padding:20px;text-align:center;color:#53695a;font-size:12px}
+@media(min-width:950px){.cad-proof-aside .cad-paper-inner{aspect-ratio:auto;flex:1;min-height:0}.cad-proof-aside .cad-paper{display:flex;flex-direction:column}}
+@media(max-width:950px){.cad-proof-top{grid-template-columns:1fr;gap:24px}.cad-proof-title{max-width:780px}.cad-proof-viewport{grid-template-columns:1fr}.cad-proof-aside{grid-template-columns:1fr 1fr;grid-template-rows:auto}.cad-proof-meta p{font-size:12px}}
+@media(max-width:700px){
+.cinematic-home .cinema-inner{padding-bottom:145px}
+.cinematic-home .cinema-intro{gap:8px}
+.cinematic-home .living-type{min-height:2.3em;font-size:16px}
+.cinematic-home.is-ar .living-type{font-size:16px}
+.cinema-baseline--clean .cinema-scroll{display:inline-flex;font-size:10px}
+.living-band{padding:11px 0}
+.living-band-set{gap:20px;padding-inline:20px;font-size:12px}
+.is-ar .living-band-set{font-size:13px}
+.cad-proof{padding:70px 17px 85px}
+.cad-proof-title{font-size:clamp(45px,11vw,65px)}
+.is-ar .cad-proof-title{font-size:clamp(40px,9.5vw,58px)}
+.cad-proof-meta{display:block}
+.cad-proof-download{margin-top:10px}
+.cad-proof-viewport{gap:11px}
+.cad-proof-aside{gap:11px}
+.cad-paper-label{font-size:8px;padding:9px 10px}
+.cad-paper-footer{font-size:8px;padding:8px 10px}
+.cad-proof-disclaimer{font-size:10px}
+}
+@media(max-width:380px){.cinematic-home .cinema-baseline--clean .cinema-scroll{display:inline-flex;max-width:none}.cinema-baseline--clean .cinema-progress-rail{max-width:80px}.living-type{font-size:14px!important}}
+@media(prefers-reduced-motion:reduce){
+.living-band-inner,.living-caret,.cinema-title .cinema-word,.kinetic-word,.cad-paper .rh-cad-svg [data-drawing-layer]{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;clip-path:none!important}
+.living-band-inner{animation:none!important}
+.cinematic-home.living-ready .kinetic-heading .kinetic-word{opacity:1;transform:none}
+.cinematic-home.living-ready .work-card:not(.is-visible){opacity:1;transform:none}
+.cinematic-home .cinema-scene img{transition:none!important;transform:scale(1.02)}
+}
