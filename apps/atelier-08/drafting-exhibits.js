@@ -189,8 +189,111 @@ function details(){
  unit(730,472,'D-04   INTERNAL DETAIL',3);
  return paper('A-401',L('تفاصيل معمارية','Architectural details'),'FOUR STUDIES / CONNECTIONS / FINISHES',m);
 }
+
+/* Two coordinated elevation and section drawing sheets share the datum and
+   building dimensions of the conceptual house model. They are illustrative
+   geometric documentation, NEVER approved construction drawings. */
+function elevationPlot(){
+ const S=37,ox=153,ground=656,fy=z=>ground-z*S,x=v=>ox+v*S;
+ let m='';
+ // datum / slab positions and building envelope
+ for(const level of [0,H.floorHeight,H.floorHeight+H.upperFloorHeight]){
+   const yy=fy(level);
+   m+=line(87,yy,957,yy,'cad-level')+T(1020,yy-7,level===0?'±0.00':'+'+level.toFixed(2),'key');
+ }
+ m+=rect(x(0),fy(H.floorHeight),H.sideWing*S,H.floorHeight*S,'elevation-mass');
+ m+=rect(x(18-H.sideWing),fy(H.floorHeight),H.sideWing*S,H.floorHeight*S,'elevation-mass');
+ m+=rect(x(0),fy(H.floorHeight+H.upperFloorHeight),10.6*S,H.upperFloorHeight*S,'elevation-mass');
+ // glazed apertures, actual widths follow the existing abstract geometry
+ for(const [a,b,w,h] of [[.9,.74,3.85,2.26],[13.15,.74,3.85,2.26],[.8,4.05,8.8,2.18]]){
+  const top=fy(b+h),left=x(a);
+  m+=rect(left,top,w*S,h*S,'glazing-panel');
+  m+=line(left+w*S/2,top,left+w*S/2,top+h*S,'mullion')+
+      line(left,top+h*S*.53,left+w*S,top+h*S*.53,'mullion');
+ }
+ for(const [a,b,w] of [[1.0,.8,4.1],[13.2,.8,4.1],[.9,4.1,8.5]]){
+  m+=line(x(a),fy(b),x(a+w),fy(b),'glazing');
+ }
+ // vertical façade fins track grid module spacing
+ for(let i=0;i<6;i++){
+  const a=.95+i*.70;
+  m+=rect(x(a),fy(2.95),3,2.18*S,'facade-fin');
+ }
+ for(let i=0;i<6;i++){
+  const a=13.2+i*.70;
+  m+=rect(x(a),fy(2.95),3,2.18*S,'facade-fin');
+ }
+ // cornices, coping, slab edges, ground hatch
+ m+=rect(x(0),fy(6.80)-8,10.6*S,8,'slab');
+ m+=rect(x(0),fy(3.70)-7,5.75*S,7,'slab');
+ m+=rect(x(12.25),fy(3.70)-7,5.75*S,7,'slab');
+ m+=rect(x(0)-20,ground,18*S+40,15,'hatch');
+ for(const a of [0,5.75,12.25,18]){
+  m+=line(x(a),fy(6.8)-48,x(a),ground+35,'grid');
+  m+=circ(x(a),ground+34,12,'bubble')+T(x(a),ground+38,["A","B","C","D"][[0,5.75,12.25,18].indexOf(a)],'bubble-text','text-anchor="middle"');
+ }
+ m+=dimH(x(0),x(18),ground+67,'18.00 m',ground);
+ m+=dimH(x(0),x(5.75),ground+88,'5.75',ground)+dimH(x(5.75),x(12.25),ground+88,'6.50',ground)+dimH(x(12.25),x(18),ground+88,'5.75',ground);
+ m+=dimV(fy(6.8),fy(3.7),x(18)+46,'3.10 m',x(18));
+ m+=dimV(fy(3.7),fy(0),x(18)+46,'3.70 m',x(18));
+ m+=T(1040,185,'FACADE STUDY','panel-heading')+line(1040,206,1320,206,'hairline');
+ for(const [i,lineText] of ['GLAZED OPENINGS','FAÇADE FINS','LEVEL REFERENCES','ROOF COPING','GRID AXES / MODULES'].entries())
+   m+=T(1040,253+41*i,String(i+1).padStart(2,'0')+'  '+lineText,'note');
+ m+=T(1040,530,'DRAWING NOTES','panel-heading')+line(1040,548,1320,548,'hairline');
+ m+=T(1040,580,'01 LEVELS ARE ASSUMED.','note')+
+ T(1040,612,'02 STRUCTURE NOT VERIFIED.','note')+
+ T(1040,644,'03 OPENINGS ARE SCHEMATIC.','note')+
+ T(1040,676,'04 NOT FOR CONSTRUCTION.','note');
+ m+=T(205,260,'COURTYARD HOUSE / FRONT ELEVATION — CONCEPT','panel-heading');
+ return paper('A-201',L('واجهة المسكن','Residential elevation'),'FACADE / LEVELS / GLAZING / DIMENSIONS',m);
+}
+function sectionPlot(){
+ const S=37,ox=158,ground=652,fy=z=>ground-z*S,x=v=>ox+v*S;
+ let m='';
+ // Ground, column lines and slab relationship consistent with master geometry
+ m+=rect(x(0)-24,ground,18*S+48,19,'foundation');
+ m+=rect(x(0),ground-10,18*S,10,'slab');
+ m+=rect(x(0),fy(3.70),5.75*S,12,'slab')+
+   rect(x(12.25),fy(3.70),5.75*S,12,'slab');
+ m+=rect(x(0),fy(6.80),10.6*S,14,'slab');
+ for(const [a,b,h] of [[0,0,3.7],[5.75,0,3.7],[12.25,0,3.7],[18,0,3.7],[0,3.7,3.1],[10.6,3.7,3.1]]){
+  m+=rect(x(a)-6,fy(b+h),12,h*S,'section-wall');
+ }
+ for(const a of [0,5.75,12.25,18]){
+  m+=line(x(a),fy(6.8)-50,x(a),ground+45,'grid')+circ(x(a),ground+44,12,'bubble');
+  m+=T(x(a),ground+48,['A','B','C','D'][[0,5.75,12.25,18].indexOf(a)],'bubble-text','text-anchor="middle"');
+ }
+ // Door and glazing openings in section are demonstrative, not wall schedules
+ m+=rect(x(.8),fy(2.9),2.25*S,2.35*S,'glazing-panel')+
+   rect(x(13.0),fy(2.9),2.9*S,2.35*S,'glazing-panel');
+ for(const a of [1.55,2.3,13.9,14.9])m+=line(x(a),fy(.55),x(a),fy(2.9),'mullion');
+ // A concrete stair study with a consistent nominal rise and run
+ const stx=4.0,sty=.12;for(let i=0;i<11;i++){
+   const a=stx+i*.33,y=sty+i*.31;
+   m+=path('M'+x(a)+' '+fy(y)+'h'+(.33*S)+'v'+(-.31*S),'stair');
+ }
+ // furniture and external hard landscape in profile
+ for(const [a,b,w,h] of [[1.15,0.25,2.0,.85],[13.4,.25,2.4,.75],[7.1,.15,3.4,.3]]){
+  m+=rect(x(a),fy(b+h),w*S,h*S,'furniture');
+ }
+ // courtyard tree study, independent of structural documentation
+ m+=line(x(9.5),ground,x(9.5),fy(2.65),'tree-trunk');
+ for(const [a,b,r] of [[8.9,2.25,.55],[9.45,2.8,.8],[10.1,2.2,.65]])m+=circ(x(a),fy(b),r*S,'tree');
+ m+=T(x(8.9),fy(.65),'OPEN COURT','roomlabel','text-anchor="middle"');
+ for(const z of [0,3.7,6.8]){
+  const yy=fy(z);
+  m+=line(90,yy,1030,yy,'cad-level')+T(1037,yy-6,z===0?'±0.00':'+'+z.toFixed(2),'key');
+ }
+ m+=dimH(x(0),x(18),ground+76,'18.00 m',ground)+dimV(fy(6.8),ground,x(18)+50,'6.80 m',x(18));
+ m+=T(190,238,'SECTION A–A / COURTYARD HOUSE','panel-heading');
+ m+=T(1040,186,'SECTION NOTES','panel-heading')+line(1040,205,1315,205,'hairline');
+ for(const [i,txt] of ['GROUND DATUM ±0.00','FIRST FLOOR +3.70','ROOF LEVEL +6.80','CONCEPT STAIR STUDY','COURTYARD OPEN TO SKY','STRUCTURE NOT ENGINEERED','SCHEMATIC ONLY'].entries())
+ m+=T(1040,248+i*47,String(i+1).padStart(2,'0')+'  '+txt,'note');
+ m+=T(1040,678,'NO BUILDABLE DETAIL','note');
+ return paper('A-301',L('القطاع المعماري','Architectural section'),'VERTICAL LEVELS / SLABS / STAIR / OPENINGS',m);
+}
 const cache={site,lighting:ceiling,details,
- plan:()=>CAD.sheet(6),elevation:()=>CAD.elevation(),section:()=>CAD.section()};
+ plan:()=>CAD.sheet(6),elevation:elevationPlot,section:sectionPlot};
 function get(name){
  try{return (cache[name]||cache.site)()}catch(e){return ''}
 }
