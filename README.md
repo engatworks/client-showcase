@@ -70,3 +70,8 @@ The sister `apps/goodside-learning` demo remains a separate project.
 
 ## Visual sign-off still required
 The cinematic effects have source-level checks but **live desktop/mobile browser screenshots, font loading inspection, contrast evaluation over each scene, Lighthouse and Cloudflare deployment were not independently verified** in this editing session. Do not claim a pixel-perfect launch on commit alone.
+
+
+## Ahmed Siddig — The Signal
+
+A third, independent engineering-portfolio demonstration lives in [`apps/ahmed-siddig`](apps/ahmed-siddig/README.md). It includes WebGL 2 conceptual control-panel visualization, scroll-linked electrical effects, a documented ESP32 heart-monitoring case study, DC/three-phase interactive labs, and its own static QA workflow. To publish it, create a *separate* Cloudflare Pages project using root `apps/ahmed-siddig`; the existing `apps/atelier-08` Pages root remains unchanged.

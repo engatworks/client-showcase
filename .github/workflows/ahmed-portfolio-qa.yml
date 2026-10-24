@@ -1,0 +1,29 @@
+name: Ahmed Siddig Portfolio QA
+on:
+  push:
+    paths:
+      - 'apps/ahmed-siddig/**'
+      - '.github/workflows/ahmed-portfolio-qa.yml'
+  pull_request:
+    paths:
+      - 'apps/ahmed-siddig/**'
+      - '.github/workflows/ahmed-portfolio-qa.yml'
+permissions:
+  contents: read
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python apps/ahmed-siddig/tools/check_site.py
+      - run: |
+          node --check apps/ahmed-siddig/main.js
+          node --check apps/ahmed-siddig/director.js
+          node --check apps/ahmed-siddig/three-phase.js
+          node --check apps/ahmed-siddig/case-study.js

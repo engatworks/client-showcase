@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b0e" />
+  <meta name="description" content="Ahmed Siddig — Electrical & Electronics Engineer. Power systems, control panels, embedded electronics and practical engineering work." />
+  <meta property="og:title" content="Ahmed Siddig — Electrical & Electronics Engineer" />
+  <meta property="og:description" content="From the smallest signal to the systems that power our world." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ahmed Siddig — The Signal" />
+  <meta property="og:site_name" content="The Signal by Ahmed Siddig" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="twitter:description" content="Power is personal. An interactive electrical engineering portfolio." />
+  <title>Ahmed Siddig — Electrical & Electronics Engineer</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./director.css" />
+  <link rel="stylesheet" href="./three-phase.css" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./director.js"></script>
+  <script type="module" src="./three-phase.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ahmed Siddig","jobTitle":"Electrical and Electronics Engineer","alumniOf":{"@type":"CollegeOrUniversity","name":"Cyprus Aydin University"},"sameAs":["https://www.linkedin.com/in/ahmed-siddig-0ab7392ba"],"knowsAbout":["Electrical distribution","Control panels","Embedded systems","Signal processing"]}</script>
+</head>
+<body>
+  <div class="boot-overlay" id="boot-overlay" aria-hidden="true"><div class="boot-central"><div class="boot-monogram">AS<span>·</span></div><div class="boot-progress"><span></span></div><p>ESTABLISHING CONNECTION <b id="boot-percent">000%</b></p></div><div class="boot-index">A PERSONAL ENGINEERING JOURNAL — ISSUE 001</div></div>
+  <div class="cursor-orbit" id="cursor-orbit" aria-hidden="true"><span></span></div>
+  <a href="#work" class="skip-link">Skip to work</a>
+  <div class="boot-line" aria-hidden="true"></div>
+  <canvas id="site-current" aria-hidden="true"></canvas>
+  <div class="scroll-meter" aria-hidden="true"><span class="scroll-meter-fill" id="scroll-meter-fill"></span><span class="scroll-meter-label">CURRENT / 001</span></div>
+  <div class="site-shell">
+    <header class="site-header">
+      <a href="#top" class="brand" aria-label="Ahmed Siddig, home"><span class="brand-mark">AS<span class="brand-dot">.</span></span><span class="brand-divider"></span><span class="brand-detail">AHMED<br>SIDDIG</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#work">WORK <span>01</span></a>
+        <a href="#simulator">DC LAB <span>02</span></a>
+        <a href="#three-phase">AC LAB <span>03</span></a>
+        <a href="#about">ABOUT <span>03</span></a>
+      </nav>
+      <button id="power-toggle" class="power-toggle" type="button" aria-pressed="true" aria-label="Toggle animated electric current"><span class="power-toggle-led"></span><span class="power-toggle-text">CIRCUIT LIVE</span><span class="power-toggle-symbol">⏻</span></button>
+      <a href="mailto:engahmedsiddig21@gmail.com?subject=Engineering%20Opportunity" class="header-contact">LET'S CONNECT <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="hero-sequence" data-act="0" aria-labelledby="hero-heading">
+        <div class="hero-stage">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-current-stamp" aria-hidden="true">I = dQ / dt <span>— ENERGY IN MOTION</span></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-led"></span> AHMED SIDDIG / PORTFOLIO 2026 <span class="eyebrow-code">AS–001 / SYSTEM ONLINE</span></div>
+          <p class="kicker">ELECTRICAL & ELECTRONICS ENGINEER</p>
+          <h1 id="hero-heading">POWER IS<br><em>PERSONAL.</em></h1>
+          <p class="hero-description">I’m Ahmed Siddig. I study the systems you rarely see, but rely on every day—from industrial distribution to the smallest embedded signal.</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn-primary">EXPLORE MY WORK <span aria-hidden="true">↗</span></a>
+            <a href="#about" class="btn-link">MEET THE ENGINEER <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-index"><span class="index-line"></span>01—05 <span class="index-note">SCROLL TO ENERGIZE</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Interactive conceptual electrical control panel">
+          <canvas id="electric-arcs" aria-hidden="true"></canvas>
+          <div class="visual-corner vc-tl"></div><div class="visual-corner vc-tr"></div><div class="visual-corner vc-bl"></div><div class="visual-corner vc-br"></div>
+          <div class="visual-topline"><span>FIG / 001</span><span class="power-status"><i></i> MODEL ONLINE</span></div>
+          <div class="hero-world-coordinate" aria-hidden="true">CONCEPTUAL LV ASSEMBLY<br/>AS / MODEL 001</div>
+          <div class="hero-trajectory" aria-hidden="true"><span class="trajectory-line"></span><span class="trajectory-label">ROTATE / DISASSEMBLE / TRACE</span></div>
+          <canvas id="hero-canvas" aria-label="3D electrical control assembly; drag to rotate"></canvas>
+          <div class="webgl-fallback" id="webgl-fallback" hidden><svg class="cabinet-illustration" viewBox="0 0 620 760" aria-label="Stylized illustration of an LV control-panel cabinet"> 
+<defs>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#536961"/><stop offset=".48" stop-color="#263d37"/><stop offset="1" stop-color="#101e1a"/></linearGradient>
+<linearGradient id="module" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0f5df"/><stop offset=".7" stop-color="#9dad9c"/><stop offset="1" stop-color="#596b60"/></linearGradient>
+<linearGradient id="copper" x1="0" y1="0" x2="1"><stop stop-color="#99623e"/><stop offset=".55" stop-color="#ffe4a6"/><stop offset="1" stop-color="#805136"/></linearGradient>
+<filter id="cab-glow" x="-90%" y="-90%" width="280%" height="280%"><feGaussianBlur stdDeviation="8" /></filter>
+<filter id="cab-shadow" x="-40%" y="-40%" width="190%" height="190%"><feDropShadow dx="10" dy="18" stdDeviation="9" flood-color="#020b09" flood-opacity=".75" /></filter>
+<pattern id="plate-slots" width="21" height="24" patternUnits="userSpaceOnUse"><rect x="10" y="9" width="4" height="1.5" fill="#a2b2a3" opacity=".17" /></pattern>
+</defs>
+<g class="cabinet-transform" transform="translate(42,11) skewY(-2)">
+<g filter="url(#cab-shadow)">
+<path d="M110 52L497 70L504 660L116 644Z" fill="url(#metal)" stroke="#99b4a5" stroke-width="4"/>
+<path d="M125 65L483 79L490 644L129 631Z" fill="#172824" stroke="#415d50" stroke-width="2"/>
+<path d="M125 65L483 79L490 644L129 631Z" fill="url(#plate-slots)"/>
+<path d="M105 57L128 65L132 632L116 647L106 640Z" fill="#354a42" stroke="#718d7b"/>
+<path d="M483 80L499 70L505 658L490 646Z" fill="#101e1a" stroke="#688877"/>
+<g stroke="#859e8d" stroke-width="7" opacity=".78"><path d="M140 185L476 192M140 384L477 390M142 562L480 568" /></g>
+<g stroke="url(#copper)" stroke-width="11"><path d="M149 126L465 139"/><path d="M149 144L465 157"/></g>
+<g stroke="#ba966a" stroke-width="1.5" opacity=".6"><path d="M149 121L465 134M149 139L465 152"/></g>
+<g class="cabinet-breakers"><g class="breaker" transform="translate(159 205)">
+<rect x="0" y="0" width="82" height="126" rx="3" fill="#243d35" stroke="#97b3a0" stroke-width="3"/>
+<rect x="6" y="7" width="70" height="104" fill="url(#module)"/>
+<rect x="16" y="34" width="50" height="37" rx="2" fill="#173029" />
+<rect x="27" y="39" width="29" height="30" rx="1" fill="#354a3e" stroke="#8e9e8e"/>
+<path d="M12 14H71" stroke="#a87550" stroke-width="3" />
+<path d="M16 84H65" stroke="#35493b" stroke-width="3" />
+<g fill="#7b9890"><rect x="10" y="114" width="16" height="13"/><rect x="33" y="114" width="16" height="13"/><rect x="55" y="114" width="16" height="13"/></g>
+<text x="41" y="94" font-size="9" font-family="monospace" fill="#354f44" text-anchor="middle">QF1</text></g><g class="breaker" transform="translate(257 205)">
+<rect x="0" y="0" width="82" height="126" rx="3" fill="#243d35" stroke="#97b3a0" stroke-width="3"/>
+<rect x="6" y="7" width="70" height="104" fill="url(#module)"/>
+<rect x="16" y="34" width="50" height="37" rx="2" fill="#173029" />
+<rect x="27" y="39" width="29" height="30" rx="1" fill="#354a3e" stroke="#8e9e8e"/>
+<path d="M12 14H71" stroke="#a87550" stroke-width="3" />
+<path d="M16 84H65" stroke="#35493b" stroke-width="3" />
+<g fill="#7b9890"><rect x="10" y="114" width="16" height="13"/><rect x="33" y="114" width="16" height="13"/><rect x="55" y="114" width="16" height="13"/></g>
+<text x="41" y="94" font-size="9" font-family="monospace" fill="#354f44" text-anchor="middle">QF2</text></g><g class="breaker" transform="translate(355 205)">
+<rect x="0" y="0" width="82" height="126" rx="3" fill="#243d35" stroke="#97b3a0" stroke-width="3"/>
+<rect x="6" y="7" width="70" height="104" fill="url(#module)"/>
+<rect x="16" y="34" width="50" height="37" rx="2" fill="#173029" />
+<rect x="27" y="39" width="29" height="30" rx="1" fill="#354a3e" stroke="#8e9e8e"/>
+<path d="M12 14H71" stroke="#a87550" stroke-width="3" />
+<path d="M16 84H65" stroke="#35493b" stroke-width="3" />
+<g fill="#7b9890"><rect x="10" y="114" width="16" height="13"/><rect x="33" y="114" width="16" height="13"/><rect x="55" y="114" width="16" height="13"/></g>
+<text x="41" y="94" font-size="9" font-family="monospace" fill="#354f44" text-anchor="middle">QF3</text></g></g><g class="cabinet-contactor"><g class="contactor" transform="translate(171 402)">
+<rect width="117" height="114" rx="5" fill="#192c27" stroke="#56736a" stroke-width="3" />
+<rect x="8" y="11" width="101" height="71" fill="url(#module)" />
+<rect x="29" y="26" width="58" height="25" fill="#20342e"/>
+<rect x="34" y="31" width="48" height="13" fill="#7e9f84" />
+<text x="58" y="71" text-anchor="middle" font-family="monospace" font-size="10" fill="#26372e">KM1</text>
+<g fill="#3d594b"><rect x="14" y="0" width="20" height="11"/><rect x="48" y="0" width="20" height="11"/><rect x="83" y="0" width="20" height="11"/></g>
+</g><g class="contactor" transform="translate(328 402)">
+<rect width="117" height="114" rx="5" fill="#192c27" stroke="#56736a" stroke-width="3" />
+<rect x="8" y="11" width="101" height="71" fill="url(#module)" />
+<rect x="29" y="26" width="58" height="25" fill="#20342e"/>
+<rect x="34" y="31" width="48" height="13" fill="#7e9f84" />
+<text x="58" y="71" text-anchor="middle" font-family="monospace" font-size="10" fill="#26372e">KM2</text>
+<g fill="#3d594b"><rect x="14" y="0" width="20" height="11"/><rect x="48" y="0" width="20" height="11"/><rect x="83" y="0" width="20" height="11"/></g>
+</g></g><g class="cabinet-relays"><g class="relay" transform="translate(158 585)"><rect width="61" height="46" rx="2" fill="#223d32" stroke="#789989" stroke-width="2"/><rect x="7" y="8" width="47" height="26" fill="url(#module)"/><text x="30" y="25" text-anchor="middle" fill="#243c31" font-size="9" font-family="monospace">K1</text></g><g class="relay" transform="translate(241 585)"><rect width="61" height="46" rx="2" fill="#223d32" stroke="#789989" stroke-width="2"/><rect x="7" y="8" width="47" height="26" fill="url(#module)"/><text x="30" y="25" text-anchor="middle" fill="#243c31" font-size="9" font-family="monospace">K2</text></g><g class="relay" transform="translate(324 585)"><rect width="61" height="46" rx="2" fill="#223d32" stroke="#789989" stroke-width="2"/><rect x="7" y="8" width="47" height="26" fill="url(#module)"/><text x="30" y="25" text-anchor="middle" fill="#243c31" font-size="9" font-family="monospace">K3</text></g><g class="relay" transform="translate(407 585)"><rect width="61" height="46" rx="2" fill="#223d32" stroke="#789989" stroke-width="2"/><rect x="7" y="8" width="47" height="26" fill="url(#module)"/><text x="30" y="25" text-anchor="middle" fill="#243c31" font-size="9" font-family="monospace">K4</text></g></g>
+<g class="cabinet-wire" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M202 332V358H219V402" stroke="#e2bd79" stroke-width="5" />
+<path d="M298 330V367H379V402" stroke="#79b8af" stroke-width="5" />
+<path d="M400 331V361H402V402" stroke="#cf8c6c" stroke-width="5" />
+<path d="M217 519V543H188V585" stroke="#caa66f" stroke-width="4" />
+<path d="M391 518V544H433V585" stroke="#7cb79d" stroke-width="4" />
+<path d="M299 517V551H354V584" stroke="#f0c190" stroke-width="4" />
+</g>
+<path class="cabinet-flow" d="M157 126L464 139M203 334V360H219V402M390 517V546H431V580" stroke="#dbffc3" stroke-width="3" stroke-dasharray="25 130" fill="none" />
+<g class="cabinet-spark" fill="#c9ffc1"><circle cx="157" cy="126" r="5"/><circle cx="219" cy="399" r="4"/><circle cx="432" cy="579" r="4"/></g>
+<g fill="#d9eda8" font-family="monospace" font-size="11"><text x="151" y="100">3 PHASE / DISTRIBUTION</text><text x="152" y="682">LV / DESIGN STUDY</text></g>
+</g>
+</svg><div class="fallback-caption"><span>CONTROL SYSTEM / STUDY MODEL</span><small>SVG FALLBACK FOR NON–WEBGL DEVICES</small></div></div>
+          <svg class="schematic" id="schematic" viewBox="0 0 680 650" role="img" aria-label="Conceptual, simplified control-circuit signal flow; not an installation schematic">
+            <defs><pattern id="small-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#486064" stroke-opacity=".2" stroke-width="1"/></pattern></defs>
+            <rect width="680" height="650" fill="url(#small-grid)" />
+            <g class="schematic-wires" stroke="#9bddcc" stroke-width="2" fill="none" stroke-linejoin="round"><path d="M125 122H552M125 122V520H552V122"/><path d="M230 122V211H432V122"/><path d="M230 211V281H432V211"/><path d="M230 281V369H432V281"/></g>
+            <g font-family="monospace" font-size="12" fill="#cce6e1"><text x="114" y="99">L / SUPPLY</text><text x="535" y="99">N</text><text x="113" y="551">PROTECTION</text><text x="421" y="551">RETURN</text></g>
+            <g stroke="#d9e6de" stroke-width="2" fill="#102126"><rect x="194" y="170" width="72" height="79"/><rect x="395" y="170" width="72" height="79"/><rect x="300" y="327" width="70" height="70"/></g>
+            <g fill="#a9e8d5" font-family="monospace" font-size="16"><text x="207" y="215">QF1</text><text x="406" y="215">KM1</text><text x="315" y="369">K1</text></g>
+            <g fill="#719493" font-family="monospace" font-size="10"><text x="192" y="264">BREAKER</text><text x="395" y="264">CONTACTOR</text><text x="299" y="413">CONTROL</text></g>
+            <circle cx="125" cy="122" r="5" fill="#b9efaa"/><circle cx="552" cy="122" r="5" fill="#b9efaa"/><circle cx="125" cy="520" r="5" fill="#b9efaa"/>
+          </svg>
+          <div class="visual-side-label">SCHEMATIC / CONTROL / PROTECTION</div>
+          <div class="component-callout"><span class="callout-dot"></span><span>CONCEPTUAL LV ASSEMBLY<br><b>INTERACTIVE 3D STUDY</b></span></div>
+          <div class="visual-controls" role="group" aria-label="3D model viewing mode">
+            <button type="button" class="mode active" data-mode="physical" aria-pressed="true">01 / PHYSICAL</button>
+            <button type="button" class="mode" data-mode="exploded" aria-pressed="false">02 / EXPLODED</button>
+            <button type="button" class="mode" data-mode="schematic" aria-pressed="false">03 / SCHEMATIC</button>
+          </div>
+          <div class="visual-bottom"><span>DRAG TO ORBIT / SELECT VIEW</span><span>CONCEPT MODEL / NOT A CERTIFIED DESIGN</span></div>
+        </div>
+        <div class="hero-bottom-ribbon"><span>DESIGNED TO UNDERSTAND.</span><span class="ribbon-plus">✳</span><span>BUILT TO WORK.</span><span class="ribbon-end">AS / 001</span></div>
+
+      <div class="hero-act-overlay" id="hero-act-overlay" aria-live="off"><span class="act-count">02 / SYSTEM ANATOMY</span><strong id="act-title">THE POWER<br>BEHIND IT.</strong><p id="act-description">Breakers, contactors, relays and conductors. The components that turn power into purposeful work.</p></div>
+      <div class="hero-act-tracker" aria-hidden="true"><span class="act-bar active"></span><span class="act-bar"></span><span class="act-bar"></span></div>
+        </div><!-- hero-stage -->
+      </section>
+      <div class="manifesto-band" aria-hidden="true"><div class="manifesto-track">ELECTRONS DON'T WAIT <span>✳</span> NEITHER SHOULD IDEAS <span>✳</span> ELECTRONS DON'T WAIT <span>✳</span> NEITHER SHOULD IDEAS <span>✳</span></div></div>
+      <section class="interlude interlude-one" aria-labelledby="interlude-one-heading"><div class="interlude-top">FIELD NOTE / 001 <span>THE THINGS WE CAN'T SEE</span></div><h2 id="interlude-one-heading">EVERYTHING<br>STARTS WITH<br><em>A CONNECTION.</em></h2><div class="interlude-bottom"><p>From energy transfer to information flow, engineering is the art of making connections dependable.</p><span class="interlude-code">AS / CONNECTING THE DOTS / 2026</span></div><div class="interlude-charge" aria-hidden="true">↯</div></section>
+      <section class="section work-section" id="work" aria-labelledby="work-heading">
+        <div class="section-head"><div><div class="section-overline">01 / SELECTED WORK & EXPOSURE</div><h2 id="work-heading">IDEAS MEET<br><em>HARDWARE.</em></h2></div><p>One completed university prototype, plus carefully distinguished hands-on and supervised industrial experience.</p></div>
+        <div class="featured-project">
+          <div class="feature-visual" aria-label="Diagram of ESP32 heart-monitoring prototype signal path">
+            <div class="feature-top"><span>ENGINEERING PROJECT / 001</span><span>EMBEDDED SYSTEMS</span></div>
+            <div class="signal-art">
+              <svg viewBox="0 0 780 450" aria-hidden="true">
+                <defs><linearGradient id="pulse-grad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#5a9d98"/><stop offset=".5" stop-color="#d3f6ab"/><stop offset="1" stop-color="#69e4d2"/></linearGradient></defs>
+                <g stroke="#60847f" stroke-width="1" opacity=".23"><path d="M0 60H780M0 130H780M0 200H780M0 270H780M0 340H780M0 410H780"/><path d="M60 0V450M140 0V450M220 0V450M300 0V450M380 0V450M460 0V450M540 0V450M620 0V450M700 0V450"/></g>
+                <rect x="277" y="97" width="215" height="252" rx="12" fill="#14221f" stroke="#89ad97" stroke-width="2"/>
+                <rect x="310" y="131" width="149" height="166" rx="4" fill="#26352b" stroke="#6a9787" stroke-width="2"/>
+                <rect x="329" y="153" width="111" height="79" rx="2" fill="#0a1111" stroke="#99c7af" stroke-dasharray="5 5"/>
+                <text x="383" y="197" fill="#d4f5d3" font-size="27" font-family="monospace" text-anchor="middle">ESP32</text>
+                <text x="383" y="251" fill="#769b8e" font-size="12" font-family="monospace" text-anchor="middle">MICROCONTROLLER</text>
+                <g fill="#b4bf9c"><rect x="270" y="119" width="7" height="13"/><rect x="270" y="148" width="7" height="13"/><rect x="270" y="177" width="7" height="13"/><rect x="270" y="206" width="7" height="13"/><rect x="270" y="235" width="7" height="13"/><rect x="270" y="264" width="7" height="13"/><rect x="270" y="293" width="7" height="13"/><rect x="492" y="119" width="7" height="13"/><rect x="492" y="148" width="7" height="13"/><rect x="492" y="177" width="7" height="13"/><rect x="492" y="206" width="7" height="13"/><rect x="492" y="235" width="7" height="13"/><rect x="492" y="264" width="7" height="13"/><rect x="492" y="293" width="7" height="13"/></g>
+                <path d="M20 223H132L152 223L164 184L184 272L210 159L235 223H277" fill="none" stroke="url(#pulse-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="pulse-path"/>
+                <path d="M499 223H579C606 223 604 157 633 157H680C705 157 700 216 727 216H757" fill="none" stroke="#a9ddc1" stroke-width="2" stroke-dasharray="7 6" class="data-line"/>
+                <circle cx="132" cy="223" r="6" fill="#c5eca9"/><circle cx="579" cy="223" r="5" fill="#c5eca9"/>
+                <g fill="#b4d2bf" font-size="13" font-family="monospace"><text x="24" y="144">MAX30102</text><text x="22" y="163" fill="#6b998e">PULSE SENSOR</text><text x="635" y="124">WIRELESS</text><text x="640" y="142" fill="#6b998e">DATA OUT</text><text x="296" y="381">SOLAR + POWER MANAGEMENT</text></g>
+                <g stroke="#8fa88b" fill="none" opacity=".8"><path d="M383 349V366"/><path d="M506 380H565"/><circle cx="575" cy="380" r="4"/></g>
+              </svg>
+            </div>
+            <div class="feature-bottom"><span>INPUT → FILTER → PROCESS → TRANSMIT</span><span>UNIVERSITY PROTOTYPE</span></div>
+          </div>
+          <div class="feature-copy"><div class="project-number">01 / COMPLETED UNIVERSITY PROJECT</div><h3>THE SIGNAL<br><em>OF LIFE.</em></h3><p>A solar-powered home heart-monitoring prototype using an ESP32 and MAX30102 optical sensor. The system combined power management, digital signal processing, heart-rate estimation and wireless transmission to a mobile interface.</p><div class="tags"><span>ESP32</span><span>MAX30102</span><span>SOLAR POWER</span><span>SIGNAL PROCESSING</span></div><div class="project-foot"><span>ROLE / DESIGN & PROTOTYPING</span><span>2025</span></div><a class="project-deep-link" href="./projects/heart-monitor.html">EXPLORE THE COMPLETE CASE STUDY <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="work-card-grid">
+          <article class="work-card"><div class="card-top"><span>02 / HANDS-ON EXPERIENCE</span><span class="card-arrow">↗</span></div><div class="card-graphic panel-graphic" aria-hidden="true"><div class="track"><i></i><i></i><i></i><i></i></div><div class="block-row"><b></b><b></b><b></b></div><div class="control-lines"><i></i><i></i><i></i></div><span class="graphic-corner">BRK / KM / K</span></div><h3>INSIDE THE PANEL.</h3><p>Assembled and wired control panels, installed breakers, contactors and relays, and assisted with supervised testing and inspections at Biricik.</p><div class="card-metadata">BIRICIK / CYPRUS · JUL–AUG 2025</div></article>
+          <article class="work-card"><div class="card-top"><span>03 / INDUSTRIAL EXPOSURE</span><span class="card-arrow">↗</span></div><div class="card-graphic sld-graphic" aria-hidden="true"><svg viewBox="0 0 500 250"><g stroke="#8bbaa9" stroke-width="2" fill="none"><path d="M70 45H430M250 45V90M200 90H300M200 90V130M300 90V130M200 162V208M300 162V208M80 208H420"/><rect x="184" y="130" width="32" height="32"/><rect x="284" y="130" width="32" height="32"/><circle cx="200" cy="130" r="6" fill="#bfe2bd"/><circle cx="300" cy="130" r="6" fill="#bfe2bd"/><path d="M250 45V20M250 208V235"/></g><g fill="#88aa9d" font-family="monospace" font-size="11"><text x="75" y="32">MV BUS</text><text x="74" y="229">LV DISTRIBUTION</text><text x="229" y="113">T1 / T2</text></g></svg><span class="graphic-corner">SINGLE-LINE STUDY</span></div><h3>THE BIGGER GRID.</h3><p>Reviewed refinery MV/LV distribution, single-line diagrams and protection arrangements under senior-engineer supervision. Supported LV site activities at Shada.</p><div class="card-metadata">PORT SUDAN REFINERY + SHADA / 2025</div></article>
+        </div>
+      </section>
+
+
+      <section class="lab-section" id="lab" aria-labelledby="lab-heading">
+        <div class="lab-intro"><span>INTERACTIVE ENGINEERING ATLAS / 002</span><span>CONCEPTUAL DEMONSTRATION · NOT AN INSTALLATION DESIGN</span></div>
+        <div class="lab-heading-row"><div><div class="section-overline">FROM PHYSICAL POWER TO DIGITAL SIGNAL</div><h2 id="lab-heading">FOLLOW THE<br><em>FLOW.</em></h2></div><p>The same curiosity at three different scales. Select a system to inspect its fundamental signal path.</p></div>
+        <div class="lab-layout">
+          <div class="lab-display">
+            <div class="lab-display-header"><span>AS / ENGINEERING STUDIES</span><span id="lab-indicator">01 — DISTRIBUTION</span></div>
+            <svg class="lab-diagram" viewBox="0 0 900 550" role="img" aria-label="Educational diagram showing a conceptual engineering signal path, changing with selected topic">
+              <defs>
+                <pattern id="lab-grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" stroke="#4a7060" stroke-opacity=".27" fill="none"/></pattern>
+                <linearGradient id="lab-flow-grad" x1="0" x2="1"><stop stop-color="#5bc8ac"/><stop offset=".54" stop-color="#d1f5aa"/><stop offset="1" stop-color="#80e0c4"/></linearGradient>
+              </defs>
+              <rect width="900" height="550" fill="url(#lab-grid)"/>
+              <g class="lab-static-wire" stroke="#365f53" stroke-width="2" fill="none"><path d="M94 258H797"/><path d="M268 258V355H628V258"/><path d="M448 355V424"/></g>
+              <g class="lab-motion-wire" stroke="url(#lab-flow-grad)" stroke-width="3" fill="none"><path d="M94 258H797"/><path d="M268 258V355H628V258"/></g>
+              <g class="lab-module module-1" transform="translate(140 193)"><rect width="143" height="132" rx="3" fill="#0f211e" stroke="#719982" stroke-width="2"/><rect x="20" y="19" width="103" height="13" fill="#3d6152"/><rect x="45" y="53" width="53" height="38" rx="4" stroke="#b8dfaa" fill="#223f35"/><text x="71" y="115" text-anchor="middle">QF1 / INPUT</text></g>
+              <g class="lab-module module-2" transform="translate(376 193)"><rect width="143" height="132" rx="3" fill="#0f211e" stroke="#719982" stroke-width="2"/><rect x="14" y="19" width="115" height="13" fill="#3d6152"/><rect x="34" y="49" width="77" height="46" rx="3" stroke="#b8dfaa" fill="#223f35"/><text x="71" y="115" text-anchor="middle">KM1 / CONTROL</text></g>
+              <g class="lab-module module-3" transform="translate(613 193)"><rect width="143" height="132" rx="3" fill="#0f211e" stroke="#719982" stroke-width="2"/><rect x="24" y="25" width="95" height="52" stroke="#b8dfaa" fill="#223f35"/><path d="M32 43H109M32 55H109" stroke="#5b9481"/><text x="71" y="115" text-anchor="middle">LOAD / OUTPUT</text></g>
+              <g class="lab-module module-4" transform="translate(388 375)"><rect width="122" height="91" rx="3" fill="#0e2923" stroke="#729682" stroke-width="2"/><rect x="16" y="17" width="90" height="35" stroke="#719f8b" fill="#152e27"/><text x="61" y="72" text-anchor="middle">FEEDBACK</text></g>
+              <g class="lab-electric-orbs"><circle r="5" fill="#e7ffc2"><animateMotion dur="4s" repeatCount="indefinite" path="M94 258H797"/></circle><circle r="3.5" fill="#bbffe1"><animateMotion dur="5.3s" repeatCount="indefinite" path="M268 258V355H628V258"/></circle></g>
+              <g class="lab-upper" font-family="monospace"><text x="96" y="153">SOURCE</text><text x="754" y="153" text-anchor="end">DELIVERY</text><text x="448" y="501" text-anchor="middle">INFORMATION / FEEDBACK</text></g>
+              <path class="lab-wave" d="M94 118h82l20-19 20 37 20-60 22 42h102l30-28 30 45 28-60 20 43h326" fill="none" stroke="#a0eac6" stroke-width="1.4" opacity=".5" />
+            </svg>
+            <div class="lab-display-footer"><span id="lab-caption">POWER / DISTRIBUTION PATH</span><span>DIAGRAM IS AN ABSTRACT VISUALIZATION</span></div>
+          </div>
+          <div class="lab-controls">
+            <div class="lab-controls-overline">SELECT ENGINEERING DOMAIN</div>
+            <button type="button" class="lab-domain selected" data-domain="power" aria-pressed="true"><span class="lab-index">01</span><span class="lab-domain-text"><b>POWER SYSTEMS</b><small>MV / LV • DISTRIBUTION</small></span><span aria-hidden="true">↗</span></button>
+            <button type="button" class="lab-domain" data-domain="controls" aria-pressed="false"><span class="lab-index">02</span><span class="lab-domain-text"><b>CONTROLS</b><small>PROTECTION • PANEL LOGIC</small></span><span aria-hidden="true">↗</span></button>
+            <button type="button" class="lab-domain" data-domain="embedded" aria-pressed="false"><span class="lab-index">03</span><span class="lab-domain-text"><b>EMBEDDED SYSTEMS</b><small>ESP32 • SENSORS • SIGNALS</small></span><span aria-hidden="true">↗</span></button>
+            <div class="lab-details" aria-live="polite"><div class="lab-details-title" id="lab-title">A system is only as good as its protection.</div><p id="lab-description">From drawings and distribution architecture to the protective devices and equipment carrying power. My industrial exposure included supervised reviews of MV/LV systems and panel assembly.</p></div>
+            <button class="lab-power" type="button" id="lab-power" aria-pressed="true"><span id="lab-power-led"></span><span id="lab-power-label">SIGNAL PATH / ENERGIZED</span><span>⏻</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="simulator-section" id="simulator" aria-labelledby="sim-heading">
+        <div class="sim-topline"><span>ENGINEERING PLAYGROUND / 003</span><span>AN IDEAL DC CIRCUIT — EDUCATIONAL MODEL</span></div>
+        <div class="sim-title-row"><div><div class="section-overline">DO MORE THAN LOOK. INTERACT.</div><h2 id="sim-heading">MAKE IT<br><em>FLOW.</em></h2></div><p>Turn the knobs. Change the circuit. See what Ohm's law does to the current and power—then watch the signal respond.</p></div>
+        <div class="sim-interface">
+          <div class="sim-viewport" id="sim-viewport">
+            <div class="sim-view-head"><span>AS / CIRCUIT 001</span><span class="sim-status"><i></i> LIVE CALCULATION</span></div>
+            <svg viewBox="0 0 950 540" class="circuit-svg" role="img" aria-label="Illustrative ideal DC circuit showing a source, resistor and the flow of current">
+              <defs><pattern id="sim-point-grid" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#86b7ad" opacity=".17"/></pattern><filter id="current-glow" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="8"/></filter></defs>
+              <rect width="950" height="540" fill="url(#sim-point-grid)"/>
+              <g class="circuit-underlay" fill="none" stroke="#506d6a" stroke-width="4"><path d="M254 146H696V394H254V146Z"/></g>
+              <g fill="#132b2e" stroke="#9bd4cb" stroke-width="2"><rect x="220" y="231" width="70" height="85" rx="5"/><rect x="612" y="124" width="170" height="45" rx="6"/></g>
+              <g stroke="#bef5e3" stroke-width="3"><path d="M242 253H268M255 243V264M242 286H268"/><path d="M629 145L646 135L668 156L692 135L717 156L742 145" fill="none"/></g>
+              <path id="sim-circuit-path" d="M254 233V146H696V394H254V313" fill="none" stroke="#8ff5df" stroke-width="3" stroke-dasharray="5 13" stroke-linecap="round"/>
+              <g class="sim-charge-orb" id="sim-charge-orb"><circle r="21" fill="#9affea" opacity=".12"/><circle r="7" fill="#e5fff5"/></g>
+              <g font-family="monospace" font-size="16" fill="#bfdedb"><text x="216" y="356">DC SOURCE</text><text x="617" y="207">RESISTIVE LOAD</text><text x="340" y="94">ELECTRONIC TEST BENCH</text></g>
+              <g font-family="monospace" fill="#90b8b0" font-size="12"><text x="370" y="458">IDEALIZED MODEL — NOT HARDWARE</text><text x="615" y="230" id="sim-resistance-caption">R = 24 Ω</text><text x="220" y="375" id="sim-voltage-caption">V = 24 V</text></g>
+              <g stroke="#92cfc1" stroke-width="1" opacity=".32"><path d="M100 80h48m-24-24v48M818 433h48m-24-24v48"/></g>
+            </svg>
+            <div class="sim-scope"><span>CHARGE / FLOW RATE</span><canvas id="waveform-canvas" width="300" height="80" aria-hidden="true"></canvas><span id="sim-flow-label">NOMINAL</span></div>
+            <div class="sim-view-footer"><span>DC / SINGLE LOOP</span><span>V = I × R &nbsp;&nbsp;·&nbsp;&nbsp; P = V × I</span></div>
+          </div>
+          <div class="sim-dashboard">
+            <div class="sim-dashboard-top"><span>ADJUST INPUT PARAMETERS</span><span>LAB // 001</span></div>
+            <div class="sim-control"><div class="sim-control-title"><label for="voltage">SOURCE VOLTAGE</label><output for="voltage" id="voltage-value">24 <small>V</small></output></div><input type="range" id="voltage" min="1" max="48" step="1" value="24"/><div class="slider-ends"><span>01 V</span><span>48 V</span></div></div>
+            <div class="sim-control"><div class="sim-control-title"><label for="resistance">LOAD RESISTANCE</label><output for="resistance" id="resistance-value">24 <small>Ω</small></output></div><input type="range" id="resistance" min="4" max="100" step="2" value="24"/><div class="slider-ends"><span>04 Ω</span><span>100 Ω</span></div></div>
+            <div class="sim-metrics" aria-live="polite" aria-atomic="true"><div class="sim-metric"><span>CALCULATED CURRENT</span><strong id="current-output">1.00<small> A</small></strong></div><div class="sim-metric"><span>LOAD POWER</span><strong id="power-output">24.0<small> W</small></strong></div></div>
+            <div class="sim-presets"><button type="button" data-preset="low">LOW POWER</button><button type="button" class="active" data-preset="nominal">NOMINAL</button><button type="button" data-preset="high">HIGH CURRENT</button></div>
+            <p class="sim-disclaimer">This is a mathematical demonstration of a simple ideal DC resistive circuit, not a real energized circuit, engineering validation or equipment operating instruction.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ac-section" id="three-phase" aria-labelledby="ac-heading">
+        <div class="ac-topline"><span>04 / ENGINEERING LABORATORY — THREE-PHASE</span><span>MODELED · NOT MEASURED</span></div>
+        <div class="ac-intro"><div><div class="section-overline">ENERGY, THROUGH THREE LENSES</div><h2 id="ac-heading">THE PHASE<br><em>SHIFT.</em></h2></div><p>Three sinusoidal voltages. One rotating field. Explore how real power, power factor and line-to-line voltage change the calculated current in a balanced three-phase system.</p></div>
+        <div class="ac-interface">
+          <div class="ac-stage">
+            <div class="ac-stage-top"><span id="ac-view-name">OSCILLOSCOPE / 001</span><div class="ac-view-switch" role="group" aria-label="Visualization mode"><button type="button" data-ac-view="waveform" aria-pressed="true">WAVEFORMS</button><button type="button" data-ac-view="phasor" aria-pressed="false">PHASORS</button></div></div>
+            <div class="ac-stage-middle"><svg id="ac-scope" viewBox="0 0 900 470" role="img" aria-label="Animated visualization of ideal three-phase voltages and line current; switch between sinusoidal waveforms and rotating phasors"></svg></div>
+            <div class="ac-stage-bottom"><div class="ac-legend"><span><i></i> L1</span><span><i class="lb"></i> L2</span><span><i class="lc"></i> L3</span><span><i class="li"></i> I₁</span></div><span id="ac-stage-caption">400 V LINE–LINE / 7.5 kW / PF 0.85</span></div>
+          </div>
+          <div class="ac-console">
+            <div class="ac-console-head"><span>INPUT / BALANCED LOAD</span><span>50 Hz · TIME SLOWED FOR DISPLAY</span></div>
+            <div class="ac-group"><label for="ac-voltage">LINE–LINE RMS VOLTAGE <output id="ac-voltage-display" for="ac-voltage">400 V</output></label><select id="ac-voltage"><option value="380">380 V</option><option value="400" selected>400 V</option><option value="415">415 V</option><option value="480">480 V</option><option value="690">690 V</option></select></div>
+            <div class="ac-group"><label for="ac-load">REAL POWER <output id="ac-load-display" for="ac-load">7.5 kW</output></label><input id="ac-load" type="range" min="0.5" max="22" value="7.5" step="0.5"><div class="ends"><span>0.5 kW</span><span>22 kW</span></div></div>
+            <div class="ac-group"><label for="ac-pf">LAGGING POWER FACTOR <output id="ac-pf-display" for="ac-pf">0.85</output></label><input id="ac-pf" type="range" min="60" max="100" value="85" step="1"><div class="ends"><span>0.60</span><span>1.00</span></div></div>
+            <div class="ac-readouts" aria-live="polite" aria-atomic="true"><div class="ac-readout"><span>LINE CURRENT</span><strong id="ac-current">12.74<small>A</small></strong></div><div class="ac-readout"><span>APPARENT POWER</span><strong id="ac-apparent">8.82<small>kVA</small></strong></div><div class="ac-readout"><span>REACTIVE POWER</span><strong id="ac-reactive">4.65<small>kVAr</small></strong></div><div class="ac-readout"><span>PHASE ANGLE</span><strong id="ac-angle">31.8<small>°</small></strong></div></div>
+            <p class="ac-explain" id="ac-theory">For a balanced three-phase load, line current is calculated from real power, line-to-line voltage and power factor.</p>
+          </div>
+        </div>
+        <div class="ac-ribbon"><span>UNIVERSAL RELATIONSHIP / P = √3 × VLL × IL × PF</span><span>ALL RESULTS ARE IDEALIZED CALCULATIONS ↗</span></div>
+        <div class="ac-quick-notes"><article><b>01 / ENERGY</b><h3>Voltage isn't the whole story.</h3><p>Real power and power factor determine the current a balanced three-phase load would draw at a specified line voltage.</p></article><article><b>02 / GEOMETRY</b><h3>120° apart, by design.</h3><p>Three equal sinusoidal phase voltages are separated by 120 electrical degrees. Switch to the phasor view and watch the vectors revolve.</p></article><article><b>03 / CONTEXT</b><h3>Model first. Verify later.</h3><p>This interactive educational model omits harmonics, impedance, transients, unbalance, protection and real installation constraints.</p></article></div>
+      </section>
+
+      <section class="section experience-section" id="experience" aria-labelledby="experience-heading"><div class="section-head"><div><div class="section-overline">05 / ENGINEERING PATH</div><h2 id="experience-heading">LEARNED ON<br><em>THE GROUND.</em></h2></div><p>Technical work happens in the real world: drawings, components, inspections, safety procedures, and experienced people willing to teach.</p></div>
+        <div class="timeline">
+          <div class="timeline-header"><span>FIELD RECORD</span><span>2025 / CYPRUS · SUDAN · SAUDI ARABIA</span></div>
+          <article class="timeline-row"><div class="time-date">NOV—DEC<br>2025</div><div class="time-dot"></div><div class="time-body"><div class="time-location">PORT SUDAN REFINERY / SUDAN</div><h3>Electrical Engineering Intern</h3><p>Supervised review of MV/LV power distribution, protection and single-line diagrams; site inspections and maintenance discussions.</p></div><div class="time-index">01</div></article>
+          <article class="timeline-row"><div class="time-date">JUL—AUG<br>2025</div><div class="time-dot"></div><div class="time-body"><div class="time-location">BIRICIK / CYPRUS</div><h3>Electrical Engineering Technician</h3><p>Control-panel assembly and wiring, protective devices, schematic reading and supervised panel inspections and tests.</p></div><div class="time-index">02</div></article>
+          <article class="timeline-row"><div class="time-date">JAN—FEB<br>2025</div><div class="time-dot"></div><div class="time-body"><div class="time-location">SHADA INDUSTRIAL CONSTRUCTION / SAUDI ARABIA</div><h3>Electrical Engineering Intern</h3><p>Supported LV installation, cable management, grounding, drawing review and supervised testing and commissioning activities.</p></div><div class="time-index">03</div></article>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-heading"><div class="about-main"><div class="section-overline">06 / THE PERSON BEHIND THE WORK</div><h2 id="about-heading">CURIOUS<br><em>BY NATURE.</em><br>ENGINEER<br>BY CHOICE.</h2><p>I’m Ahmed Siddig, an Electrical & Electronics Engineering graduate with a particular interest in the intersection of power, controls and embedded systems. My path has taken me through hands-on technical environments and almost two years of international compliance and research work—different disciplines, the same commitment to understanding complicated systems.</p><div class="skills-label">AREAS OF INTEREST & EXPERIENCE</div><div class="skill-list"><span>POWER DISTRIBUTION</span><span>CONTROL PANELS</span><span>EMBEDDED SYSTEMS</span><span>TECHNICAL DRAWINGS</span><span>TESTING SUPPORT</span><span>SIGNAL PROCESSING</span></div></div><div class="about-aside"><div class="recognition-label">ACADEMIC RECORD / 2025</div><div class="large-stat">01<span>/ DEPARTMENT</span></div><div class="aside-rule"></div><p>Ranked first in Electrical & Electronics Engineering at Cyprus Aydin University.</p><div class="stat-inline"><span>3.56 <small>/ 4.00 GPA</small></span><span>HIGH HONOURS</span></div><div class="aside-rule"></div><div class="recognition-label">ADDITIONAL EXPERIENCE</div><p class="aside-secondary">Nearly two years working in international research, documentation, compliance and client coordination at W-V Law Firm LLP.</p><div class="small-mark">AS<span>.</span></div></div></section>
+
+      <section class="contact-section" id="contact"><div class="contact-top"><span>07 / OPEN TO ENGINEERING OPPORTUNITIES</span><span>SAUDI ARABIA · OPEN TO RELOCATION</span></div><div class="contact-center"><div class="contact-kicker">THE NEXT CONNECTION STARTS HERE</div><h2>GOOD WORK<br><em>STARTS WITH HELLO.</em></h2><a class="contact-big-link" href="mailto:engahmedsiddig21@gmail.com?subject=Engineering%20Opportunity">GET IN TOUCH <span>↗</span></a></div><div class="contact-foot"><span>© <span id="year">2026</span> AHMED SIDDIG</span><div><a href="https://www.linkedin.com/in/ahmed-siddig-0ab7392ba" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><button id="copy-email" type="button" aria-label="Copy email address">COPY EMAIL <span>↗</span></button></div><span>DESIGNED / CODED / ENGINEERED</span></div></section>
+    </main>
+  </div>
+</body>
+</html>
